@@ -1,0 +1,35 @@
+class: inverse
+
+# Candy ratings
+
+An .teal[R] plot of popular candies
+
+<img src="../images/candy_ratings_blk.png" style="width: 75%; border: 3px white solid; margin-top: -18px; margin-left: 0;" />
+
+
+???
+
+::: {.notes}
+
+Now, here is a wonderful chart of candy rankings...
+
+However... you may not agree with the results.
+
+We will be re-creating this together when we meet.
+ 
+Your homework is to install the required packages.
+
+:::
+
+
+---
+class: inverse
+
+# Install packages
+
+<br>
+
+```{r, eval=F}
+install.packages("readr")
+```
+

@@ -1,0 +1,120 @@
+
+
+![](../images/summarize_diagram.png){width="590"}
+
+`summarize()` uses summary functions `mean()` or `sum()` to collapse the data down to a single summary row. To get started we'll need some summary functions like `sum()`, `mean()`, `min()`, and `max()`.
+
+
+## `sum()` {-}
+
+Use `summarize()` and `sum()` to find the total credits of all the scrap combined.
+
+```{r, eval=F}
+summarize(scrap, total_credits = sum(credits))
+```
+
+
+## `mean()` {-}
+Use `summarize()` and `mean()` to calculate the _mean_ `price_per_pound` in the scrap report.
+
+```{r, eval=F}
+
+summarize(scrap, mean_price = mean(price_per_pound, na.rm = T))
+
+```
+
+<br>
+
+<div class="note">
+### Note {-}
+
+__What's the average of missing data?__ I don't know.
+
+Did you see the `na.rm = TRUE` inside the `mean()` function. This tells R to ignore empty cells or missing values that show up in R as `NA`. If you leave `na.rm` out, the _mean_ function will return 'NA' if it finds a missing value anywhere in the data. 
+</div>
+
+## `median()` {-}
+Use summarize to calculate the _median_ price_per_pound in the scrap report.
+
+`summarize(scrap, median_price = median(price_per_pound, na.rm = TRUE))`
+
+## `max()` {-}
+Use summarize to calculate the _maximum_ price per pound any scrapper got for their scrap.
+
+`summarize(scrap, max_price = max(price_per_pound, na.rm = TRUE))`
+
+## `min()` {-}
+Use summarize to calculate the _minimum_ price per pound any scrapper got for their scrap.
+
+`summarize(scrap, min_price = min(price_per_pound, na.rm = TRUE))`
+
+
+## `sd()` {-}
+
+What is the _standard deviation_ of the credits?
+
+`summarize(scrap, stdev_credits = sd(credits))`
+
+## `quantile()` {-}
+
+_Quantiles_ are useful for finding the upper or lower range of a column. Use the `quantile()` function to find the the 5th and 95th quantile of the prices.
+
+```{r quants, eval = FALSE}
+summarize(scrap, 
+          price_5th_pctile  = quantile(price_per_pound, 0.05, na.rm = TRUE),
+          price_95th_pctile = quantile(price_per_pound, 0.95))
+```
+
+
+__Hint:__ Add `na.rm = T` to `quantile()`.
+
+
+## `n()` {-}
+
+`n()` stands for _count_.
+
+Use summarize and `n()` to count the number of scrap records. 
+
+```{r, eval=F}
+summarize(scrap, scrap_records = n())
+```
+
+<br>
+
+
+<div class="tip">
+### Explore! {-}
+
+1. Create a summary of the scrap data that includes 3 of the summary functions above. The following is one example.
+
+```{r, eval = F}
+scrap_summary <- summarize(scrap, 
+                           max_credits      = __________,
+                           weight_90th_pct  = quantile(total_pounds, 0.90),
+                           count_records    = __________,
+                    
+```
+
+<br>
+
+2. Use summarize and `n()` to count the number of reported scrap records going to `Niima outpost`. 
+
+__Hint:__ Use `filter()` first.
+
+
+```{r, eval=F}
+niima_scrap <- filter(scrap, destination == "Niima Outpost") 
+
+niima_scrap <- summarize(niima_scrap, scrap_records = n())
+```
+
+
+</div>
+
+<br>
+
+> <h4 style="margin-top: 12px;"> __How about a count of the records for every city?__ </h4>
+>
+> It'd sure be nice if we could easily count the records for every city.
+>
+

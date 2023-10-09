@@ -1,0 +1,102 @@
+
+<br>
+
+>
+> **Wishing you could type the name of the data less often?**
+>
+
+![](../images/pipe.png){style="margin-right: 20px; width: 136px; float: left; margin-top: 12px;"}
+
+
+### You can with the *pipe*! {-}
+
+Use the `%>%` to chain functions together and make our scripts more streamlined and easier to read. When reading code with the `%>%` you can read it as **and then**.
+
+<div style="clear: both;"></div>
+
+**For example**
+
+> puppy `%>%` runs_outside `%>%` rolls_in_mud `%>%` barks_joyfully(times = 3)
+
+
+**Can be read as**
+
+> There is a puppy, it runs outside `And then` rolls in the mud `And then` barks joyfully 3 times."
+
+
+## The `%>%` helps: {-}
+
+### __`1.`__ Eliminate nested parentheses {-}
+
+Let's say you have 3 numbers. Your analysis requires that you take the sum of them, then take the log of that result, and then round the final outcome. 
+
+### Without the pipe  {-}
+```{r maths, eval=F}
+round(log(sum(c(10, 20, 30, 50))))
+```
+
+The code above is dense and we need to read it backwards from right to left to understand the order of operations. The pipe on the other hand allows us to read the code from left to right.
+
+<br>
+
+### With the pipe <i class="fas fa-smile"></i> {-}
+```{r maths_better, eval = F}
+result <- c(10, 20, 30, 50) %>%
+            sum() %>%
+            log() %>%
+            round()
+```
+
+
+<br>
+
+
+### __`2.`__ Combine processing steps into a cohesive chunk {-}
+
+
+### Without the pipe {-}
+```{r review, eval=F}
+scrap <- arrange(scrap, desc(price_per_pound))
+
+scrap <- filter(scrap, origin != "All")
+
+scrap <- mutate(scrap, 
+                scrap_finder    = "BB8",
+                measure_method  = "REM-24")
+```
+
+
+### With the pipe {-}
+```{r review-better, eval=F}
+scrap <- scrap %>%
+           arrange(desc(price_per_pound)) %>%
+           filter(origin != "All") %>%
+           mutate(scrap_finder    = "BB8",
+                  measure_method  = "REM-24")
+
+```
+
+
+<br>
+
+
+<div class="tip">
+### <i class="fa fa-user-astronaut" style="color: green;"></i> Explore! {-}
+
+Similar to above, use the `%>%` to combine the 3 analysis lines below.
+
+```{r pipe-test, eval=F}
+# Group the scrap data by item
+scrap <- group_by(scrap, item)
+
+# Calculate each item's mean price 
+scrap <- summarize(scrap, mean_price = mean(price_per_unit))
+
+# Ungroup the data
+scrap <- ungroup(scrap)
+```
+</div>
+
+
+## Let the `%>%` guide you. {-}
+

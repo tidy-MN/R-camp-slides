@@ -1,0 +1,127 @@
+
+
+<details>
+<summary class="btn_code"> **R Markdown Demo >** </summary>
+
+
+<h2> R Markdown </h2>
+
+> R Markdown keeps your plots, output, and analysis all in one place. No more outdated charts and data floating around.
+>
+> You are currently reading the output of an R Markdown document. Markdown is a simple syntax for authoring HTML, PDF, and Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+<h2> 2. A motivational example  </h2>
+
+> [Scary changes: A Reproducible workflow](https://youtu.be/s3JldKoA0zw)
+
+<h2> 3. Markdown basics </h2>
+
+>  https://slides.djnavarro.net/starting-rmarkdown/#17
+
+<br>
+
+<h3> The YAML </h3>
+
+The YAML ("Yet Another Markup Language") is the document settings stored atop the R Markdown document, bounded on each end by `---`. When you first create a new `.Rmd` the YAML will look something like this:
+
+
+    ---
+    title: "Document title"
+    author: "Author"
+    date: "MM/DD/YYYY"
+    output: html_document
+    ---
+
+
+<h2> 4. Demo time </h2>
+
+```{r}
+library(tidyverse)
+library(ggweekly) #remotes::install_github("gadenbuie/ggweekly")
+
+start <- "2021-04-05"
+end <- as.Date(start) + 8
+
+ggweek_planner(
+  start_day = start, 
+  end_day = end,
+  highlight_days = tibble(day = "2021-04-09", 
+                          label = "HOTSPRINGS!!", 
+                          color = "hotpink",
+                          fill  = "hotpink")
+) +
+  labs(title = "My Yellowstone Trip")
+```
+
+
+<h3> Code chunk options </h3>
+
+Chunk options are options designated in the code chunk header that determine what appears or does not appear in the final document. 
+
+For more information on code chunk options in R Markdown, see Chapter 11 in the [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html).
+
+Here are some common chunk options:
+
+-   `echo = FALSE`: do not show the code in the knitted document
+-   `include = FALSE`: do not include code or any outputs in knitted document
+-   `message = FALSE`: suppress messages when knit
+-   `warning = FALSE`: suppress warnings when knit
+-   `eval = FALSE`: do not evaluate this code
+
+<h3> Customization </h3>
+
+Let's make some changes to the YAML in our .Rmd to change the output document. 
+
+**Let's try the following:**
+
+-   `toc: true`: add a table of contents based on header hierarchies
+-   `toc_float: true`: make it a floating TOC
+-   `number_sections: true`: add numbered sections based on header hierarchy
+-   `theme: _____`: add a bootstrap theme
+-   `code_folding: hide`: code is default hidden, but available if the reader clicks on the 'Code' button created
+
+<br>
+
+To add options to the YAML, add them as "children" under the `html_document:` section. 
+
+**Beware of spacing here**. You add 2 spaces of indentation for each new sub-level in the YAML hierarchy.
+
+
+    ---
+    title: "Level up in R Markdown"
+    subtitle: "UCSB QMSS seminar series (February 2021)"
+    author: "Allison Horst"
+    output: 
+      html_document:
+        toc: true
+        toc_float: true
+        number_sections: true
+        theme: flatly
+        code_folding: hide
+    --- 
+
+
+<h4> For more markdown themes visit: <https://bootswatch.com/3/> </h4>
+
+
+<br>
+
+<div class="yoda">
+### More Markdown resources {-}
+
+<img src="../images/yoda_baby_sq.png" class="yoda-img">
+
+-   [The R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) by Yihui Xie, Christophe Dervieux, Emily Riederer
+-   [R Markdown: the Definitive Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J. Allaire, Garrett Grolemund
+-   [RStudio's R Markdown site](https://rmarkdown.rstudio.com/)
+-   [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+-   [RStudio's R Markdown lesson series](https://rmarkdown.rstudio.com/lesson-1.html)
+-   [Alison Hill's Advanced R Markdown workshop](https://alison.rbind.io/project/advanced-r-markdown/)
+
+</div>
+
+
+</details>
+
+
+

@@ -1,0 +1,54 @@
+
+
+Let's apply our new `left_join()` skills to the scrap data.
+
+First, let's load the full scrap data.
+```{r join-convert, eval=T}
+library(tidyverse)
+
+# Read in the larger scrap database
+scrap <- read_csv("https://mn-r.netlify.app/data/starwars_scrap_jakku_full.csv")
+
+# what units types are in the data? 
+distinct(scrap, units)
+```
+
+
+### Join the conversion table to scrap {-}
+
+Look at the tables. What columns in both tables do we want to join __by__?
+```{r, eval=F}
+names(scrap)
+
+names(convert)
+```
+
+Let's join by `item` and `units`.
+```{r, eval=F}
+# Join the scrap to the conversion table
+scrap <- left_join(scrap, convert, 
+                   by = c("item"  = "item", 
+                          "units" = "units"))
+```
+
+<br>
+
+> __Want to save on typing?__
+
+`left_join()` will automatically search for matching columns if you don't use the `by=` argument. So if you know 2 tables share a column name you don't have to specify how to join them. The code below does the same as above.
+
+```{r join-convert2, eval=T}
+scrap <- left_join(scrap, convert)
+
+head(scrap, 4)
+```
+
+<br>
+
+
+<div class="quiz">
+#### __Help!__ {-}
+
+For more details on the **join** family of functions, you can type `?left_join` to see all the arguments and options.
+<br>
+</div>

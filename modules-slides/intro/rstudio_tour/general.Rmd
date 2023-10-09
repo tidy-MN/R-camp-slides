@@ -1,0 +1,156 @@
+
+class: left, top
+background-image: url(../images/rstudio-panes-labeled.png)
+background-size: contain
+
+<style>
+.rstudio1 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio2 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio3 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio1::before {    
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 100%;
+      position: absolute;
+      top: -12px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 40%;
+      z-index: -1;
+}
+
+.rstudio2::before {
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 165%;
+      position: absolute;
+      top: -937px;
+      left: 0;
+      bottom: 125px;
+      right: 0;
+      opacity: 55%;
+      z-index: -1;
+}
+
+
+.rstudio3::before {
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 98%;
+      position: absolute;
+      top: -543px;
+      left: -216px;
+      bottom: 152px;
+      right: -42px;
+      opacity: 55%;
+      z-index: -1;
+}
+.card {
+    height: 492px;
+    margin-top: 28px;
+    font-size: 80%;
+    line-height: 155%;
+    padding-top: 5px;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.card h3 {
+    background-color: #50E3C2;
+    color: rgb(39, 40, 34);
+    margin-top: -5px;
+    margin-bottom: 16px;
+    margin-left: -24px;
+    padding-left: 26px;
+    padding-top: 26px;
+    padding-bottom: 15px;
+    width: 118%;
+    font-size: 220%;
+}
+</style>
+
+
+---
+class: rstudio1
+
+.pull-right[.bump-right[.card[
+
+<h3>Source/script editor </h3>
+
+Write your scripts and comments here. The is our home and where we spend most of our time. Move your cursor to a line of code and then click <kbd>[Ctrl]</kbd> + <kbd>[Enter]</kbd> to run the code. The tabs at the top show other scripts and data you have open. 
+
+]]]
+
+---
+class: rstudio1
+
+
+.pull-left[.bump-left[.card[
+
+<h3> Environment / Workspace  </h3> 
+
+This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects in your workspace.
+
+]]]
+
+
+---
+class: rstudio2
+
+.pull-right[.bump-right[.card[
+
+<h3> R Console </h3>
+
+This is where code is run by the computer. It shows the code that is running and the messages returned by that code. You can input code directly into the console and run it, but it won't be saved for later. We encourage running code from a script in the code editor. 
+
+]]]
+
+---
+class: rstudio3
+
+.pull-left[.bump-left[.card[
+
+<h3> Plots and files </h3>
+
+These tabs let you view and open files in your current directory, view plots and visuals like maps, view your installed packages, and access the Help window. 
+
+The **Files** tab is especially handy for finding files you want and clicking them to open. You can also click the **Gear** and select _"Show Folder in a New Window"_ to open your project folder.
+]]]
+
+---
+
+# Customize R Studio 
+
+<img src="../images/font_change.png" style="width: 45%; margin-left: 2%; float: right;" />
+
+
+.notes[Let's add some .bigger[.teal[STYLE]].] 
+
+<h3>Change fonts and colors</h3>
+
+.smaller[
+
+1. Go to __Tools__ on the top navigation bar  
+2. Choose `Global Options...`
+3. Choose `Appearance` with the paint bucket 
+4. Increase the overall `Zoom` to 125%  
+4. Increase the `Editor Font size`
+5. Pick an Editor theme you like  
+    - The default is `Textmate`
+   
+] 
+
+
+

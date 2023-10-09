@@ -1,0 +1,90 @@
+<div style="padding: 22px; border-radius: 14px;">
+
+<img src="../images/trash_droid_rev.png" style="width: 120px; float: left; margin-right: 30px; margin-bottom: 12px;" />
+
+Rey and BB8 just posted a wanted ad for a data droid. This is your chance. But if you want to join the team, you'll need to submit an application. 
+
+<div style="clear: both">
+> Customize the application below to apply. 
+
+</div>
+
+
+<h3> Instructions </h3>
+<hr class="hr2" style="margin-top: 4px;">
+
+1. Copy the code below.
+    - Paste the copied code into the upper-left script window of RStudio.
+1. Edit the information in quotes to your liking.
+1. Highlight all of the code and click <kbd> **CTRL**</kbd> + <kbd> **ENTER**</kbd>.
+
+```{r droid, eval=F}
+# Install 3 packages ---
+install.packages(c("distill", "postcards", "rmarkdown"))
+
+
+#--------- Customize your Application -------------# 
+
+# Pick a droid model
+## 4 Options: "Mouse", "R2D2", "Gonk", "C3PO"
+droid <- "R2D2" 
+
+# Give your droid a nickname
+nickname <- "Data Sweeper"
+
+## Your top skill
+skill <- "sweeping"
+
+#------------------ Submit ---------------------# 
+## -- Option 1. Run all the lines above and then run the line below -or-
+## -- Option 2. Click the Source button at the top-right of the script screen 
+### -- (the one with the blue arrow). 
+### -- This runs all the lines in your script.
+source("https://mn-r.netlify.app/modules/intro/droid_app/submit_app.R")
+```
+
+
+
+## Nice work! {-}
+
+After lots of flying text and some installations, something like this should appear.
+
+![](../images/droid_app.png){width="60%"}
+
+<br>
+
+5. Try making some more changes to the application.
+6. Re-run the code again.
+
+> **7. <i class="fas fa-envelope"></i> Email your script to the instructor.**
+
+
+### Bonus {-}
+
+You can add a personal touch to your droid by updating their bio section.
+
+`Copy`+`paste` the code below into your script, make edits, and re-run the script.
+```{r}
+# Your droid bio
+intro <- "**Hello!**  I am a classically trained data scientist living on planet Endor. 
+  Wherever I go I bring a supply of good energy. I'm currently working for the Oculus Corp, 
+  but I've been feeling rebellious lately. I love talking about urban forests and discussing 
+  true crime podcasts."
+```
+
+</div>
+
+<br>
+
+<div class="yoda">
+###  Yoda says {-}
+
+<img src="../images/yoda_baby_sq.png" class="yoda-img">
+
+- R Markdown does magic. 
+- It combines code and text to create dynamic reports, presentations, and webpages.
+- You are reading the magic made with R Markdown right now. Even this word right `here` is R Markdown.
+- We'll cover R Markdown more on day 3.
+
+</div>
+

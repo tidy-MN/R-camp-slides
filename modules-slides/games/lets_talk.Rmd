@@ -1,0 +1,150 @@
+
+<img src="../images/bert_ernie.jpg" style="float: left; width: 33%; margin-right: 20px;">
+
+
+<br><br>
+
+> "The secret to writing better is reading more."  
+> *-someone*
+
+<div style="clear: both;"></div>
+
+### <i class="fas fa-book"></i> Reading aloud {-}
+
+Let's practice reading R scripts with a partner.
+
+They'll listen to what you say and turn it into R code. 
+
+It's like a game of *telephone*, but for R.
+
+<br>
+
+### Instructions {-}
+
+1. Find a partner. 
+    - One of you gets to be **Bert** and one of you is **Ernie**.
+1. Bert will look at the first code block and tell Ernie what it does.
+1. Ernie will then write some code that accomplishes what Bert said.
+1. Then Bert can offer more clues to help.
+    - Try **not** to say the exact names of functions, like "use `filter`" or "use `write_csv`"
+    - Instead, say what you want to accomplish, like `"Drop the rows where..."` or `"Save the data as..."`
+
+<br>
+
+<details>
+<summary class="btn_code_blue"> Example code to read aloud </summary>
+
+
+Say aloud what this code does or tries to accomplish.  
+
+```{r, eval=F}
+library(sandwich)
+    
+slices_bread <- 4
+
+fillings <- read_csv("fillings.csv")
+
+nrow(fillings)
+
+names(fillings)
+
+red_veggies <- filter(fillings, food_type == "vegetable", color = "red")
+
+```    
+
+</details>    
+
+<br>
+<br>
+
+<blockquote style="background-color: #f3ed8c;">
+⚠️ **Wait to click below until you decide who's Bert.**
+</blockquote> 
+
+### 1. Bert's **turn to read:** `BIG fish` <i class="fas fa-fish"></i> {-}
+
+> **No peaking Ernie!**
+
+We'll start by turning some fishy code into plain language.
+
+<details>
+<summary class="btn_code_blue"> **Bert's <i class="fas fa-eye"></i><i class="fas fa-eye"></i>s only!**   </summary>
+    
+```{r, eval=F}
+library(readr)
+
+fishes <- read_csv("lake_superior_fish.csv")
+
+names(big_fishes)
+
+nrow(fishes)
+ 
+big_fishes <- filter(fishes, length > 20)
+
+nrow(big_fishes)
+
+```
+
+</details>
+
+
+<br><br>
+
+
+### 2. Ernie's **turn to read:** `Sleepy sheep` 🐑🐑🐑 <i class="fas fa-sheep"></i><i class="fas fa-sheep"></i><i class="fas fa-sheep"></i> {-}
+
+<details>
+<summary class="btn_code_blue"> **Ernie's <i class="fas fa-eye"></i><i class="fas fa-eye"></i>s only!** </summary>
+    
+```{r, eval=F}
+
+library(ggplot2)
+
+asleep <- FALSE
+
+names <- c("Shaun", "Lambchop", "Dolly")
+
+sheep_ids <- 1:3
+
+my_sheep <- data.frame(sheep_name = names, 
+                       sheep_id   = sheep_ids)
+
+ggplot(my_sheep, aes(x = names, y = sheep_id)) +
+    geom_point() + 
+    labs(title = "Counting sheep backwards makes me Zzzz...")
+
+asleep <- TRUE
+```   
+
+</details>
+
+
+<br><br>
+
+### 3. Charades! **Act it out** {-}
+
+Instead of saying what the code does aloud, act out what the code does without speaking at ALL.
+
+Ask **Barbara** very nicely to go first.
+
+<details>
+<summary class="btn_code_blue"> **Barbara's <i class="fas fa-eye"></i><i class="fas fa-eye"></i>s only!** </summary>
+    
+```{r, eval=F}
+
+cat_df <- read_excel("lost_cats.xlsx")
+
+kittens <- filter(cat_df, age < 1)
+
+catfood <- "SPAM"
+
+hungry_kittens <- filter(kittens, hungry == TRUE)
+
+fed_cats <- TRUE
+```   
+
+</details>
+
+
+<div style="clear: both;"></div>
+

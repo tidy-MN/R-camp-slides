@@ -1,0 +1,60 @@
+
+class: inverse, left, top
+background-image: url(../images/rstudio-panes-labeled.png)
+background-size: contain
+
+
+???
+
+::: {.notes}
+
+Here we are:
+
+Top-left: Source/script editor  
+Top-right: Environment / Workspace 
+
+Bottom-left: R Console  
+Bottom-right: Plots and files  
+
+Now, let's see what your screen will look like when you first open RStudio.
+
+[DEMO]
+
+
+*Source/script editor*
+
+Write your scripts and comments here. The is our home and where we spend most of our time. Move your cursor to a line of code and then click [Ctrl]+[Enter] to run the code. The tabs at the top show other scripts and data you have open. 
+
+
+*Environment / Workspace* 
+
+This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects in your workspace.
+
+
+*R Console*
+
+This is where code is run by the computer. It shows the code that is running and the messages returned by that code. You can input code directly into the console and run it, but it won't be saved for later. We encourage running code from a script in the code editor. 
+
+
+*Plots and files*
+
+These tabs let you view and open files in your current directory, view plots and visuals like maps, view your installed packages, and access the Help window. 
+
+The **Files** tab is especially handy for finding files you want and clicking them to open. You can also click the **Gear** and select _"Show Folder in a New Window"_ to open your project folder.
+
+
+Lastly, I'll show how to update the appearance to make font sizes larger or more your style.
+
+1. Go to __Tools__ on the top navigation bar  
+2. Choose `Global Options...`
+3. Choose `Appearance` with the paint bucket 
+4. Increase the overall `Zoom` to 125%  
+4. Increase the `Editor Font size`
+5. Pick an Editor theme you like  
+    - The default is `Textmate`
+ 
+ 
+Back to slides -> 
+
+:::
+

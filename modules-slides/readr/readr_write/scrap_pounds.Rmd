@@ -1,0 +1,23 @@
+
+We are ready to save our data. You can save data to a file with a handy function from the  **`readr`** package. Let's use the function `write_csv()` to save our new table with the tons converted to pounds to a CSV file named *"scrap_in_pounds"*.
+
+
+```{r write-csv1, eval=T}
+# Save data as a CSV file 
+write_csv(scrap_pounds, "scrap_in_pounds.csv")
+```
+
+>
+> Where did R save the file? 
+>
+> _Hint:_ You can look in the lower right `[Files]` tab.
+>
+
+<br>
+
+Let's create a new `results/` folder to keep our processed data separate from any raw data we receive. Now we can add `results/` to our file path in `write_csv()` to tell R to put the file in that folder.
+
+```{r write-csv2, eval=F}
+# Save data as a CSV file to results folder
+write_csv(scrap_pounds, "results/scrap_in_pounds.csv")
+```

@@ -1,0 +1,172 @@
+class: inverse
+
+# Candy ratings
+
+An .teal[R] plot of popular candies
+
+<img src="../images/candy_ratings_blk.png" style="width: 75%; border: 3px white solid; margin-top: 4px; margin-left: 0;" />
+
+---
+class: inverse, middle, center
+
+<div style="font-size: 170%;">
+
+Let's make my favorite candy  
+  
+<br>
+  
+.teal[<span style="font-size: 170%">`#1`</span>]
+
+</div>
+
+
+---
+
+# R plot recipe 
+
+.notes[Create a new R Script]
+
+.smaller[.teal[Option 1.] __File__ `>` __New File__ `>` __R Script__]
+
+<img src="../images/new_script_file.png" style="width: 80%; margin-left: 5%; margin-top: -20px;" />
+
+.smaller[.teal[Option 2.] Paper icon with the green plus at the top left]
+
+<img src="../images/new_script_plus_icon.png" style="width: 70%; margin-left: 10%; margin-top: -20px;" />
+
+
+---
+
+# R plot recipe
+
+.notes[Prepare your tools / packages]
+
+.smaller[.teal[Step 1.] Copy the code below
+  - *Click the `Copy Code` button in the top-right of the code box*
+]
+
+
+```{r wordcloud, eval=F}
+# Install packages  ----
+if(!require("hrbrthemes")) {
+  install.packages("ggplot2")
+  install.packages("readr")
+  install.packages("hrbrthemes")
+}
+
+# Load packages ----
+library(ggplot2)
+library(readr)
+library(hrbrthemes)
+```
+
+---
+
+# R plot recipe
+
+.notes[Prepare your tools / packages]
+
+.smaller[.teal[Step 2.] Paste the code into your R script in the upper-left quadrant 
+  - This is your code editor
+
+<br>
+ 
+.teal[Step 3.] Highlight the code and click <kbd>CTRL</kbd> `+` <kbd>ENTER</kbd>
+  - The code is sent below to the Console to be run*
+]
+
+---
+
+# R plot recipe
+
+.notes[Load the data]
+
+```{r, eval=F}
+# Candy data ---- 
+survey <- read_csv('candy,          rating
+                   "Snickers",        14 
+                   "Almond Joy",      40 
+                   "Hersheys Kisses", 16 
+                   "Nerds",           5 
+                   "Sour Patch Kids", 8')
+```
+
+---
+
+# R plot recipe
+
+.notes[Make the plot]
+
+```{r, eval=F}
+# A bar plot w/ Halloween theme ----
+ggplot(survey, 
+       aes(x = candy, y = rating)) +
+  geom_col(aes(fill = candy), show.legend = FALSE) +
+  labs(title    = "Candy Champions", 
+       subtitle = "Very official candy ratings",
+       caption  = "Data from MN survey 2050") +
+  coord_flip() +
+  #scale_fill_viridis_d() +
+  theme_ft_rc(base_size = 18)  
+```
+
+---
+# R plot recipe
+
+.notes[Make the plot]
+
+Run the code and a chart will appear in the lower-right of RStudio.
+
+<img src="../images/candy_ratings_blk_viewer.png" style="width: 42%; float: right; margin-left: 4%;" />
+
+---
+# R plot recipe
+
+<br>
+
+
+- Change the name of a candy in the `survey` data to something much tastier.
+
+- Run the data and plot code again.
+
+- Increase the rating number next to the new candy.
+
+- Run the data and plot code again.
+
+<br>
+
+
+
+---
+
+
+# <i class="fa fa-user-astronaut" style="margin-right: 12px;"></i>**__Explore!__**
+
+<br>
+
+> - Add another candy and rating to the data.
+> - Add your name to the subtitle.
+> - Delete the `#`hashtag in front of the line that starts: `#scale_viridis...`. 
+>     - What happens when you re-run the code?
+> - Change the `show.legend =` value to `TRUE`
+>     - What happens?
+
+
+---
+exclude: true
+
+# Yoda says <img src="../images/yoda_baby_sq.png" /> 
+
+<br>
+> Okay it is! 
+> 
+> We don't need to memorize everything.
+>
+> - Absorb what's possible and look up the details when you need them.  
+> - You're free to break things. R forgives you.  
+>   - Go ahead and create errors and make the computer angry. Learn from what doesn't work.  
+> - **Cheat** when you're stuck.  
+>    - Copy others. Share with your neighbors.   
+
+
+
