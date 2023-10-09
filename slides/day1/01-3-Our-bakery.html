@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R bakery</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.24/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;500;600;700&display=swap');
+
+
+    .inverse {
+        background-color: #191919;
+        color: white;
+    }
+
+    .inverse h1,h2,h3 {color: white;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      line-height: 0.9;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .fullwidth {
+      max-width:115%;
+      width: 115%;
+    }
+
+    code {
+      word-spacing: -0.5rem !important;
+    }
+
+    .notes {
+      font-style: italic;
+      color: grey;
+      font-size: 90%;
+    }
+
+    .col3 {
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+
+    .fa {margin-right: 12px;}
+
+    a {color: #C250E3;}
+    a {color: #42affa;}
+    a-dark{color-dark: #068de9}
+    a::hover {color: #74c4fb;}
+
+    .remark-container {
+        background: #000000;
+    }
+
+    .ff-container {
+        display: block !important;
+    }
+
+    .pink {color: #C250E3;}
+    .purple {color: #432160;}
+    .mustard {color: #e3c250;}
+    .teal {color: #50E3C2;}
+    .off-white{color:#f5fccf;}
+    .yellow {color: #ffe825;}
+    .third {float: left;
+            width: 32%;
+            margin-top: -24px;
+            padding-right: 1.3%;}
+
+    .huge {
+      font-size: 300%;
+    }
+
+    .big {
+      font-size: 170%;
+    }
+
+    .bigger {
+      font-size: 130%;
+    }
+
+    .smaller {
+      font-size: 90%;
+    }
+
+    .small {
+      font-size: 80%;
+    }
+
+    .quote {font-size: 114%; font-family: 'Khula'; margin-left: -7%;}
+
+    tableau-viz {display: block !important; margin: auto !important;}
+
+    body {
+      font-family: 'Source Sans 3', 'Source Sans Pro', Helvetica, san-serif;
+      background: #111;
+    }
+
+    ul {line-height: 125%;}
+    li {margin-bottom: 10px;}
+
+    h1 {
+      z-index: 999;
+      position: relative;
+      font-size: 78px !important;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      line-height: 0.9;
+    }
+
+    .remark-slide-content {
+      font-size: 210%;
+    }
+
+    .bottom-right {position: absolute; bottom: 1%; right: 1%; font-size: 50%;}
+
+    .sign {text-align: right;}
+
+    .full {
+      padding: 0;
+      padding-top: 1em;
+      width: 190%;
+    }
+
+    .white-frame {
+      background-color: white;
+      margin: auto;
+      margin-top: -8px;
+      padding: 10px;
+      padding-top:16px;
+      height: 600px;
+    }
+
+    .hidden {
+      opacity:0;
+    }
+
+    .black {
+      background-color: black;
+      color: #d6d6d6;
+      text-shadow: 0 0 20px #333;
+    }
+
+
+
+    .blue {
+      color: #3498db;
+      background: #3498db;
+    }
+
+    .pinkcode code {
+      color: #c81888;
+    }
+
+    .gray {background: #ddd1cd;}
+
+
+    h1 .header-section-number {
+      background: #e53256;
+      color: white;
+      border-radius: 27px;
+      -moz-border-radius: 27px;
+      -webkit-border-radius: 27px;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 54px;
+      margin-right: 5px;
+      text-align: center;
+      width: 54px;
+      font-size: 27px;
+    }
+
+
+    .row3
+    {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .column2
+    {
+        float: left;
+        margin-right: 8%;
+        margin-left: 2px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        width: 41%;
+        overflow: hidden;
+    }
+
+
+    .column3
+    {
+        float: left;
+        margin-right: 3%;
+        margin-left: 0;
+        width: 30%;
+        overflow: hidden;
+    }
+
+    .column3 p { display: inline; line-height: 170%;}
+
+    .column4
+    {
+        float: left;
+        margin-right: 1%;
+        margin-left: 0;
+        width: 24%;
+        overflow: hidden;
+    }
+
+    .column3-txt
+    {
+        float: left;
+        margin-right: 1.3%;
+        margin-left: 0;
+        width: 32%;
+        overflow: hidden;
+    }
+
+    blockquote
+    {
+         background-color: #f0f7fb;
+         border-radius: 7px;
+         color: #525252;
+         font-style: normal;
+         line-height: 0.9;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 18px;
+         margin-bottom: 15px;
+         margin-left: 0%;
+    }
+
+    .card {
+      border-radius: 25px;
+      background-color: #f0f7fb;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 19px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .card-top {
+      margin-top: -60px;
+      margin-left: -28px;
+      margin-bottom: 16px;
+      width: 109%;
+      height: 54px;
+    }
+
+    .note {
+      border-radius: 25px;
+      border: solid 1px #babfc28f;
+      background-color: #f0f7fb;
+      font-size: 19px;
+      font-style: normal;
+      line-height: 28px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 28px;
+      margin-bottom: 26px;
+    }
+
+
+    .note h3 {
+      color: #eeeef3;
+      background: #5e666d;
+      margin-top: -13px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    table {margin-top: 20px; margin-bottom: 18px;}
+
+    .sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important; overflow: clip !important;}
+
+    div.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important;}
+
+    pre.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip;}
+
+    .toggle {
+        height: 2.3em;
+        overflow-y: hidden;
+    }
+
+    .toggle.open {
+        height: auto;
+    }
+
+
+    /*************************************************
+     *  Alerts
+     **************************************************/
+
+    div.alert p {
+      position: relative;
+      display: block;
+      font-size: 1rem;
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div.alert p:first-child::before {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      font-size: 1.5rem;
+      color: #209cee;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f05a';
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    div.alert-warning p:first-child::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ff3860;
+      content: '\f071';
+    }
+
+    div.alert a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: solid 1px currentColor;
+    }
+
+    .alert-note {
+      color: #12537e;
+      background-color: #f6fbfe;
+      border-color: #209cee;
+    }
+
+    .alert-warning {
+      color: #cd0930;
+      background-color: #fff5f7;
+      border-color: #ff3860;
+    }
+
+    .bump-left {
+      margin-left: -35px;
+      margin-right: 35px;
+    }
+    .bump-right {
+      margin-right: -35px;
+      margin-left: 35px;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse, center, middle
+
+# .big[OUR] 
+# .huge[.teal[BAKERY]]
+
+---
+class: middle
+
+# Your first project
+
+&lt;br&gt;
+
+Start a new R project for our bakery.
+
+.big[
+&gt; &lt;i class="fa fa-warning" aria-hidden="true"&gt;&lt;/i&gt; .teal[LIVE DEMO]
+
+]
+
+---
+exclude: true
+
+
+
+
+
+
+
+
+
+
+
+__Step 1:__ Start a new project
+
+- In _Rstudio_ select _File_ from the top menu bar
+- Choose _New Project..._
+- Choose _New Directory_
+- Choose _New Project_
+- Enter a project name such as `"Rcamp"`
+- Select _Browse..._ and choose a folder where you normally perform your work. 
+- Click _Create Project_
+
+&lt;br&gt;
+
+__Step 2:__ Create a new R script 
+
+- __File &gt; New File &gt; R Script__
+- Click the _floppy disk_ save icon
+- Give it a name: `bakery.R` or `day1.R` will work well
+
+
+---
+
+# Names and things
+&lt;hr&gt;&lt;br&gt;
+
+
+
+You can assign values to new objects using the .teal[left arrow] `&lt;- `. 
+
+- It's typed with a less-than sign `&lt;` followed by a hyphen `-`. 
+- AKA the _assignment operator_. 
+
+---
+
+### Let's make a droid! {-}
+
+Try adding the code below to your R script to create an object called `droid`.
+
+### Assignment operator {-}
+
+```r
+# Create a new object
+droid &lt;- "bb7"
+
+droid 
+
+# Give it a new value
+droid &lt;- "bb8"
+
+droid 
+```
+
+To run a line of code in your script, click the cursor anywhere on that line and press __CTRL+ENTER__.
+
+
+The droid wants a friend. Let's create a Wookie named _Chewbacca_. 
+
+```r
+wookie &lt;- "Chewbacca"
+
+wookie
+```
+
+
+__Break some things__
+
+```r
+# Try this:
+wookie &lt;- Chewbacca
+```
+
+
+&lt;div class="red-note" style="width: 93%;"&gt;
+### Error! {-}
+
+Without quotes, R looks for an object called Chewbacca, and then lets you know that it couldn't find one. Let's try again but add quotation marks around `"Chewbacca"`. 
+&lt;/div&gt;
+
+&lt;br&gt;
+
+&lt;div style="border: 2px solid #d9e1e5; background: aliceblue; border-radius: 15px; padding: 20px;"&gt;
+
+&lt;h3&gt; &lt;i class="fas fa-circle" style="color: blue; opacity: 0.60; margin-right: 2px;"&gt;&lt;/i&gt;&lt;i class="fas fa-circle" style="color: black; opacity: 0.65; margin-right: 2px;"&gt;&lt;/i&gt;&lt;i class="fas fa-circle" style="color: rgb(197, 6, 11); opacity: 0.75; margin-right: 2px;"&gt;&lt;/i&gt; Colors decoded &lt;/h3&gt;
+
+
+![](../images/colors_decoded.png){style="float: right; width: 47%; margin: 20px;"}
+
+
+&lt;p style="color: blue;"&gt; Blue shows the exact code you ran. &lt;/p&gt;
+
+&lt;p style="color: black; opacity: 0.85;"&gt; Black is the result of the code. A `[1]` in front means there is one item in that object, and its value is `bb8`. &lt;/p&gt;
+
+&lt;p style="color: rgb(197, 6, 11);"&gt; Red shows __Errors__ &amp; __Warnings__. Errors mean something went so wrong it prevented your code from running. Warnings on the other hand are usually ok. They tend to inform you that the result may not be exactly what you expected. Such as a value not being added to a plot because it was *NA*. &lt;/p&gt;
+
+&lt;br&gt;
+
+
+&lt;/div&gt;
+
+
+&lt;div style="clear: both;"&gt;&lt;/div&gt;
+
+&lt;br&gt;
+
+__Copy objects__
+
+```r
+# To copy an object, assign it to a new name
+wookie2 &lt;- wookie
+
+
+# Or overwrite an object with new "text"
+wookie &lt;- "Tarfful"
+  
+wookie
+
+
+# Wookie2 stays the same
+wookie2  
+```
+
+
+__Numbers!__
+
+```r
+wookie_salary &lt;- 500
+
+# Let's give Chewbacca a big raise $$$
+wookie_salary &lt;- 500 * 2
+
+# Print new salary 
+wookie_salary
+
+# We can also use the object to multiply
+wookie_salary * 2
+
+# To save the change we assign it back to itself
+wookie_salary &lt;- wookie_salary * 2
+```
+
+
+## Drop and remove data {-}
+
+You can drop objects with the remove function `rm() `. Try it out on some of your wookies.
+
+
+```r
+# Delete objects to clean-up your Environment
+rm(wookie)
+
+rm(wookie2)
+```
+
+&lt;br&gt;
+
+&lt;div class="tip"&gt;
+### &lt;i class="fa fa-user-astronaut" style="color: green;"&gt;&lt;/i&gt; Explore! {-}
+
+How can we get the `wookie` object back?
+
+_Hint: You are allowed to re-run your code. You can even highlight everything and re-run ALL of the code._
+
+&lt;/div&gt;
+
+&lt;br&gt;
+
+
+&lt;details&gt;
+&lt;summary class = "btn_code_blue"&gt; **Deleting things is okay** **&gt;** &lt;/summary&gt;
+&lt;div class="note" style="margin-top: 0;"&gt;
+&lt;p&gt;
+Don't worry about deleting data or objects in R. You can always recreate them! When R loads your data it copies the contents and then cuts off any connection to the original data. So your original data remain safe and won't suffer any accidental changes. 
+
+By saving your analysis in an R script you can always re-run the code to get any of your results back. It's common and good practice to **re-run** your entire R script during your analysis.
+
+&lt;br&gt;
+&lt;/p&gt;
+&lt;/div&gt;&lt;/details&gt;
+
+
+## What's a good name? {-}
+
+Everything has a name in R and you can name things almost anything you like, even `TOP_SECRET_shhhhhh...` or `data_McData_face`.
+
+Sadly, there are a _few_ restrictions. R doesn't like names to include spaces or special characters found in math equations, like `+`, `-`, `*`, `\`, `/`, `=`, `!`, or `)`. 
+
+&lt;br&gt;
+
+&lt;div class="tip"&gt;
+### &lt;i class="fa fa-user-astronaut" style="color: green;"&gt;&lt;/i&gt; Explore! {-}
+
+Try running some of these examples. Find new ways to create errors. The more broken the better! Half of learning R is finding what doesn't work.
+
+
+```r
+# What happens when you add these to your R script?
+n wookies &lt;- 5
+
+n*wookies &lt;- 5
+
+n_wookies &lt;- 5
+
+n.wookies &lt;- 5
+
+wookies! &lt;- "Everyone"
+```
+
+
+#### Names with numbers {-}
+
+```r
+# Names cannot begin with a number
+1st_wookie &lt;- "Chewbacca"
+
+88b &lt;- "droid"
+
+# But they can contain numbers
+wookie1 &lt;- "Chewbacca"
+
+bb8 &lt;- "droid"
+
+# What if you have 10,000 wookies?
+n_wookies &lt;- 10,000  # Error
+
+n_wookies &lt;- 10000
+```
+
+&lt;br&gt; 
+
+- Try to create a **new** error or warning you haven't seen yet.
+
+&lt;/div&gt;
+
+
+## Collect multiple items {-}
+
+We can put multiple values inside `c()` to make a vector of items. It's like a chain of items, where each additional item is connected by a comma. The `c` stands for _concatenate_ or to _collect_.
+  
+Let's use `c()` to create a few vectors of names.
+
+
+```r
+# Create a character vector and name it starwars_characters
+starwars_characters &lt;- c("Luke", "Leia", "Han Solo")
+
+# Print starwars_characters
+starwars_characters
+```
+
+```
+## [1] "Luke"     "Leia"     "Han Solo"
+```
+
+```r
+# Create a numeric vector and name it starwars_ages
+starwars_ages  &lt;- c(19,19,25)
+
+# Print the ages to the console
+starwars_ages
+```
+
+```
+## [1] 19 19 25
+```
+
+&lt;br&gt;
+
+&lt;div class="note"&gt;
+&lt;h3&gt; Note &lt;/h3&gt;
+
+Take a look at the new additions to your _Environment_ pane located on the top right. 
+
+![](../images/environment_explore.png){style="width: 75%; margin-bottom: 14px;"}
+
+This window shows all of the objects we've created so far and the types of data they contain. It's a great first look to see if our script ran successfully. You can click the __`broom`__ icon to sweep everything out and start with a clean slate.
+&lt;br&gt;
+&lt;/div&gt;
+
+
+## Make a table {-}
+
+![](../images/vector_to_dataframe.png){width="510" style="margin-left: 100px;"}
+
+&lt;br&gt;
+
+A table in R is known as a __data frame__. We can think of it as a group of columns, where each column is made from a vector. Data frames in R have columns of data that are all the same length. 
+
+Let's make a data frame with two columns to hold the character names and their ages.
+
+```r
+# Create table with 2 columns: characters &amp; ages
+starwars_df &lt;- data.frame(characters = starwars_characters,
+                          ages       = starwars_ages)
+
+# Print the starwars_df data frame to the console
+starwars_df
+```
+
+```
+##   characters ages
+## 1       Luke   19
+## 2       Leia   19
+## 3   Han Solo   25
+```
+
+&lt;br&gt;
+
+&lt;div class="tip"&gt;
+
+### &lt;i class="fa fa-user-astronaut" aria-hidden="true" style="color: green"&gt;&lt;/i&gt; Explore! {-}
+
+&lt;ul class="nav nav-pills" id="myTab" role="tablist" style="margin-top: 18px;"&gt;
+&lt;li class="nav-item active"&gt;&lt;a class="nav-link" id="addacolumn-tab" data-toggle="tab" href="#addacolumn" role="tab" aria-controls="addacolumn" aria-selected="true"&gt;Add a column&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link" id="showhint-tab" data-toggle="tab" href="#showhint" role="tab" aria-controls="showhint" aria-selected="false"&gt;Show hint&lt;/a&gt;&lt;/li&gt;
+&lt;li class="nav-item"&gt;&lt;a class="nav-link" id="showcode-tab" data-toggle="tab" href="#showcode" role="tab" aria-controls="showcode" aria-selected="false"&gt;Show code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="well tab-content" id="myTabContent" style="background-color: white;"&gt;
+
+
+&lt;div class="tab-pane fade active in" id="addacolumn" role="tabpanel" aria-labelledby="addacolumn-tab"&gt;
+
+&lt;h4&gt; Add a __3rd__ column that lists their `fathers` names: &lt;/h4&gt;
+
+- `c("Darth", "Darth", "Unknown") ` 
+
+&lt;br&gt;
+
+&lt;/div&gt;
+&lt;div class="tab-pane fade" id="showhint" role="tabpanel" aria-labelledby="showhint-tab"&gt;
+
+&lt;pre class="sourceCode r"&gt;
+
+starwars_df &lt;- data.frame(characters  = starwars_characters, 
+                          ages        = starwars_ages, 
+                          fathers     = __________________)
+&lt;/pre&gt;
+
+&lt;/div&gt;
+&lt;div class="tab-pane fade" id="showcode" role="tabpanel" aria-labelledby="showcode-tab"&gt;
+
+&lt;pre class="sourceCode r"&gt;
+
+starwars_df &lt;- data.frame(characters  = starwars_characters, 
+                          ages        = starwars_ages, 
+                          fathers     = c("Darth", "Darth", "Unknown"))
+&lt;/pre&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;br&gt;
+
+### Show all values in `$column_name`  {-}
+
+Use the `$` sign after the name of your table to see the values in one of your columns.
+
+
+```r
+# View the "ages" column in starwars_df
+starwars_df$ages
+```
+
+```
+## [1] 19 19 25
+```
+
+
+### Notes and comments {-}
+
+The italic and orange lines in the scripts above are called comments. You can add notes to your scripts with the `#` to make it easier for others and yourself to understand what is happening and why.
+
+Every line that starts with a `#` is ignored and won't be run as R code. 
+You can also use comments to add warnings or instructions for others using your code.
+
+
+
+&lt;div class="quiz"&gt;
+
+### Pop Quiz! {-}
+
+__Which object name is valid?__ _(Hint: You can test them in R.)_
+
+&lt;input type="radio" name="object"&gt; _my starwars fandom_  &lt;br&gt; 
+&lt;input type="radio" name="object"&gt; _my_wookies55_        &lt;br&gt; 
+&lt;input type="radio" name="object"&gt; _5wookies_            &lt;br&gt; 
+&lt;input type="radio" name="object"&gt; _my-wookie_           &lt;br&gt; 
+&lt;input type="radio" name="object"&gt; _Wookies!!!_          &lt;br&gt;
+
+
+&lt;details&gt;&lt;summary class = "btn_code"&gt;_Show solution_&lt;/summary&gt;
+
+&lt;p&gt;
+&lt;i class="fa fa-check" aria-hidden="true" style="color: green;"&gt;&lt;/i&gt; `my_wookies55`  
+
+_Yes!! The FORCE is strong with you!_
+
+&lt;/p&gt;&lt;/details&gt;&lt;/div&gt;
+
+&lt;div style="clear: both;"&gt; &lt;/div&gt;
+
+
+
+---
+class: inverse, center, middle
+
+# &lt;i class="fa fa-rocket" aria-hidden="true"&gt;&lt;/i&gt; Return to [Homebase](mn-r.netlify.app)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="../libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

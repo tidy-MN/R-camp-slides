@@ -1,0 +1,56 @@
+---
+title: "Welcome to R"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+exclude: true
+class: inverse, center, middle
+
+# .big[Welcome to] 
+# .huge[[.teal[R]]]
+
+---
+class: inverse, center, middle
+
+# .big[RStudio] 
+# .huge[.teal[TOUR]]
+
+---
+
+```{r Rtour, child='../../modules-slides/intro/rstudio_tour/general_notes.Rmd'}
+```
+
+---
+
+```{r candy, child='../../modules-slides/ggplot/ggplot_examples/candy_install_only.Rmd'}
+```
+
+---
+class: inverse, center, middle
+
+# <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](mn-r.netlify.app)
+

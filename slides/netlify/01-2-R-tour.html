@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>What is R?</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.24/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .fullwidth {
+      max-width:115%;
+      width: 115%;
+    }
+
+    code {
+      word-spacing: -0.5rem !important;
+    }
+
+    .notes {
+      font-style: italic;
+      color: grey;
+      font-size: 90%;
+    }
+
+    .col3 {
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+
+    .fa {margin-right: 12px;}
+
+    a {color: #C250E3;}
+
+    .remark-container {
+        background: #000000;
+    }
+
+    .ff-container {
+        display: block !important;
+    }
+
+    .pink {color: #C250E3;}
+    .purple {color: #432160;}
+    .mustard {color: #e3c250;}
+    .teal {color: #50E3C2;}
+    .off-white{color:#f5fccf;}
+    .yellow {color: #ffe825;}
+    .third {float: left;
+            width: 32%;
+            margin-top: -24px;
+            padding-right: 1.3%;}
+
+    .big {
+      font-size: 150%;
+    }
+
+    .bigger {
+      font-size: 130%;
+    }
+
+    .smaller {
+      font-size: 90%;
+    }
+
+    .small {
+      font-size: 80%;
+    }
+
+    .quote {font-size: 114%; font-family: 'Khula'; margin-left: -7%;}
+
+    tableau-viz {display: block !important; margin: auto !important;}
+
+    body {
+      background: #111;
+    }
+
+    ul {line-height: 125%;}
+    li {margin-bottom: 10px;}
+
+    h1 {
+      z-index: 999;
+      position: relative;
+      font-size: 80px !important;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    .remark-slide-content {
+      font-size: 170%;
+    }
+
+    .bottom-right {position: absolute; bottom: 1%; right: 1%; font-size: 50%;}
+
+    .sign {text-align: right;}
+
+    .full {
+      padding: 0;
+      padding-top: 1em;
+      width: 190%;
+    }
+
+    .white-frame {
+      background-color: white;
+      margin: auto;
+      margin-top: -8px;
+      padding: 10px;
+      padding-top:16px;
+      height: 600px;
+    }
+
+    .hidden {
+      opacity:0;
+    }
+
+    .black {
+      background-color: black;
+      color: #d6d6d6;
+      text-shadow: 0 0 20px #333;
+    }
+
+
+    label.clicktogif {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') DimGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+    label.clicktogif:hover, label.clicktogif:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="MediumSeaGreen"/></svg>') DarkSlateGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    .clicktogif img {display: block;}
+    .clicktogif input[type=checkbox] {
+        position: absolute;
+        left: -100vw;
+    }
+    .clicktogif input[type=checkbox] + img {
+      opacity: 0;
+    }
+    .clicktogif input[type=checkbox]:checked + img {
+      opacity: 1;
+    }
+
+
+    .blue {
+      color: #3498db;
+      background: #3498db;
+    }
+
+    hr {
+      margin-top: -46px;
+      margin-bottom: 30px;
+      margin-left: 12px;
+      background: #e53256;
+      height: 0.2em;
+    }
+
+    .pinkcode code {
+      color: #c81888;
+    }
+
+    .gray {background: #ddd1cd;}
+
+    .hr2 {margin-top: -38px; margin-left: 0; background: #ddd1cd; height: 0.12em; margin-bottom: 30px;}
+
+    .hrlvl2 {margin-top: -31px; margin-left: 0; background: #ddd1cd; height: 0.11em; margin-bottom: 26px;}
+
+
+    h1 .header-section-number {
+      background: #e53256;
+      color: white;
+      border-radius: 27px;
+      -moz-border-radius: 27px;
+      -webkit-border-radius: 27px;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 54px;
+      margin-right: 5px;
+      text-align: center;
+      width: 54px;
+      font-size: 27px;
+    }
+
+
+    .row3
+    {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .column2
+    {
+        float: left;
+        margin-right: 8%;
+        margin-left: 2px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        width: 41%;
+        overflow: hidden;
+    }
+
+
+    .column3
+    {
+        float: left;
+        margin-right: 3%;
+        margin-left: 0;
+        width: 30%;
+        overflow: hidden;
+    }
+
+    .column3 p { display: inline; line-height: 170%;}
+
+    .column4
+    {
+        float: left;
+        margin-right: 1%;
+        margin-left: 0;
+        width: 24%;
+        overflow: hidden;
+    }
+
+    .column3-txt
+    {
+        float: left;
+        margin-right: 1.3%;
+        margin-left: 0;
+        width: 32%;
+        overflow: hidden;
+    }
+
+    blockquote
+    {
+         background-color: #f0f7fb;
+         border-radius: 7px;
+         color: #525252;
+         font-style: normal;
+         line-height: 24px;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 18px;
+         margin-bottom: 15px;
+         margin-left: 0%;
+    }
+
+    .card {
+      border-radius: 25px;
+      background-color: #f0f7fb;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 19px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .card-top {
+      margin-top: -60px;
+      margin-left: -28px;
+      margin-bottom: 16px;
+      width: 109%;
+      height: 54px;
+    }
+
+    .note {
+      border-radius: 25px;
+      border: solid 1px #babfc28f;
+      background-color: #f0f7fb;
+      font-size: 19px;
+      font-style: normal;
+      line-height: 28px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 28px;
+      margin-bottom: 26px;
+    }
+
+
+    .note h3 {
+      color: #eeeef3;
+      background: #5e666d;
+      margin-top: -13px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    .red-note
+    {
+         background-color: #fbfbfb;
+         border: solid 1px #babfc28f;
+         /*border-left: solid 6px #E15611; */
+         border-radius: 25px;
+         font-size: 17px;
+         font-style: normal;
+         line-height: 19px;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 2px;
+         padding-bottom: 14px;
+         margin-top: 22px;
+         margin-bottom: 26px;
+    }
+
+    .red-note h3 {
+      color: white;
+      color: #50E3C2;
+      background: rgb(39, 40, 34);
+      margin-top: -5px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    .tip
+    {
+         background-color: #d2f0c6;
+         border: solid 2px #86af49;
+         border-radius: 25px;
+         font-size: 17px;
+         line-height: 19px;
+         overflow: hidden;
+         padding: 26px;
+         padding-top: 0;
+         padding-bottom: 14px;
+         margin-top: 10px;
+         margin-bottom: 26px;
+    }
+
+    .tip h3 {
+      margin-top: 24px;
+    }
+
+    .yoda
+    {
+        box-shadow: 0 3px 6px 0 rgba(0,0,0,0.23), 0 3px 6px 0 rgba(0,0,0,0.16);
+        background-color: #ccfcff;
+        /*border: solid 1px #2f6568;
+        /* border-radius: 25px; */
+        font-size: 17px;
+        /* line-height: 19px; */
+        /* overflow: hidden; */
+        padding: 14px;
+        padding-top: 0;
+        margin-top: 44px;
+        margin-bottom: 28px;
+        border-left: solid 57px #f5f5f3;
+    }
+
+    .yoda-img {
+        width: 50px;
+        float: left;
+        margin-top: -88px;
+        margin-left: -67px;
+    }
+
+    .yoda h3 {
+      padding-left: 8px;
+      padding-top: 24px;
+    }
+
+    table {margin-top: 20px; margin-bottom: 18px;}
+
+    .sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important; overflow: clip !important;}
+
+    div.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important;}
+
+    pre.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip;}
+
+    .data {
+         background-color: #d2f0c6;
+         border-left: solid 5px #86af49;
+         border-radius: 20px;
+         font-size: 17px;
+         line-height: 18px;
+         overflow: hidden;
+         padding: 18px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 10px;
+         margin-bottom: 14px;
+
+    }
+
+    .quiz
+    {
+         background: #f5f5f5;
+         border-left: solid 8px #ff3860; /* #00d1b2; */
+         border-radius: 25px;
+         font-size: 18px;
+         line-height: 22px;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 4px;
+         padding-bottom: 16px;
+         margin-top: 45px;
+         margin-bottom: 30px;
+    }
+
+    .quiz > p {
+      line-height: 160%
+    }
+
+    #oneline {
+      text-align: justify;
+      font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+      min-width: 700px;
+      height: 50px;
+    }
+
+    #oneline div {
+      font-size: 30px;
+      font-weight: 600;
+      margin-top: -2px;
+      margin-left: 85px;
+      width: 180px;
+      height: 125px;
+      display: inline-block;
+    }
+
+    .btn_gray {
+        color: #2b2b2f;
+        background-color: #cbd0d4;
+    }
+
+    .btn_code {
+          display: inline-block;
+          padding: 6px 12px;
+          margin-bottom: 0;
+          margin-top: 15px;
+          font-size: 15px;
+          color: #fff;
+          background-color: #e53256;  /* #00d1b2; #ff3860; */
+          border-color: #992139;
+          line-height: 1.43;
+          text-align: center;
+          border: 1px solid transparent;
+          border-radius: 6px;
+    }
+
+    .btn_code_green {
+          display: inline-block;
+          padding: 6px 12px;
+          margin-bottom: 0;
+          font-size: 15px;
+          color: #fff;
+          background-color: rgb(39, 40, 34)
+          border-color: #a0af49;
+          line-height: 1.43;
+          text-align: center;
+          border: 1px solid transparent;
+          border-radius: 6px;
+    }
+
+    .btn_code_blue {
+          display: inline-block;
+          padding: 6px 12px;
+          margin-bottom: 0;
+          font-size: 15px;
+          color: #fff;
+          background-color: #75aadb;
+          border-color: #2e6da4;
+          line-height: 1.43;
+          text-align: center;
+          border: 1px solid transparent;
+          border-radius: 6px;
+    }
+
+    .btn_code:hover, .btn_code.hover {
+        background-color: #e53283;
+    }
+
+    .btn_code_green:hover, .btn_code_green.hover {
+        background-color: #a0af49;
+    }
+
+    .btn_code_blue:hover, .btn_code_blue.hover {
+        background-color: #22527b;
+    }
+
+    .toggle {
+        height: 2.3em;
+        overflow-y: hidden;
+    }
+
+    .toggle.open {
+        height: auto;
+    }
+
+
+    /*************************************************
+     *  Alerts
+     **************************************************/
+
+    div.alert p {
+      position: relative;
+      display: block;
+      font-size: 1rem;
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div.alert p:first-child::before {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      font-size: 1.5rem;
+      color: #209cee;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f05a';
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    div.alert-warning p:first-child::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ff3860;
+      content: '\f071';
+    }
+
+    div.alert a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: solid 1px currentColor;
+    }
+
+    .alert-note {
+      color: #12537e;
+      background-color: #f6fbfe;
+      border-color: #209cee;
+    }
+
+    .alert-warning {
+      color: #cd0930;
+      background-color: #fff5f7;
+      border-color: #ff3860;
+    }
+
+    .note-left
+    {
+         background-color: #f0f7fb;
+         border-left: solid 4px #3498db;
+    }
+
+    .avatar {
+        border-radius: 50%;
+        height: 120px;
+        width: 120px;
+        display: inline-block;
+        overflow: hidden;
+        line-height: 1;
+        vertical-align: middle;
+        flex-shrink: 0;
+        margin-right: 16px;
+        box-shadow: 0 0 0 1px gray;
+        float: left;
+    }
+
+    .bump-left {
+      margin-left: -35px;
+      margin-right: 35px;
+    }
+    .bump-right {
+      margin-right: -35px;
+      margin-left: 35px;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: inverse, center, middle
+
+# .big[WHAT IS] 
+# .big[.big[.teal[R]]]
+
+---
+
+
+class: inverse
+
+# Candy ratings
+
+An .teal[R] plot of popular candies
+
+&lt;img src="../images/candy_ratings_blk.png" style="width: 75%; border: 3px white solid; margin-top: 4px; margin-left: 0;" /&gt;
+
+---
+class: inverse, middle, center
+
+&lt;div style="font-size: 170%;"&gt;
+
+Let's make my favorite candy  
+  
+&lt;br&gt;
+  
+.teal[&lt;span style="font-size: 170%"&gt;`#1`&lt;/span&gt;]
+
+&lt;/div&gt;
+
+
+---
+
+# R plot recipe 
+
+.notes[Create a new R Script]
+
+.smaller[.teal[Option 1.] __File__ `&gt;` __New File__ `&gt;` __R Script__]
+
+&lt;img src="../images/new_script_file.png" style="width: 80%; margin-left: 5%; margin-top: -20px;" /&gt;
+
+.smaller[.teal[Option 2.] Paper icon with the green plus at the top left]
+
+&lt;img src="../images/new_script_plus_icon.png" style="width: 70%; margin-left: 10%; margin-top: -20px;" /&gt;
+
+
+---
+
+# R plot recipe
+
+.notes[Prepare your tools / packages]
+
+.smaller[.teal[Step 1.] Copy the code below
+  - *Click the `Copy Code` button in the top-right of the code box*
+]
+
+
+
+```r
+# Install packages  ----
+if(!require("hrbrthemes")) {
+  install.packages("ggplot2")
+  install.packages("readr")
+  install.packages("hrbrthemes")
+}
+
+# Load packages ----
+library(ggplot2)
+library(readr)
+library(hrbrthemes)
+```
+
+---
+
+# R plot recipe
+
+.notes[Prepare your tools / packages]
+
+.smaller[.teal[Step 2.] Paste the code into your R script in the upper-left quadrant 
+  - This is your code editor
+
+&lt;br&gt;
+ 
+.teal[Step 3.] Highlight the code and click &lt;kbd&gt;CTRL&lt;/kbd&gt; `+` &lt;kbd&gt;ENTER&lt;/kbd&gt;
+  - The code is sent below to the Console to be run*
+]
+
+---
+
+# R plot recipe
+
+.notes[Load the data]
+
+
+```r
+# Candy data ---- 
+survey &lt;- read_csv('candy,          rating
+                   "Snickers",        14 
+                   "Almond Joy",      40 
+                   "Hersheys Kisses", 16 
+                   "Nerds",           5 
+                   "Sour Patch Kids", 8')
+```
+
+---
+
+# R plot recipe
+
+.notes[Make the plot]
+
+
+```r
+# A bar plot w/ Halloween theme ----
+ggplot(survey, 
+       aes(x = candy, y = rating)) +
+  geom_col(aes(fill = candy), show.legend = FALSE) +
+  labs(title    = "Candy Champions", 
+       subtitle = "Very official candy ratings",
+       caption  = "Data from MN survey 2050") +
+  coord_flip() +
+  #scale_fill_viridis_d() +
+  theme_ft_rc(base_size = 18)  
+```
+
+---
+# R plot recipe
+
+.notes[Make the plot]
+
+Run the code and a chart will appear in the lower-right of RStudio.
+
+&lt;img src="../images/candy_ratings_blk_viewer.png" style="width: 42%; float: right; margin-left: 4%;" /&gt;
+
+---
+# R plot recipe
+
+&lt;br&gt;
+
+
+- Change the name of a candy in the `survey` data to something much tastier.
+
+- Run the data and plot code again.
+
+- Increase the rating number next to the new candy.
+
+- Run the data and plot code again.
+
+&lt;br&gt;
+
+
+
+---
+
+
+# &lt;i class="fa fa-user-astronaut" style="margin-right: 12px;"&gt;&lt;/i&gt;**__Explore!__**
+
+&lt;br&gt;
+
+&gt; - Add another candy and rating to the data.
+&gt; - Add your name to the subtitle.
+&gt; - Delete the `#`hashtag in front of the line that starts: `#scale_viridis...`. 
+&gt;     - What happens when you re-run the code?
+&gt; - Change the `show.legend =` value to `TRUE`
+&gt;     - What happens?
+
+
+---
+exclude: true
+
+# Yoda says &lt;img src="../images/yoda_baby_sq.png" /&gt; 
+
+&lt;br&gt;
+&gt; Okay it is! 
+&gt; 
+&gt; We don't need to memorize everything.
+&gt;
+&gt; - Absorb what's possible and look up the details when you need them.  
+&gt; - You're free to break things. R forgives you.  
+&gt;   - Go ahead and create errors and make the computer angry. Learn from what doesn't work.  
+&gt; - **Cheat** when you're stuck.  
+&gt;    - Copy others. Share with your neighbors.   
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# .big[RStudio] 
+# .big[.big[.teal[TOUR]]]
+
+---
+
+
+
+class: left, top
+background-image: url(../images/rstudio-panes-labeled.png)
+background-size: contain
+
+&lt;style&gt;
+.rstudio1 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio2 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio3 {
+  position: relative;
+  z-index: 1;
+}
+
+.rstudio1::before {    
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 100%;
+      position: absolute;
+      top: -12px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 40%;
+      z-index: -1;
+}
+
+.rstudio2::before {
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 165%;
+      position: absolute;
+      top: -937px;
+      left: 0;
+      bottom: 125px;
+      right: 0;
+      opacity: 55%;
+      z-index: -1;
+}
+
+
+.rstudio3::before {
+      content: "";
+      background-image: url(../images/rstudio-panes-labeled.png);
+      background-size: 98%;
+      position: absolute;
+      top: -543px;
+      left: -216px;
+      bottom: 152px;
+      right: -42px;
+      opacity: 55%;
+      z-index: -1;
+}
+.card {
+    height: 492px;
+    margin-top: 28px;
+    font-size: 80%;
+    line-height: 155%;
+    padding-top: 5px;
+    box-shadow: 10px 5px 5px grey;
+}
+
+.card h3 {
+    background-color: #50E3C2;
+    color: rgb(39, 40, 34);
+    margin-top: -5px;
+    margin-bottom: 16px;
+    margin-left: -24px;
+    padding-left: 26px;
+    padding-top: 26px;
+    padding-bottom: 15px;
+    width: 118%;
+    font-size: 220%;
+}
+&lt;/style&gt;
+
+
+---
+class: rstudio1
+
+.pull-right[.bump-right[.card[
+
+&lt;h3&gt;Source/script editor &lt;/h3&gt;
+
+Write your scripts and comments here. The is our home and where we spend most of our time. Move your cursor to a line of code and then click &lt;kbd&gt;[Ctrl]&lt;/kbd&gt; + &lt;kbd&gt;[Enter]&lt;/kbd&gt; to run the code. The tabs at the top show other scripts and data you have open. 
+
+]]]
+
+---
+class: rstudio1
+
+
+.pull-left[.bump-left[.card[
+
+&lt;h3&gt; Environment / Workspace  &lt;/h3&gt; 
+
+This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects in your workspace.
+
+]]]
+
+
+---
+class: rstudio2
+
+.pull-right[.bump-right[.card[
+
+&lt;h3&gt; R Console &lt;/h3&gt;
+
+This is where code is run by the computer. It shows the code that is running and the messages returned by that code. You can input code directly into the console and run it, but it won't be saved for later. We encourage running code from a script in the code editor. 
+
+]]]
+
+---
+class: rstudio3
+
+.pull-left[.bump-left[.card[
+
+&lt;h3&gt; Plots and files &lt;/h3&gt;
+
+These tabs let you view and open files in your current directory, view plots and visuals like maps, view your installed packages, and access the Help window. 
+
+The **Files** tab is especially handy for finding files you want and clicking them to open. You can also click the **Gear** and select _"Show Folder in a New Window"_ to open your project folder.
+]]]
+
+---
+
+# Customize R Studio 
+
+&lt;img src="../images/font_change.png" style="width: 45%; margin-left: 2%; float: right;" /&gt;
+
+
+.notes[Let's add some .bigger[.teal[STYLE]].] 
+
+&lt;h3&gt;Change fonts and colors&lt;/h3&gt;
+
+.smaller[
+
+1. Go to __Tools__ on the top navigation bar  
+2. Choose `Global Options...`
+3. Choose `Appearance` with the paint bucket 
+4. Increase the overall `Zoom` to 125%  
+4. Increase the `Editor Font size`
+5. Pick an Editor theme you like  
+    - The default is `Textmate`
+   
+] 
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# &lt;i class="fa fa-rocket" aria-hidden="true"&gt;&lt;/i&gt; Return to [Homebase](mn-r.netlify.app)
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

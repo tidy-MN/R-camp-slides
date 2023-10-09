@@ -1,0 +1,82 @@
+---
+title: 'Schedule'
+subtitle: ''
+date: '2022-08-08'
+summary: ''
+showDate: false
+showAuthor: false
+slug: 'teach'
+categories: [training]
+tags: 
+type: ''
+image: '' 
+imageWidth: '27%'
+imageFloat: 'left'
+enableEmoji: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=F, message=F)
+```
+
+
+## Day 1
+
+**AM**
+
+- **Welcome** 
+
+-	1-2 (`Barbara`)
+    - Candy Poll
+    -	Breakout - Greetings!
+-	3-4 (Dorian)
+-	5-8 (Derek)
+
+**PM**
+
+-	1-2 (`Barbara`)
+-	3-5+Bingo (Dorian)
+-	6-7 (Derek)
+-	8-Shutdown (`Barbara`)
+
+## Day 2
+
+**AM**
+
+-	Review + finish 1PM (`Barbara`) 
+- 2 Jakku Revisited (Derek)
+-	3 Joins (Dorian)
+-	4-7 Summarize -> grouped mutate (`Barbara`)
+-	Exercise: Read, Join, Summarize from Excel (3-4 Breakouts)
+
+
+**PM**
+
+-	GuessWho (`Barbara`)
+-	1 If_else (Dorian)
+-	2 Plot intro and height exercise (Derek)
+-	3 Trash plots & glossary (`Barbara`)
+-	Exercise: Homeworld (3-4 Breakouts)
+
+## Day 3
+
+**AM**
+
+-	Review -> Excel exercise -> 2 Endor Welcome (`Barbara`)
+-	3-4 Endor maps (Dorian)
+-	5-6 Dates (Derek)
+-	Gitlab / Github Account (Dorian)
+
+**PM**
+
+-	1-2 Pipes %>% (`Barbara`)
+-	3 Database intro (Dorian)
+- 4 Keyring and db demo (Derek) 
+-	Individual Project Work 
+
+- **What's next?** (Dorian)
+    - Join us: R groups and TidyTuesdays
+    - Online resources
+    
+-	*Graduation ceremony* - Certificates + Movie! (Barbara + All)

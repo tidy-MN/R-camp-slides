@@ -1,0 +1,73 @@
+---
+title: "Videos"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    chakra: libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: header.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+knitr::opts_chunk$set(echo = F, warning=F, message=F)
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+class: inverse
+
+# R training videos <i class="fa fa-video-camera" aria-hidden="true" style="float: right;"></i>
+
+<br>
+
+<style>
+
+a > code {color: white;}
+</style>
+
+.fullwidth[
+.column3[
+.bigger[`Day 0`<br> Warmup]
+<br><br>
+
+`0.1` Video  
+
+]
+
+.column3[
+
+.bigger[`Day 1` <br> Welcome]
+
+<br><br>
+
+ [`1.1` Welcome to R](Welcome-to-R.html)    
+ [`1.2` R Studio Tour](R-tour.html)   
+ [`1.3` Join us!](R-first-mission.html)    
+
+]
+
+.column3[
+.bigger[`Day 2` <br> Dig-in]
+<br><br>
+
+ `2.1` Video
+
+]]
+
+

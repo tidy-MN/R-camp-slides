@@ -1,0 +1,72 @@
+---
+title: "R bakery"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+class: inverse, center, middle
+
+# .big[OUR] 
+# .huge[.teal[BAKERY]]
+
+---
+class: middle
+
+# Your first project
+
+<br>
+
+Start a new R project for our bakery.
+
+.big[
+> <i class="fa fa-warning" aria-hidden="true"></i> .teal[LIVE DEMO]
+
+]
+
+---
+exclude: true
+
+```{r set-params, include=F}
+params <- list(name1 = 'bakery.R', name2 = 'day1.R')
+```
+
+```{r, child='../../modules-slides/intro/rstudio_newproject/general.Rmd'}
+```
+
+---
+
+# Names and things
+<hr><br>
+
+```{r child = '../../modules-slides/base/base_assignment/bakery.Rmd'}
+```
+
+
+---
+class: inverse, center, middle
+
+# <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](mn-r.netlify.app)
