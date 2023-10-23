@@ -101,7 +101,7 @@ class: rstudio1
 
 <h3> Environment / Workspace  </h3> 
 
-This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects in your workspace.
+This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects from your workspace.
 
 ]]]
 

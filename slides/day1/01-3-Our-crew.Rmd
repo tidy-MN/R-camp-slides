@@ -1,5 +1,5 @@
 ---
-title: "Welcome to R"
+title: "R crew"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -27,51 +27,42 @@ opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
-exclude: true
+
 class: inverse, center, middle
 
-# .big[Welcome to] 
-# .huge[[.teal[R]]]
+# .big[OUR] 
+# .huge[.teal[CREW]]
 
 ---
-class: inverse, center, middle
+class: middle
 
-# .big[RStudio] 
-# .huge[.teal[TOUR]]
+# <i class="fa fa-ship" aria-hidden="true"></i> New project
 
----
+Start a new R project in RStudio
 
-```{r Rtour, child='../../modules-slides/intro/rstudio_tour/general_notes.Rmd'}
-```
+.big[
+> <i class="fa fa-warning" aria-hidden="true"></i> .teal[LIVE DEMO]  
 
-
----
-class: inverse
-
-# .teal[R] packages 
-
-<img src="../images/package-hexes.jpg" />
+]
 
 ---
-class: inverse
 exclude: true
 
-# .teal[R] packages 
+```{r set-params, include=F}
+params <- list(name1 = 'bakery.R', name2 = 'day1.R')
+```
 
-<img src="../images/dress-tidy.jpg" />
-
+```{r, child='../../modules-slides/intro/rstudio_newproject/general.Rmd'}
+```
 
 ---
-class: inverse, middle
+class: middle
 
-# Install packages 
+# Names and things
+<hr><br>
 
-```{r, eval=F}
-install.packages("tidyverse")
-```
 
 ---
 class: inverse, center, middle
 
 # <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](mn-r.netlify.app)
-

@@ -166,7 +166,5 @@ exclude: true
 > - You're free to break things. R forgives you.  
 >   - Go ahead and create errors and make the computer angry. Learn from what doesn't work.  
 > - **Cheat** when you're stuck.  
->    - Copy others. Share with your neighbors.   
-
-
+>    - Copy others. Share with your neighbors.  
 

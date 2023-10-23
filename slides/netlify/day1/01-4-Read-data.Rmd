@@ -1,0 +1,137 @@
+---
+title: "R bakery"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+class: inverse, center, middle
+
+# .big[Your] 
+# .huge[.teal[BAKERY]]
+
+---
+
+```{r Rtour, child='../../modules-slides/intro/rstudio_tour/general_notes.Rmd'}
+```
+
+# Your first project
+
+>  New R project 
+
+
+Start a new project for your bakery.
+```{r set-params, include=F}
+params <- list(name1 = 'bakery.R', name2 = 'day1.R')
+```
+
+```{r, child='../../modules/intro/rstudio_newproject/general.Rmd'}
+```
+
+
+# Names and things
+<hr>
+```{r child = '../../modules/base/base_assignment/bakery.Rmd'}
+```
+
+
+---
+
+# Read data
+<hr>
+```{r read-csv, child='../../modules/readr/readr_csv/starwars.Rmd'}
+```
+
+---
+
+# Add packages &#x1F4E6; 
+<hr>
+```{r new-pkg, child='../../modules/_packages/readr.Rmd'}
+```
+
+---
+
+## Read the data {-}
+
+Let's load the _readr_ package to use the `read_csv() ` function.
+```{r read_snippet, child='../../modules/readr/readr_csv/scrap_snippet.Rmd'}
+```
+
+---
+
+
+```{r fun-options, child='../../modules/base/base_functions/fun_options.Rmd'}
+```
+
+---
+
+```{r fun-options, child='../../modules/readr/readr_csv/excel_csv.Rmd'}
+```
+
+---
+
+# ggplot2
+<hr>
+
+### _Plot the data, Plot the data, Plot the data_ 
+
+![](../images/ggplot2_hex.png){width="164" style="float: left; margin-right: 26px; margin-top: 10px;  margin-left: 0;"}
+
+
+---
+
+```{r ggplot25, child='../../modules/ggplot/ggplot_install/scrap.Rmd'}
+```
+
+---
+
+
+## Got questions <i class="far fa-question-circle" aria-hidden="true" style="font-size: 122%;"></i> {-}
+<hr class="hrlvl2">
+
+Lost in an ERROR message? Is something behaving strangely and want to know why? Want ideas for a new chart?   
+
+Go to [Help!](help.html) for troubleshooting, cheatsheets, and other learning resources. 
+
+---
+
+## <i class="fas fa-key fa-xs" style="color: #c81888;" aria-hidden="true"> </i> Key terms {-} 
+```{r key-terms, child='../../modules/key_terms/day1.Rmd'}
+```
+
+---
+
+# Learn more!
+<hr>
+
+- RStudio Primers: [R Programming Basics](https://posit.cloud/learn/primers/1.2)
+- [Intro to R](https://tinystats.github.io/teacups-giraffes-and-statistics/01_introToR.html) - Cute giraffes!
+
+
+---
+class: inverse, center, middle
+
+# <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](mn-r.netlify.app)

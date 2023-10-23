@@ -28,13 +28,13 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
 
-## Day 0: Class prep
+## Class prep
 
 <div style="margin-left: 4%;">
 
-### <i class="fa fa-video-camera" style="font-size:24px"></i> [0.1 Install R](../slides/index.html) 
+### <i class="fa fa-clipboard" style="font-size:24px"></i> [0.1 Install R](../slides/index.html) 
 
-### <i class="fa fa-video-camera" style="font-size:24px"></i> [0.2 Setup & Warmup](../slides/index.html) 
+### <i class="fa fa-clipboard" style="font-size:24px"></i> [0.2 Setup & Warmup](../slides/index.html) 
 
 </div>
 <br>
@@ -44,9 +44,9 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 <div style="margin-left: 4%;">
 
-### <i class="fa fa-video-camera" style="font-size:24px"></i> [1.1 Welcome to R](../slides/01-1-Welcome-to-R.html) 
+### <i class="fa fa-video-camera" style="font-size:24px"></i> [1.1 Welcome](../slides/01-1-Welcome-to-R.html) 
 
-### <i class="fa fa-video-camera" style="font-size:24px"></i> [1.2 R Studio Tour](../page/01-2-R-tour.html) 
+### <i class="fa fa-video-camera" style="font-size:24px"></i> [1.2 R Tour](../page/01-2-R-tour.html) 
 
 ### <i class="fa fa-video-camera" style="font-size:24px"></i> [1.3 Join us!](../page/01-3-Join-us.html) 
 
@@ -72,3 +72,24 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 </div>
 <br>
 
+
+## Day 4
+
+<div style="margin-left: 4%;">
+
+</div>
+<br>
+
+## Day 5
+
+<div style="margin-left: 4%;">
+
+</div>
+<br>
+
+## Day 6
+
+<div style="margin-left: 4%;">
+
+</div>
+<br>

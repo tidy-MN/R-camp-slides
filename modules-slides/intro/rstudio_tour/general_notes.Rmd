@@ -28,7 +28,7 @@ Write your scripts and comments here. The is our home and where we spend most of
 
 *Environment / Workspace* 
 
-This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects in your workspace.
+This pane shows the data you have loaded, as well as the variables and objects you have created. The History tab contains the code you have run during your current session. Note the broom icon below the Connections tab. This cleans shop and clears all of the objects from your workspace.
 
 
 *R Console*
@@ -42,6 +42,7 @@ These tabs let you view and open files in your current directory, view plots and
 
 The **Files** tab is especially handy for finding files you want and clicking them to open. You can also click the **Gear** and select _"Show Folder in a New Window"_ to open your project folder.
 
+~~~
 
 Lastly, I'll show how to update the appearance to make font sizes larger or more your style.
 

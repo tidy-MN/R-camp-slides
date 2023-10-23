@@ -1,51 +1,53 @@
 
-You can assign values to new objects using the .teal[left arrow] `<- `. 
+You can assign values to objects (variables) using the .teal[left arrow]. 
 
-- It's typed with a less-than sign `<` followed by a hyphen `-`. 
-- AKA the _assignment operator_. 
+- It looks like this: `<- `  
+- It's typed with a less-than sign `<` followed by a hyphen `-`  
+- It’s more officially known as the *assignment operator*  
 
 ---
 
-### Let's make a droid! {-}
+### Let's name our baking bot! {-}
 
-Try adding the code below to your R script to create an object called `droid`.
+Copy the code below to your R script to create a bot called `whisky`.
 
 ### Assignment operator {-}
 ```{r names, eval=F}
-# Create a new object
-droid <- "bb7"
+# Create an empty text object
+bot <- ""
 
-droid 
+# See what is in the object
+bot 
 
-# Give it a new value
-droid <- "bb8"
+# Assign it a new value
+bot <- "Whisker"
 
-droid 
+bot
+
 ```
 
-To run a line of code in your script, click the cursor anywhere on that line and press __CTRL+ENTER__.
+> To run a line of code in your script, put the cursor anywhere on that line and press <kbd>CTRL</kbd>+<kbd>ENTER</kbd>.
 
 
-The droid wants a friend. Let's create a Wookie named _Chewbacca_. 
+Now our baking bot needs a friend. Let's create a `bot2`. Go ahead and name it anything you like. 
 ```{r names2, eval=F}
-wookie <- "Chewbacca"
+bot_friend <- "Baker-waker"
 
-wookie
+bot_friend
 ```
 
 
 __Break some things__
 ```{r, eval=F}
 # Try this:
-wookie <- Chewbacca
-
+bot3 <- Chewie
 ```
 
 
 <div class="red-note" style="width: 93%;">
 ### Error! {-}
 
-Without quotes, R looks for an object called Chewbacca, and then lets you know that it couldn't find one. Let's try again but add quotation marks around `"Chewbacca"`. 
+Generally, when you write a word without quotes, R will look for an object with that name in your Environment (see the area in the top-right). It will then look for a function with that name. If it doesn't find either, it will let you know that it couldn't find one. Try again but add quotation marks around `"Chewie"`. 
 </div>
 
 <br>
@@ -60,7 +62,7 @@ Without quotes, R looks for an object called Chewbacca, and then lets you know t
 
 <p style="color: blue;"> Blue shows the exact code you ran. </p>
 
-<p style="color: black; opacity: 0.85;"> Black is the result of the code. A `[1]` in front means there is one item in that object, and its value is `bb8`. </p>
+<p style="color: black; opacity: 0.85;"> Black is the result or output of the code. In the top case, the `[1]` in front means there was item returned for `bot`, and its value was `Whisker`. </p>
 
 <p style="color: rgb(197, 6, 11);"> Red shows __Errors__ & __Warnings__. Errors mean something went so wrong it prevented your code from running. Warnings on the other hand are usually ok. They tend to inform you that the result may not be exactly what you expected. Such as a value not being added to a plot because it was *NA*. </p>
 
@@ -77,7 +79,7 @@ Without quotes, R looks for an object called Chewbacca, and then lets you know t
 __Copy objects__
 ```{r duplicate, eval=F}
 # To copy an object, assign it to a new name
-wookie2 <- wookie
+bot <- wookie
 
 
 # Or overwrite an object with new "text"
@@ -115,9 +117,9 @@ You can drop objects with the remove function `rm() `. Try it out on some of you
 
 ```{r, eval=F}
 # Delete objects to clean-up your Environment
-rm(wookie)
+rm(bot2)
 
-rm(wookie2)
+rm(bot3)
 ```
 
 <br>
@@ -127,7 +129,7 @@ rm(wookie2)
 
 How can we get the `wookie` object back?
 
-_Hint: You are allowed to re-run your code. You can even highlight everything and re-run ALL of the code._
+_Hint: You are allowed to re-run your code. You can even click the **Run** button at the top to re-run ALL of your script._
 
 </div>
 
@@ -149,16 +151,16 @@ By saving your analysis in an R script you can always re-run the code to get any
 
 ## What's a good name? {-}
 
-Everything has a name in R and you can name things almost anything you like, even `TOP_SECRET_shhhhhh...` or `data_McData_face`.
+Everything has a name in R and you can name things almost anything you like, even `TOP_SECRET_SHHHH...` or `data_face_99`.
 
-Sadly, there are a _few_ restrictions. R doesn't like names to include spaces or special characters found in math equations, like `+`, `-`, `*`, `\`, `/`, `=`, `!`, or `)`. 
+But there are a _few_ restrictions. R doesn't like names to include spaces or special characters found in math equations, like `+`, `-`, `*`, `\`, `/`, `=`, `!`, or `)`. 
 
 <br>
 
 <div class="tip">
 ### <i class="fa fa-user-astronaut" style="color: green;"></i> Explore! {-}
 
-Try running some of these examples. Find new ways to create errors. The more broken the better! Half of learning R is finding what doesn't work.
+Try running some of these examples. Find new ways to create errors. Half of learning R is finding what doesn't work.
 
 ```{r, eval=F}
 # What happens when you add these to your R script?

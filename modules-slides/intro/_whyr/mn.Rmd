@@ -127,7 +127,7 @@ class: inverse
 - SQL queries are sent to a database server and processed there before returning the data.  
 - R can run SQL queries to pull data from databases / data lakes.
 - R has the `dbplyr` package which converts R to an SQL query.
-- R can read data from almost anywhere (databases, flat files, web pages, etc.)
+- R can read data from almost anywhere (databases, flat files, web pages)
 
 ---
 class: inverse
