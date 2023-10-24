@@ -1,0 +1,602 @@
+WEBVTT
+
+11c124ac-4a8f-415e-bc5c-45c9ef92dc38-0
+00:00:03.040 --> 00:00:06.120
+Hello and welcome to the
+wonderful world of open source.
+
+cafe404b-97e0-4680-82fb-70cdcabeef32-0
+00:00:06.760 --> 00:00:09.240
+What is open source and why is
+it wonderful?
+
+b7ee3d2e-cd2d-4036-8402-9ccc836aaf3b-0
+00:00:10.040 --> 00:00:12.815
+The short answer to this
+question is that open source
+
+b7ee3d2e-cd2d-4036-8402-9ccc836aaf3b-1
+00:00:12.815 --> 00:00:15.744
+means that the source of the
+code is open to the public,
+
+b7ee3d2e-cd2d-4036-8402-9ccc836aaf3b-2
+00:00:15.744 --> 00:00:18.519
+meaning that anyone can come and
+play in our sandbox.
+
+38a2a8ea-09d7-4db0-a601-afdad55aa703-0
+00:00:18.840 --> 00:00:21.575
+So projects and computer
+languages that are open source
+
+38a2a8ea-09d7-4db0-a601-afdad55aa703-1
+00:00:21.575 --> 00:00:24.408
+mean that anyone can build on
+the work, change it to suit
+
+38a2a8ea-09d7-4db0-a601-afdad55aa703-2
+00:00:24.408 --> 00:00:27.534
+their needs, or work with others
+to make necessary changes they
+
+38a2a8ea-09d7-4db0-a601-afdad55aa703-3
+00:00:27.534 --> 00:00:29.440
+might not be able to do by
+themselves.
+
+0c7e25e8-00e5-422f-b17e-438c126a0b44-0
+00:00:30.010 --> 00:00:33.165
+Open source software is also
+free, which makes it a great
+
+0c7e25e8-00e5-422f-b17e-438c126a0b44-1
+00:00:33.165 --> 00:00:36.484
+option for the public sector and
+allows us to share our work
+
+0c7e25e8-00e5-422f-b17e-438c126a0b44-2
+00:00:36.484 --> 00:00:39.531
+broadly to other users like
+other state agencies, local
+
+0c7e25e8-00e5-422f-b17e-438c126a0b44-3
+00:00:39.531 --> 00:00:41.490
+governmental units, and the
+public.
+
+32dd0fee-7e7c-46c7-ab71-3f17a04ca545-0
+00:00:42.050 --> 00:00:45.268
+This differs vastly from the
+world of proprietary software,
+
+32dd0fee-7e7c-46c7-ab71-3f17a04ca545-1
+00:00:45.268 --> 00:00:48.487
+where licensing fees, software
+costs, or delayed updates or
+
+32dd0fee-7e7c-46c7-ab71-3f17a04ca545-2
+00:00:48.487 --> 00:00:51.331
+deployments can make it
+difficult to share your work
+
+32dd0fee-7e7c-46c7-ab71-3f17a04ca545-3
+00:00:51.331 --> 00:00:53.369
+outside or even within your own
+team.
+
+21e8a9f5-e0ba-4ec0-9b11-8f87a33fa799-0
+00:00:55.040 --> 00:00:58.070
+The open source programming
+language we're going to be
+
+21e8a9f5-e0ba-4ec0-9b11-8f87a33fa799-1
+00:00:58.070 --> 00:01:01.485
+learning about in these sessions
+is a language called RR is a
+
+21e8a9f5-e0ba-4ec0-9b11-8f87a33fa799-2
+00:01:01.485 --> 00:01:04.515
+language that was originally
+developed for statistical
+
+21e8a9f5-e0ba-4ec0-9b11-8f87a33fa799-3
+00:01:04.515 --> 00:01:07.160
+analysis, data visualization,
+and manipulation.
+
+b3275811-ae81-460f-b01c-3c02a32b4ceb-0
+00:01:07.880 --> 00:01:11.196
+Since it started to gain
+popularity, it's also grown in
+
+b3275811-ae81-460f-b01c-3c02a32b4ceb-1
+00:01:11.196 --> 00:01:14.040
+functionality and can do more
+than ever before.
+
+678cb00c-a94a-4a57-9f35-d0e1182d11e0-0
+00:01:14.280 --> 00:01:18.511
+The R community is ever growing
+and now worldwide and that means
+
+678cb00c-a94a-4a57-9f35-d0e1182d11e0-1
+00:01:18.511 --> 00:01:22.807
+that the community is continuing
+to build new tools, features and
+
+678cb00c-a94a-4a57-9f35-d0e1182d11e0-2
+00:01:22.807 --> 00:01:24.760
+applications for the language.
+
+4afaebc8-34eb-497e-9727-05ed7da8bc7a-0
+00:01:25.650 --> 00:01:28.490
+There's also an active community
+at the state of Minnesota.
+
+7a4520bc-847e-416a-bff5-05d909c1c446-0
+00:01:28.890 --> 00:01:33.492
+We have a cross agency team that
+represents 7 different agencies
+
+7a4520bc-847e-416a-bff5-05d909c1c446-1
+00:01:33.492 --> 00:01:35.050
+with over 150 members.
+
+206be17c-5f44-430b-b31e-50467bf0377b-0
+00:01:35.370 --> 00:01:38.763
+We meet weekly on our tidy
+Tuesdays to talk about problems,
+
+206be17c-5f44-430b-b31e-50467bf0377b-1
+00:01:38.763 --> 00:01:41.930
+present fantastic solutions, and
+share tips and tricks.
+
+1c9002a8-a256-4653-b58d-da25cbb27fca-0
+00:01:42.410 --> 00:01:45.844
+It started as a small group of
+dedicated practitioners and it's
+
+1c9002a8-a256-4653-b58d-da25cbb27fca-1
+00:01:45.844 --> 00:01:46.810
+continues to grow.
+
+d2b95772-4ec6-41a6-ae79-4f91f5052537-0
+00:01:47.770 --> 00:01:52.463
+We use R to do many different
+things, mainly data related and
+
+d2b95772-4ec6-41a6-ae79-4f91f5052537-1
+00:01:52.463 --> 00:01:57.082
+those include connecting to
+databases, reading and data from
+
+d2b95772-4ec6-41a6-ae79-4f91f5052537-2
+00:01:57.082 --> 00:02:01.397
+all kinds of formats including
+CSV, excel, Jason and the
+
+d2b95772-4ec6-41a6-ae79-4f91f5052537-3
+00:02:01.397 --> 00:02:05.712
+occasionally weird delimited
+file like TSVS which is tab
+
+d2b95772-4ec6-41a6-ae79-4f91f5052537-4
+00:02:05.712 --> 00:02:06.999
+separated values.
+
+62f688bd-79ed-4014-a545-4c4bddb1d129-0
+00:02:07.320 --> 00:02:08.120
+Who thought of that?
+
+0081890f-1025-4e81-9bb1-802648ed06ac-0
+00:02:08.680 --> 00:02:11.850
+We use R to document our work
+and share our methods with
+
+0081890f-1025-4e81-9bb1-802648ed06ac-1
+00:02:11.850 --> 00:02:12.240
+others.
+
+057e3e0b-33f3-41d7-ad38-272a91abf57e-0
+00:02:12.640 --> 00:02:16.703
+We can use R to create reports,
+dashboards, and presentations
+
+057e3e0b-33f3-41d7-ad38-272a91abf57e-1
+00:02:16.703 --> 00:02:20.440
+just like this one that are easy
+to update and automate.
+
+d99d7209-432f-4269-9abe-55a80bc7a782-0
+00:02:21.850 --> 00:02:25.716
+The major benefit to solving our
+problems in R is that our work
+
+d99d7209-432f-4269-9abe-55a80bc7a782-1
+00:02:25.716 --> 00:02:29.040
+becomes reproducible and
+shareable, meaning others can
+
+d99d7209-432f-4269-9abe-55a80bc7a782-2
+00:02:29.040 --> 00:02:32.846
+take our work and get the same
+solutions just by running our R
+
+d99d7209-432f-4269-9abe-55a80bc7a782-3
+00:02:32.846 --> 00:02:33.330
+scripts.
+
+bef5d37d-3873-4afe-81d4-5f159a1d3d3e-0
+00:02:33.690 --> 00:02:36.650
+That's because an R script is
+like a recipe for cookies.
+
+82662a9c-2526-43f7-9b90-f10866a1f19e-0
+00:02:37.010 --> 00:02:41.700
+It follows a top to bottom, step
+by step process that others can
+
+82662a9c-2526-43f7-9b90-f10866a1f19e-1
+00:02:41.700 --> 00:02:44.370
+read and follow over and over
+again.
+
+fc358f3a-a79a-4581-b759-5e29dd973633-0
+00:02:46.580 --> 00:02:50.406
+Oh no, if this scenario looks
+familiar to you, that's
+
+fc358f3a-a79a-4581-b759-5e29dd973633-1
+00:02:50.406 --> 00:02:53.100
+something R can help us with as
+well.
+
+5966c6b2-80aa-4a33-9478-952fa9d18d3b-0
+00:02:53.460 --> 00:02:57.576
+Using R we can write a procedure
+to clean, corral and fancy up
+
+5966c6b2-80aa-4a33-9478-952fa9d18d3b-1
+00:02:57.576 --> 00:03:01.366
+data for a report and then
+automate sending that data via
+
+5966c6b2-80aa-4a33-9478-952fa9d18d3b-2
+00:03:01.366 --> 00:03:03.980
+e-mail in one easy to update
+procedure.
+
+10275531-951e-43e7-aa33-a454b82d040c-0
+00:03:04.380 --> 00:03:08.088
+This can reduce time errors and
+for you up to tackle those
+
+10275531-951e-43e7-aa33-a454b82d040c-1
+00:03:08.088 --> 00:03:11.420
+really hard projects that no one
+has had time to do.
+
+8c146ad2-71b5-41aa-864f-e478d85b9b5e-0
+00:03:11.420 --> 00:03:14.260
+Because we're so busy doing the
+everyday tasks.
+
+3250676e-7f9b-4f62-985a-5ed95e0070c8-0
+00:03:16.710 --> 00:03:20.302
+We've talked about a bunch of
+things that make R awesome, but
+
+3250676e-7f9b-4f62-985a-5ed95e0070c8-1
+00:03:20.302 --> 00:03:22.910
+there's lots of really cool
+tools out there.
+
+fc1f349a-1949-463e-91ce-fbbd3d4101d3-0
+00:03:22.910 --> 00:03:25.910
+So what makes R stand out from
+the crowd?
+
+d58e6f96-39ce-417e-958c-5c579d13cbe6-0
+00:03:28.030 --> 00:03:29.110
+R versus Excel.
+
+8de9b1e2-c128-4ace-9c95-385a2cccfe35-0
+00:03:29.790 --> 00:03:33.652
+R can handle much larger data
+sets, and I mean really large
+
+8de9b1e2-c128-4ace-9c95-385a2cccfe35-1
+00:03:33.652 --> 00:03:36.550
+data sets, and it won't take
+forever either.
+
+ffefb22e-c102-4f9d-beb0-cc383459ae9a-0
+00:03:37.350 --> 00:03:39.030
+R is more flexible than Excel.
+
+b4abb3df-b155-4331-87e6-786017844ac2-0
+00:03:39.110 --> 00:03:42.103
+It can take many different data
+types, including pulling data
+
+b4abb3df-b155-4331-87e6-786017844ac2-1
+00:03:42.103 --> 00:03:43.310
+directly from a database.
+
+c8dca983-dd6b-46cd-a9c6-43c837ceb6d6-0
+00:03:44.120 --> 00:03:46.160
+R analysis are more
+reproducible.
+
+dc19713e-7721-4af5-853e-1ae227acf22f-0
+00:03:46.680 --> 00:03:49.531
+It can be extremely hard to
+figure out how someone did an
+
+dc19713e-7721-4af5-853e-1ae227acf22f-1
+00:03:49.531 --> 00:03:51.400
+analysis in Excel, if not
+impossible.
+
+1e731dba-6e25-4c2b-9df0-cb91d6c45507-0
+00:03:51.880 --> 00:03:54.948
+In R you're provided with a step
+by step procedure for how
+
+1e731dba-6e25-4c2b-9df0-cb91d6c45507-1
+00:03:54.948 --> 00:03:56.040
+someone did the work.
+
+c219a224-7a35-4a14-9d32-d35e13665117-0
+00:03:57.000 --> 00:03:59.855
+Excel is more widely used, but
+that doesn't mean it's always
+
+c219a224-7a35-4a14-9d32-d35e13665117-1
+00:03:59.855 --> 00:04:01.120
+the right tool for the job.
+
+885d2733-dfdc-457c-b0e7-aea9c3d434ac-0
+00:04:01.760 --> 00:04:07.818
+Think of the if all you have is
+a hammer analogy, R versus
+
+885d2733-dfdc-457c-b0e7-aea9c3d434ac-1
+00:04:07.818 --> 00:04:08.640
+Tableau.
+
+4613c0aa-e6e1-44a7-9764-07ba765002cd-0
+00:04:09.420 --> 00:04:12.620
+Tableau is primarily a data
+visualization software.
+
+39e368a9-74f2-49fd-b930-6c815548fb02-0
+00:04:13.020 --> 00:04:16.043
+Tableau does not have a strong
+analysis component and might not
+
+39e368a9-74f2-49fd-b930-6c815548fb02-1
+00:04:16.043 --> 00:04:18.783
+be able to do the kinds of
+statistical analysis you might
+
+39e368a9-74f2-49fd-b930-6c815548fb02-2
+00:04:18.783 --> 00:04:19.020
+need.
+
+61c95e51-5152-44db-a86f-e6b002aaf31f-0
+00:04:19.740 --> 00:04:22.945
+Our shiny is more flexible and
+can do more on the flight
+
+61c95e51-5152-44db-a86f-e6b002aaf31f-1
+00:04:22.945 --> 00:04:25.420
+calculations and is very user
+input driven.
+
+b19b4f88-8aa7-4a46-8d39-2ab26638b608-0
+00:04:26.180 --> 00:04:29.470
+Tableau's drag and drop
+interface makes it faster and
+
+b19b4f88-8aa7-4a46-8d39-2ab26638b608-1
+00:04:29.470 --> 00:04:32.761
+easier for creating simple
+visualizations, but is not
+
+b19b4f88-8aa7-4a46-8d39-2ab26638b608-2
+00:04:32.761 --> 00:04:33.980
+easily reproducible.
+
+000d649a-94f0-4a6c-bb60-c0a25bc3937d-0
+00:04:34.730 --> 00:04:40.369
+R is 100% text based so you can
+track changes over time
+
+000d649a-94f0-4a6c-bb60-c0a25bc3937d-1
+00:04:40.369 --> 00:04:43.290
+#versioncontrol R versus SQL.
+
+b0c51208-b228-44f9-906d-16f5e6f311ae-0
+00:04:43.690 --> 00:04:45.450
+SQL is the language of
+databases.
+
+c9e27a60-a866-4e07-abd3-445c88ab5290-0
+00:04:45.570 --> 00:04:48.487
+It's easy to learn if you know
+you'll be working with databases
+
+c9e27a60-a866-4e07-abd3-445c88ab5290-1
+00:04:48.487 --> 00:04:51.450
+a lot, but you might not be and
+then it's really not much use if
+
+c9e27a60-a866-4e07-abd3-445c88ab5290-2
+00:04:51.450 --> 00:04:53.730
+all you're dealing with is flat
+files or exports.
+
+142697dd-971c-47df-a8b8-f2fc4bdc734c-0
+00:04:54.450 --> 00:04:57.951
+SQL queries are sent to a
+database server and processed
+
+142697dd-971c-47df-a8b8-f2fc4bdc734c-1
+00:04:57.951 --> 00:04:59.890
+then before returning the data.
+
+00b1aaa4-b677-4b0b-abac-23d2d45ec3a1-0
+00:05:00.540 --> 00:05:03.571
+This can take a lot of time
+depending on the size of the
+
+00b1aaa4-b677-4b0b-abac-23d2d45ec3a1-1
+00:05:03.571 --> 00:05:06.869
+query and there are more time
+efficient ways to do this using
+
+00b1aaa4-b677-4b0b-abac-23d2d45ec3a1-2
+00:05:06.869 --> 00:05:10.060
+RR can run SQL queries to pull
+data from databases and data
+
+00b1aaa4-b677-4b0b-abac-23d2d45ec3a1-3
+00:05:10.060 --> 00:05:10.380
+lakes.
+
+40d8b99e-8189-4193-a7af-833a2510af12-0
+00:05:11.020 --> 00:05:15.660
+R has a package called DB player
+which converts R to a SQL query.
+
+76dcbdf6-8757-4809-9b5b-1ff631cd578e-0
+00:05:15.860 --> 00:05:18.961
+So what we're really saying is
+that you don't even need to know
+
+76dcbdf6-8757-4809-9b5b-1ff631cd578e-1
+00:05:18.961 --> 00:05:20.900
+SQL if you know R which is
+pretty cool.
+
+932fc17b-35cb-4bc8-ac28-2b659b886766-0
+00:05:21.860 --> 00:05:24.380
+R can read data from almost
+anywhere.
+
+447625da-70d6-421c-b295-3a0cbd3bf558-0
+00:05:24.580 --> 00:05:27.100
+Databases, flat files, web
+pages.
+
+7ed27bf7-f876-4a2c-9c84-8460b8743b9e-0
+00:05:27.640 --> 00:05:30.560
+Just reminding you that R is
+pretty awesome.
+
+14f69c31-6631-4e1d-9c85-c4c3c2666bda-0
+00:05:32.520 --> 00:05:34.040
+R versus Python.
+
+7888498b-3acd-45d5-a48d-48a02825254f-0
+00:05:35.040 --> 00:05:37.768
+Honestly, this one might just
+come down to some personal
+
+7888498b-3acd-45d5-a48d-48a02825254f-1
+00:05:37.768 --> 00:05:40.783
+preferences, but if you're here
+taking our class, we're hoping
+
+7888498b-3acd-45d5-a48d-48a02825254f-2
+00:05:40.783 --> 00:05:43.894
+we can get you on Team R Python
+is a general purpose programming
+
+7888498b-3acd-45d5-a48d-48a02825254f-3
+00:05:43.894 --> 00:05:45.999
+language popular for doing
+Internet Things.
+
+3bf67cda-9b43-46ad-b1c2-081848c20709-0
+00:05:46.600 --> 00:05:49.550
+R is more specifically focused
+on visualizations and
+
+3bf67cda-9b43-46ad-b1c2-081848c20709-1
+00:05:49.550 --> 00:05:50.720
+statistical analysis.
+
+8509692c-86e1-4cdd-a256-c3f83f98c2c1-0
+00:05:51.280 --> 00:05:55.298
+Compared to Python's pandas, R's
+tidyverse is more intuitive and
+
+8509692c-86e1-4cdd-a256-c3f83f98c2c1-1
+00:05:55.298 --> 00:05:56.040
+easy to use.
+
+bd96bafa-afe8-4b25-9363-4cd69f31b8ed-0
+00:05:56.700 --> 00:06:00.277
+Historically, Python has been
+used with GIS software like Arc
+
+bd96bafa-afe8-4b25-9363-4cd69f31b8ed-1
+00:06:00.277 --> 00:06:03.220
+GIS, but spatial analysis with R
+has been growing.
+
+c49ca801-4bab-45f6-81d1-a6da47e657f9-0
+00:06:03.300 --> 00:06:06.738
+Packages like SF and leaflet has
+been doing some really excellent
+
+c49ca801-4bab-45f6-81d1-a6da47e657f9-1
+00:06:06.738 --> 00:06:07.780
+things in this area.
+
+07807d32-cd2d-42e5-99b5-f5beeac8d4a5-0
+00:06:10.220 --> 00:06:11.660
+R versus SAS.
+
+62092194-7ee8-4063-a2c2-988ea6a1f27d-0
+00:06:12.500 --> 00:06:15.140
+R is open source while SAS
+requires a license.
+
+fc2864c2-eabf-42d4-b794-c9a95f972c29-0
+00:06:15.460 --> 00:06:18.386
+That means a cost savings and
+also making analysis and data
+
+fc2864c2-eabf-42d4-b794-c9a95f972c29-1
+00:06:18.386 --> 00:06:19.460
+more widely available.
+
+b78df8db-81cb-4a75-983a-0448b69c9cb2-0
+00:06:19.460 --> 00:06:23.240
+Since it would no longer require
+a paid software, anyone can
+
+b78df8db-81cb-4a75-983a-0448b69c9cb2-1
+00:06:23.240 --> 00:06:26.340
+create and add updates to R
+packages at any time.
+
+50c960dc-07fe-4cef-89a6-1cafd74ed986-0
+00:06:27.040 --> 00:06:31.194
+New features for SAS only become
+available when the SAS team
+
+50c960dc-07fe-4cef-89a6-1cafd74ed986-1
+00:06:31.194 --> 00:06:34.600
+makes it so, and that wraps up
+our welcome video.
+
+1a420f90-d2bd-4ef0-a688-a653cc7e99d5-0
+00:06:34.680 --> 00:06:38.680
+You're officially part of the R
+crew, so let's see what's next.
