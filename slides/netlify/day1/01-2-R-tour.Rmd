@@ -1,5 +1,5 @@
 ---
-title: "Welcome to R"
+title: "R tour"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -20,8 +20,6 @@ output:
 library(rmarkdown)
 library(knitr)
 library(magrittr)
-
-xaringanExtra::use_clipboard()
 
 opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
@@ -52,6 +50,7 @@ class: inverse
 
 <img src="../images/package-hexes.jpg" />
 
+
 ---
 class: inverse
 exclude: true
@@ -66,12 +65,26 @@ class: inverse, middle
 
 # Install packages 
 
+<style>
+code {
+  padding: 30px !important;
+  padding-left: 38px !important;
+  border-left: solid 12px #50e3c2;
+  font-size: 1.5rem !important;
+}
+</style>
+
+.big[
+
 ```{r, eval=F}
 install.packages("tidyverse")
 ```
 
+]
+
 ---
 class: inverse, center, middle
 
-# <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](mn-r.netlify.app)
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](r-camp.netlify.app/page/videos)
+
 

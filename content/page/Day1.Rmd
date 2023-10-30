@@ -1,0 +1,154 @@
+---
+title: "Day 1"
+output: 
+  blogdown::html_page: 
+    highlight: tango
+    css: css/camp_style.css
+    number_sections: true
+    self_contained: false
+    fontsize: 18pt
+    monofont: Source Code Pro
+    toc: true
+    toc_depth: 1
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+![](../images/rstudio-hex.png){style="float: right; margin-right: 0; width: 260px; margin-top: -287px;"}
+
+<div style="clear: both;"></div>
+
+<br>
+
+
+# Welcome! {-}
+<hr class="hr2">
+
+
+<div style="clear: both;"></div>
+
+We like __R__.
+
+We aren't computer scientists -- and that's okay! 
+
+We make lots of mistakes. They will be funny. Laugh with us!
+
+<br><br><hr class="hr2">
+
+<br>
+
+# Why R? {-}
+<hr class="hr2">
+```{r whyR, child='../../static/modules/intro/_whyr/mpca.Rmd'}
+```
+
+
+# RStudio Tour 
+<hr>
+```{r Rtour, child='../../static/modules/intro/rstudio_tour/general.Rmd'}
+```
+
+
+# R packages &#x1F4E6; 
+<hr>
+```{r new-pkg, child='../../static/modules/_packages/tidyverse.Rmd'}
+```
+
+
+### You're on the TEAM!  {-}
+
+**Let's go!**
+
+
+<br>
+
+# R bakery 
+<hr>
+
+## <i class="fa fa-cake-candles" aria-hidden="true"></i> New project {-}
+<hr>
+
+Let's start a new project in RStudio.
+```{r set-params, include=F}
+params <- list(name1 = '01_bakery.R', name2 = 'day1.R')
+```
+
+```{r, child='../../static/modules/intro/rstudio_newproject/general.Rmd'}
+```
+
+
+# Names and things
+<hr>
+```{r child = '../../static/modules/base/base_assignment/bake_bot.Rmd'}
+```
+
+
+# Tidy tables and dataframes
+<hr>
+
+<img src="../images/vector_to_dataframe.png" width="510" style="margin-left: 100px;">
+
+```{r read-csv, child='../../static/modules/base/base_dataframes/bakery_dfs.Rmd'}
+```
+
+
+# Read data 
+<hr>
+
+Now we can read our own table back into R using the `read_csv() ` function.
+
+```{r read_snippet, child='../../static/modules/readr/readr_csv/bakery_csv.Rmd'}
+```
+
+
+# Size up the data 
+<hr>
+
+Before diving into a data set, we use `glimpse() ` and several other summary functions to take a first look at the data.
+
+```{r read_snippet, child='../../static/modules/dplyr/dplyr_glimpse/bakery_glimpse.Rmd'}
+```
+
+
+# Filter data 
+<hr>
+
+```{r read_snippet, child='../../static/modules/dplyr/dplyr_filter/bakery_filter.Rmd'}
+```
+
+
+### {-}
+```{r fun-options, child='../../static/modules/base/base_functions/fun_options.Rmd'}
+```
+
+
+```{r fun-options, child='../../static/modules/readr/readr_csv/excel_csv.Rmd'}
+```
+
+
+## Got questions <i class="far fa-question-circle" aria-hidden="true" style="font-size: 122%;"></i> {-}
+<hr class="hrlvl2">
+
+Lost in an ERROR message? Is something behaving strangely and want to know why? Want ideas for a new chart?   
+
+Go to [Help!](help.html) for troubleshooting, cheatsheets, and other learning resources. 
+
+
+## <i class="fas fa-key fa-xs" style="color: #c81888;" aria-hidden="true"> </i> Key terms {-} 
+```{r key-terms, child='../../static/modules/key_terms/day1.Rmd'}
+```
+
+<br>
+
+### <i class="fas fa-carrot aria-hidden="true"></i> [Jump to the top](../page/day-1.html) {-}
+
+<br>

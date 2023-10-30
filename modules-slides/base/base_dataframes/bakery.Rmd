@@ -1,0 +1,43 @@
+
+class: 
+
+# .teal[TIDY] TABLES
+
+<img src="../images/tidy_ice_cream.jpg" width="98%">
+
+.smaller[.small[.bottom-right[.gray[Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst]]]]
+
+---
+background-image: url(../images/tidy_data_slide.jpg)
+background-size: cover
+
+<span role="img" aria-label="Stylized text providing an overview of Tidy Data. The top reads “Tidy data is a standard way of mapping the meaning of a dataset to its structure. - Hadley Wickham.” On the left reads “In tidy data: each variable forms a column; each observation forms a row; each cell is a single measurement.” There is an example table on the lower right with columns ‘id’, ‘name’ and ‘color’ with observations for different cats, illustrating tidy data structure."></span>
+
+---
+class: middle
+
+# .link-blue[<i class="fa fa-cake-candles" aria-hidden="true"></i>] Tidy tables
+
+
+Let's make a tidy table with our baking bots.
+
+<style>
+code {
+  padding: 30px !important;
+  padding-left: 38px !important;
+  border-left: solid 12px #50e3c2;
+  font-size: 1.5rem !important;
+}
+</style>
+
+.big[
+
+```{r, eval=F}
+# Character vector of baking_bot names
+baking_bots <- c("Whiskers", "Baker-waker", "BB-8")
+ 
+# Numeric vector of bot ages
+bot_ages <- c(1, 2, NA)
+```
+
+]

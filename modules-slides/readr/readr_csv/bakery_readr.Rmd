@@ -1,0 +1,77 @@
+
+```{r bake_read, eval=T}
+library(tidyverse)
+
+# Read in the bot data
+read_csv(file = "bot_data.csv")
+```
+
+<br>
+
+> ...where did the data go? 
+
+<br>
+
+## Name the data {-}
+
+Remember the assignment operator (the left-arrow: `<-`)?  We use it to assign the data a name so we can reference it in our script. 
+
+```{r bake_csv_name, eval=T, message=F}
+# Read in the bot data and set name to "bake_bots"
+bake_bots <- read_csv(file = "bot_data.csv")
+
+# Type its name to view its contents
+bake_bots
+```
+
+<br>
+
+
+<div class="yoda">
+###  Yoda says {-}
+
+<img src="../images/yoda_baby_sq.png" class="yoda-img">
+
+Notice the row of `<chr>` letter abbreviations under the column names? These describe the data type of each column. It is a good first check when loading data to see if the data types align with the contents of each column. For example, we may want to investigate if we saw that our **age** column had the `character` data type.
+
+- `<chr>` stands for __character__ vector or a string of characters. Examples: _"apples"_, _"oranges"_, _"5 red apples"_  
+- `<dbl>` stands for a __double__, which is a numeric value that allows for decimal values. Examples: _5_, _3.41_, _1071_ 
+
+We'll see more data types later on, such as `dates` and `logical` (TRUE/FALSE).
+</div>
+
+
+## Everythings has class {-}
+
+In R, not just columns but everything has a data type or a "class". When we want to investigate the type of data stored in an object we can use the `class()` function.
+
+
+```{r class, eval=F}
+class(bake_bots)
+
+class(bake_bots$name)
+
+class(battery_level)
+```
+
+<br>
+
+<div class="quiz">
+
+<h2 style="margin-top: 28px; margin-bottom: 44px;"> Pop Quiz! </h2>
+
+__1. What data type is the `name` column?__
+
+<input type="radio" name="type"> _letters_        <br> 
+<input type="radio" name="type"> _character_      <br> 
+<input type="radio" name="type"> _TRUE/FALSE_     <br> 
+<input type="radio" name="type"> _numbers_        <br> 
+
+<details style="margin-left: 14px;">
+<summary class = "btn_code">_Show solution_</summary>
+<p>
+<i class="fa fa-check" aria-hidden="true" style="color: green;"></i> `character` 
+</p></details>
+
+</div>
+

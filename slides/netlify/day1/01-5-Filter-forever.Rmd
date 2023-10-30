@@ -1,0 +1,55 @@
+---
+title: "Tables and dataframes"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+class: inverse, center, middle
+
+# .big[FILTER] 
+# .huge[.teal[FOR KEEPS]]
+
+
+<insert porgs>
+
+---
+class: inverse
+
+```{r child = '../../modules-slides/base/base_dataframes/bakery.Rmd'}
+```
+
+---
+
+## <i class="fas fa-key fa-xs" style="color: #c81888;" aria-hidden="true"> </i> Key terms {-} 
+```{r key-terms, child='../../modules-slides/key_terms/day1.Rmd'}
+```
+
+
+---
+class: inverse, center, middle
+
+# <i class="fa fa-rocket" aria-hidden="true"></i> Return to [Homebase](r-camp.netlify.app)

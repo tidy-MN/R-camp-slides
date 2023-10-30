@@ -1,0 +1,106 @@
+---
+title: "Our bakery"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+class: inverse, center, middle
+
+# .big[OUR] 
+# .huge[.teal[BAKERY]]
+
+---
+class: middle
+
+# <i class="fa fa-cake-candles" aria-hidden="true"></i> New project
+
+<img src="../images/bake_bot1.png" style="float: right; margin-right: 0; width: 260px; margin-top: -287px;">
+
+Let's start a new project in RStudio.
+
+.big[
+
+> <i class="fa fa-warning" aria-hidden="true"></i> .teal[LIVE DEMO]
+
+]
+
+---
+exclude: true
+
+```{r set-params, include=F}
+params <- list(name1 = '01_bakery.R', name2 = 'day1.R')
+```
+
+```{r, child='../../modules-slides/intro/rstudio_newproject/general.Rmd'}
+```
+
+---
+class: middle
+exclude: true
+
+# Names and things
+<hr><br>
+
+
+---
+class: inverse
+
+# <i class="fa-solid fa-cookie-bite" aria-hidden="true" style="color: gray;"></i> .link-blue[Taste test]
+<hr><br>
+
+
+```{r, echo=F, eval=F}
+#<i class="fa-solid fa-cookie-bite" style="color: #bacff2;"></i>
+```
+
+<div class="quiz">
+
+<h3>Which object name <u>is</u> allowed?</h3>
+
+<i>Hint: You can try the names in R</i>
+
+<p>
+
+<input type="radio" name="object"> <code>my favorite bot</code> <br>
+<input type="radio" name="object"> <code>my-bot</code>          <br>
+<input type="radio" name="object"> <code>5bots</code>           <br>
+<input type="radio" name="object"> <code>my_bot55</code>        <br>
+<input type="radio" name="object"> <code>BOTS!!!</code>         <br>
+
+</p>
+
+<details>
+<summary class="btn_code"><i> Show solution</i></summary>
+
+<i class="fa-solid fa-circle-check" style="color: #38b7b5;"></i> <code>my_bot55</code>
+
+</details>
+</div>
+
+
+---
+class: inverse, center, middle
+
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](r-camp.netlify.app/page/videos)
