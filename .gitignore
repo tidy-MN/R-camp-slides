@@ -10,6 +10,13 @@
 videos/*
 # video files
 *.mp4
+*/.mp4
+*./videos/*
+*/videos/*
+*/videos/
+videos/Day1/*.mp4
+vidoes/
+/videos/
 # Example code in package build process
 *-Ex.R
 # Output files from R CMD build
@@ -18,6 +25,8 @@ videos/*
 /*.Rcheck/
 # RStudio files
 .Rproj.user/
+*.Rproj
+
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
@@ -37,5 +46,4 @@ docs/
 po/*~
 # RStudio Connect folder
 rsconnect/
-R-camp-slides.Rproj
-R-camp-videos.Rproj
+
