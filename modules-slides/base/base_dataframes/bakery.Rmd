@@ -16,7 +16,7 @@ background-size: cover
 ---
 class: middle
 
-# .link-blue[<i class="fa fa-cake-candles" aria-hidden="true"></i>] Tidy tables
+# .link-blue[<i class="fa fa-cake-candles" aria-hidden="true"></i>] Tidy time
 
 
 Let's make a tidy table with our baking bots.
