@@ -9,7 +9,9 @@ Let's use it to look at the rows in the data that have an `age` greater than 1.
 filter(bake_bots, age > 1)
 ```
 
-> The bot with the `NA` (missing) value for an age, was not included because it was unknown whether it passed the test of being greater than 1. By default, filter only keeps the rows that definitively pass all of the tests or conditions that you include. In this case, filter could not determine whether the missing value was above 1, so that row in the table was not kept or returned.
+## Change here ----
+
+> What about "BB-8"? R could not determine if BB-8's age passed the test of being greater than 1. That's because BB-8's age is a `NA` (missing) value. By default, filter will only keep rows that definitively pass all of the tests that you include. In this case, filter could not confirm BB-8's age was above 1, so its row was excluded.
 
 <br>
 

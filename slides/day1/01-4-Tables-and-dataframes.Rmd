@@ -52,57 +52,31 @@ class:
 
 # Filter .gray[data]
 
-<img src="../images/porgs/porgs_tbl.png" style="width: 80%; margin-top: -12px;">
+<img src="../images/monster_data.png" style="width: 60%; margin-top: -12px;">
 
 ---
 
-# Filter .gray[data] on .aqua[condition] 
-
-<img src="../images/porgs/filter_card.png" style="width: 80%;">
-
----
-
-# Filter .gray[data] on .aqua[conditions]  
-
-<img src="../images/porgs/filter2_tbl.png" style="width: 80%;">
-
-
----
-exclude: true
-
-<ul class="nav nav-pills" id="myTab" role="tablist" style="margin-top: 18px;">
-<li class="nav-item active">
-  <a class="nav-link" id="porgs-tab" data-toggle="tab" href="#porgs" role="tab" aria-controls="porgs" aria-selected="true"> porgs </a>
-</li>
-<li class="nav-item">
- <a class="nav-link" id="filter3-tab" data-toggle="tab" href="#filter3" role="tab" aria-controls="filter3" aria-selected="false"> `filter`</a>
-</li>
-</ul>
-
-<div class="well tab-content" id="myTabContent" style="background-color: white;">
-
-<div class="tab-pane fade active in" id="porgs" role="tabpanel" aria-labelledby="porgs-tab">
-
-![](../images/porgs/porgs_tbl.png){style="width: 85%;"}
-
-<br><br>
-
+<div style="height: 170px; overflow:hidden;">
+<img src="../images/filter_monsters.png" style="width: 100%; margin-top: -4px;">
 </div>
 
+--
 
-<div class="tab-pane fade" id="filter3" role="tabpanel" aria-labelledby="filter3-tab">
-
-![](../images/porgs/filter_card.png){style="width: 95%; margin-top: 12px;"}
-
-<br><br>
-
-![](../images/porgs/filter2_tbl.png){style="width: 95%;"}
-
-<br><br>
-
+<div style="height: 430px; overflow:hidden; margin-top: 20px;">
+<img src="../images/filter_monsters.png" style="width: 100%; margin-top: -212px;">
 </div>
 
-</div></div>
+---
+
+<div style="height: 170px; overflow:hidden;">
+<img src="../images/filter_monsters_multiple.png" style="width: 100%; margin-top: -4px;">
+</div>
+
+--
+
+<div style="height: 430px; overflow:hidden; margin-top: 20px;">
+<img src="../images/filter_monsters_multiple.png" style="width: 100%; margin-top: -212px;">
+</div>
 
 ---
 class: inverse, center, middle
