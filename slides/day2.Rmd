@@ -219,7 +219,7 @@ crew_df <- mutate(crew_df,
 > You know, it'd be great if we could label the crew that were going to be on board less than a week. Sounds like it's time to expand our data toolbox...
 
 
-# Video 2.2: <span class="bluecode">`Forks in the road: if_else() and case_when()`</span>
+# Video 2.2: <span class="bluecode">`Fork in the road: if_else() and case_when()`</span>
 
 
 if_else(days_on_ship > 7, true = "yes", false = "no")
@@ -232,7 +232,7 @@ if_else(egg_allergy, 1,  0)
 ifelse(egg_allergy, 1, 0)
 ```
 
-# Video 2.3: <span class="bluecode">`Boil it down // Show me the summary`</span>
+# Video 2.3: <span class="bluecode">`Boil it down // Summarize the data`</span>
 
 Some like crawfish boils and others like data boils. Let's boil down our data and find some summary statistics.
 

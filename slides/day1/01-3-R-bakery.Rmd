@@ -88,10 +88,11 @@ class: inverse
 </p>
 
 <details>
-<summary class="btn_code"><i> Show solution</i></summary>
+<summary class="quiz_btn">Show solution</summary>
 
+<p style="margin-bottom: 0; margin-top: 4px;">
 <i class="fa-solid fa-circle-check" style="color: #38b7b5;"></i> <code>my_bot55</code>
-
+</p>
 </details>
 </div>
 
