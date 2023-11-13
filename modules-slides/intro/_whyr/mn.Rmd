@@ -2,14 +2,14 @@
 class: inverse, center, middle
 
 # .big[WELCOME] to 
-# .big[.teal[OPEN SCIENCE]]
+# .big[.teal[OPEN SOURCE]]
 
 ---
 class: left, top
 background-image: url(../images/happy_openscapes.jpg)
 background-size: cover
 
-<h1 style="margin-top: -21px; margin-left: -10%; text-shadow: none; color: #25779a; font-weight: 700;"> Open science </h1>
+<h1 style="margin-top: -21px; margin-left: -10%; text-shadow: none; color: #25779a; font-weight: 700;"> Open source </h1>
 
 
 .bottom-right[.off-white[Artwork from @juliesquid for @openscapes (illustrated by @allison_horst)]]
