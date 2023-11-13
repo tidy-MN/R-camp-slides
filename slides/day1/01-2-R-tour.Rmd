@@ -85,6 +85,6 @@ install.packages("tidyverse")
 ---
 class: inverse, center, middle
 
-# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](r-camp.netlify.app/page/videos)
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/page/videos.html)
 
 

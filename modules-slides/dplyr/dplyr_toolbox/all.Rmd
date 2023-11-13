@@ -1,0 +1,33 @@
+
+# <i class="fa fa-toolbox teal"></i> Your .teal[FULL] data toolbox
+
+<style>
+.remark-slide table {border-top: 0;}
+th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14px;}
+.bluecode code {font-weight: 700}    
+</style>
+
+<div class="bluecode" style="font-size: 1.2rem; width: 77%; margin-top: 62px;">
+
+
+```{r, results='asis', echo=F, warning=F}
+library(dplyr)
+library(kableExtra)
+
+tools <- tibble::tribble(
+~Function, ~Job,
+"filter()", "Keep rows that pass your tests",
+"select()", "Select columns to keep or drop",  
+"arrange()", "Sort a table based on a column's values",  
+"mutate()", "Add new columns or update existing columns", 
+"summarize()", "Calculate a summary statistic for an entire table",   
+"group_by()", "Sort data into groups for group summaries"
+)
+
+tools %>% 
+  mutate(Function = paste("<code>", Function, "  </code>")) %>%
+  kable(format = "html", escape = F, align = c("c","l","l"))
+                      
+```
+
+</div>

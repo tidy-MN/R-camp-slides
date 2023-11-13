@@ -1,9 +1,0 @@
-
-
-
-# Get help <i class="far fa-question-circle" aria-hidden="true" style="font-size: 122%;"></i> {-}
-<hr class="hrlvl2">
-
-Lost in an ERROR message? Is something behaving strangely and want to know why? Want to make a specific type of chart?   
-
-Go to [Help!](help.html) for troubleshooting, cheatsheets, and other learning resources. 

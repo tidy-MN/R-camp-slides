@@ -22,7 +22,7 @@ class: middle
 Let's make a tidy table with our baking bots.
 
 <style>
-code {
+code-green code {
   padding: 30px !important;
   padding-left: 38px !important;
   border-left: solid 12px #50e3c2;
@@ -30,7 +30,7 @@ code {
 }
 </style>
 
-.big[
+.big[.code-green[
 
 ```{r, eval=F}
 # Character vector of baking_bot names
@@ -40,4 +40,4 @@ baking_bots <- c("Whiskers", "Baker-waker", "BB-8")
 bot_ages <- c(1, 2, NA)
 ```
 
-]
+]]

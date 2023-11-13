@@ -1,0 +1,52 @@
+---
+title: ""
+self_contained: true
+output: 
+  html_document:
+    includes: 
+      in_header: ../../../slides/css/slide_style.html
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+opts_chunk$set(error=FALSE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+<style>
+body {background: white;}
+.remark-slide table {border-top: 0; border-bottom: 0;}
+th {background-color: #eee;}
+th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14px; border: 2px solid white !important;}
+.bluecode code {font-weight: 700}    
+</style>
+
+<div class="bluecode" style="font-size: 3rem; width: 85%;">
+
+```{r, results='asis', echo=F, warning=F}
+library(dplyr)
+library(kableExtra)
+
+tools <- tibble::tribble(
+~Function, ~Job,
+"filter()", "Keep rows that pass your tests",
+"select()", "Select columns to keep or drop",  
+"arrange()", "Sort a table based on a column's values",  
+"mutate()", "Add new columns or update existing columns"
+)
+
+toolbox <- tools %>% 
+  mutate(Function = paste("<code>", Function, "  </code>")) %>%
+  kable(format = "html", escape = F, align = c("c","l","l")) %>%   
+  kable_material(c("striped", "hover"))
+
+#toolbox %>% cat(file = "tools_starter.html")
+   
+toolbox                   
+```
+
+</div>

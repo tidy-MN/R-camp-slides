@@ -54,7 +54,7 @@ class:
 .gray {color: gray;}
 </style>
 
-# Filter .gray[data]
+# Meet the .gray[monsters]
 
 <img src="../images/monster_data.png" style="width: 60%; margin-top: -12px;">
 
@@ -83,6 +83,13 @@ class:
 </div>
 
 ---
+
+# Key terms
+
+```{r key-terms, child='../../modules-slides/key_terms/day1.Rmd'}
+```
+
+---
 class: inverse, center, middle
 
-# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](r-camp.netlify.app/page/videos)
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/page/videos.html)

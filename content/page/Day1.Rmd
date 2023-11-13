@@ -131,10 +131,6 @@ Before diving into a data set, we use `glimpse() ` and several other summary fun
 ```
 
 
-```{r fun-options, child='../../static/modules/readr/readr_csv/excel_csv.Rmd'}
-```
-
-
 ## Got questions <i class="far fa-question-circle" aria-hidden="true" style="font-size: 122%;"></i> {-}
 <hr class="hrlvl2">
 

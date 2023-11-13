@@ -1,24 +1,25 @@
 
 class: inverse, center, middle
 
-# .big[WELCOME to] 
-# .big[[.teal[OPEN SOURCE]]]
+# .big[WELCOME] to 
+# .big[.teal[OPEN SCIENCE]]
 
 ---
 class: left, top
 background-image: url(../images/happy_openscapes.jpg)
 background-size: cover
 
-<h1 style="margin-top: 44px; margin-left: -9%; text-shadow: none; color: #191919;"> Open source </h1>
+<h1 style="margin-top: -21px; margin-left: -10%; text-shadow: none; color: #25779a; font-weight: 700;"> Open science </h1>
 
-.bottom-right[.off-white[Artwork by Allison Horst]]
+
+.bottom-right[.off-white[Artwork from @juliesquid for @openscapes (illustrated by @allison_horst)]]
 
 ---
 class: inverse
 
 # .teal[R] community is growing 
 
-<img src="../images/rladies_map.gif" style="width: 100%; margin-top: 12px;" />
+<img src="../images/rladies_map.gif" style="width: 95%; margin-top: 12px;" />
 
 
 ---
@@ -40,7 +41,7 @@ class: inverse
 
 ## .teal[1 Team] | 7 agencies | 150 members
 
-  - [TidyTuesdays](https://github.com/tidy-mn/tidytuesdays)
+  - [Tidy Tuesdays](https://github.com/tidy-mn/tidytuesdays)
   - [Tips & tricks](https://mn-r.netlify.app/page/help)
 ]
 
