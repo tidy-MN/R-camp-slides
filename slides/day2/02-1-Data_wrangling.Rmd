@@ -41,7 +41,6 @@ class: inverse
 
 # <i class="fa fa-toolbox blue"></i> Your data toolbox
 
-
 <div style="height: 344px;
     overflow: hidden;
     margin-top: 90px;
@@ -60,26 +59,32 @@ class: inverse
 # Monsters are back
 
 
-<img src="../images/monster_data.png" style="width: 60%; margin-top: -12px;">
+<img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;">
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[select( )]]
 
 ---
 
 
 <div style="height: 145px; overflow:hidden;">
-<img src="../images/select_monsters.png" style="width: 66.7%; margin-top: 4px;">
+<img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: 4px;">
 </div>
 
 --
 
 <div style="margin-top: 10px; overflow:hidden; ">
-<img src="../images/select_monsters.png" style="width: 66.7%; margin-top: -151px;">
+<img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: -151px;">
 </div>
 
 
 ---
 
 <div style="overflow:hidden;">
-<img src="../images/select_monsters2.png" style="width: 101.5%; margin-top: 4px; max-width: 103%;">
+<img src="../images/monsters/select_monsters2.png" style="width: 101.5%; margin-top: 4px; max-width: 103%;">
 </div>
 
 
@@ -87,22 +92,99 @@ class: inverse
 
 
 <div style="height: 210px; overflow:hidden;">
-<img src="../images/select_monsters_drop.png" style="width: 100%; margin-top: 4px;">
+<img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: 4px;">
 </div>
 
 --
 
 <div style="margin-top: 10px; overflow:hidden;">
-<img src="../images/select_monsters_drop.png" style="width: 100%; margin-top: -216px;">
+<img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: -216px;">
 </div>
 
 
 ---
 
 <div style="overflow:hidden;">
-<img src="../images/select_monsters_drop2.png" style="width: 100%; margin-top: 4px;">
+<img src="../images/monsters/select_monsters_drop2.png" style="width: 100%; margin-top: 4px;">
 </div>
 
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[arrange( )]]
+
+
+---
+
+<div style="height: 220px; overflow:hidden; margin-left: -3%;">
+<img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: 4px;">
+</div>
+
+--
+
+<div style="margin-top: 12px; overflow:hidden; margin-left: -.5%;">
+<img src="../images/monsters/arrange_monsters.png" style="width: 100%; margin-top: -136px;">
+</div>
+
+
+---
+
+<div style="height: 99px; overflow:hidden; margin-left: -3%;">
+<img src="../images/monsters/arrange_monsters_desc1.png" style="width: 106%; max-width: 159.5%; margin-top: 4px;">
+</div>
+
+<div style="height: 108px; overflow:hidden; margin-left: -3%;">
+<img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: -95px;">
+</div>
+
+--
+
+<div style="margin-top: 26px; overflow:hidden; margin-left: -1%;">
+<img src="../images/monsters/arrange_monsters_desc.png" style="width: 100%; margin-top: -136px;">
+</div>
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[mutate( )]]
+
+
+---
+
+<div style="height: 220px; overflow:hidden; margin-left: -5%;">
+<img src="../images/monsters/mutate_monsters_update.png" style="width: 113.7%; max-width: 114%; margin-top: 8px;">
+</div>
+
+--
+
+<div style="margin-top: 0; overflow:hidden; margin-left: -3%;">
+<img src="../images/monsters/mutate_monsters_update.png" style="width: 100%; margin-top: -172px;">
+</div>
+
+
+---
+
+<div style="height: 220px; overflow:hidden; margin-left: -5%;">
+<img src="../images/monsters/mutate_monsters_new.png" style="width: 114%; max-width: 114%; margin-top: 8px;">
+</div>
+
+--
+
+<div style="margin-top: 0; overflow:hidden; margin-left: -3%;">
+<img src="../images/monsters/mutate_monsters_new.png" style="width: 100%; margin-top: -172px;">
+</div>
+
+
+
+---
+class: inverse, 
+
+# <i class="fas fa-bell blue" aria-hidden="true" style="margin-bottom: 54px;"></i> Our first order
+
+.center[
+<i class="fas fa-envelope" style="font-size: 26rem; margin-top: -22px;"></i>
+]
 
 ---
 class: inverse, 
@@ -111,19 +193,21 @@ class: inverse,
 
 <style>
 .inverse {text-shadow: unset !important;}
-hr {margin-top: -16px;}
+hr {margin-top: -22px; margin-bottom: 26px;}
+blockquote code {line-height: 1.2}
+blockquote {padding-top: 0}
 </style>
+
 
 > **`To:`** `Bot Bakery`  
 > **`Subject:`** `Big ship treat order`  
-> **`Attached:`** <i class="fas fa-paperclip" aria-hidden="true"></i><span class="bluecode">`crew_food_allergies.XLSX`</span>
+> **`Attached:`** <i class="fas fa-paperclip" aria-hidden="true"></i><span class="bluecode">`crew_preferences.xlsx`</span>
 > <hr>
-> 
 > Hi friend,
 >
-> Here's that table of my crew's goody preferences. 😋 
+> Here's the table of my crew's goody preferences. 😋 
 > 
-> Guess which one is me! 
+> Guess which crewmate is me! 
 
 
 ---

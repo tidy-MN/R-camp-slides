@@ -78,13 +78,11 @@ class: inverse
 <i>Hint: You can try the names in R</i>
 
 <p>
-
 <input type="radio" name="object"> <code>my favorite bot</code> <br>
 <input type="radio" name="object"> <code>my-bot</code>          <br>
 <input type="radio" name="object"> <code>5bots</code>           <br>
 <input type="radio" name="object"> <code>my_bot55</code>        <br>
 <input type="radio" name="object"> <code>BOTS!!!</code>         <br>
-
 </p>
 
 <details>

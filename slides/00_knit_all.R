@@ -9,9 +9,9 @@ knit_to_netlify <- function(day, rmd_file) {
 
   html_file <- gsub(".Rmd", ".html", rmd_file)
 
-  file.copy(from = html_file,
-            to = paste0("../netlify/", day, "/", html_file),
-            overwrite = TRUE)
+  #file.copy(from = html_file,
+  #          to = paste0("../netlify/", day, "/", html_file),
+  #          overwrite = TRUE)
 
   setwd("../../")
 }
