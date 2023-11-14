@@ -200,7 +200,7 @@ blockquote {padding-top: 0}
 
 
 > **`To:`** `Bot Bakery`  
-> **`Subject:`** `Big ship treat order`  
+> **`Subject:`** `Big treat order`  
 > **`Attached:`** <i class="fas fa-paperclip" aria-hidden="true"></i><span class="bluecode">`crew_preferences.xlsx`</span>
 > <hr>
 > Hi friend,
