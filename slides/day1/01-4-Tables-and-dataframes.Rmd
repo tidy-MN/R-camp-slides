@@ -56,30 +56,30 @@ class:
 
 # Meet the .gray[monsters]
 
-<img src="../images/monster_data.png" style="width: 60%; margin-top: -12px;">
+<img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;">
 
 ---
 
 <div style="height: 170px; overflow:hidden;">
-<img src="../images/filter_monsters.png" style="width: 100%; margin-top: -4px;">
+<img src="../images/monsters/filter_monsters.png" style="width: 100%; margin-top: -4px;">
 </div>
 
 --
 
 <div style="height: 430px; overflow:hidden; margin-top: 20px;">
-<img src="../images/filter_monsters.png" style="width: 100%; margin-top: -212px;">
+<img src="../images/monsters/filter_monsters.png" style="width: 100%; margin-top: -212px;">
 </div>
 
 ---
 
 <div style="height: 170px; overflow:hidden;">
-<img src="../images/filter_monsters_multiple.png" style="width: 100%; margin-top: -4px;">
+<img src="../images/monsters/filter_monsters_multiple.png" style="width: 100%; margin-top: -4px;">
 </div>
 
 --
 
 <div style="height: 430px; overflow:hidden; margin-top: 20px;">
-<img src="../images/filter_monsters_multiple.png" style="width: 100%; margin-top: -212px;">
+<img src="../images/monsters/filter_monsters_multiple.png" style="width: 100%; margin-top: -212px;">
 </div>
 
 ---

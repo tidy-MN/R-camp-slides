@@ -12,7 +12,7 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 <br>
 
-# Video 2.1: <span class="bluecode">`Data wrangling`</span>
+# 1: <span class="bluecode">`Data wrangling`</span>
 
 ## <span class="teal">WRANGLE</span> <span class="gray">that DATA</span>
 
@@ -23,15 +23,18 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 <br>
 
-```{r child = '../modules-slides/dplyr/dplyr_toolbox/starter.Rmd'}
+```{r child = '../modules-slides/dplyr/dplyr_toolbox/starter.Rmd', eval=T}
 ```
 
 
 
 ## Monsters are back
 
-```{r monster-tabs, results='asis', echo=F}
-cat(readLines("../insert_monster_tabs_start.R"))
+```{r monster-tabs, results='asis', echo=F, eval=T}
+#cat(readLines("../insert_monster_tabs_start.R"))
+```
+
+```{r child='../insert_monster_tabs_start.Rmd', eval=T}
 ```
 
 
