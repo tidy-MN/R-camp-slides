@@ -1,0 +1,69 @@
+---
+title: "Boil it down: Summarize the data"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+class: center, middle, inverse
+
+# .huge[.teal[BOIL]] .bigger[it]
+# .huge[.gray[DOWN]]
+
+
+---
+class: 
+
+# <i class="fa fa-toolbox blue"></i> Your .teal[**EXPANDED**] toolbox
+
+```{r child = '../../modules-slides/dplyr/dplyr_toolbox/expanded.Rmd', eval=T}
+```
+
+
+
+---
+class: inverse
+
+# Summarized monsters 
+
+
+<img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;">
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[summarize( )]]
+
+---
+
+
+```{r child = '../../insert_monster_tabs_all_funs.Rmd', eval=T}
+```
+
+---
+class: inverse, center, middle
+
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/page/videos.html)

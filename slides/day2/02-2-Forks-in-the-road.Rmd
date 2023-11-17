@@ -1,5 +1,5 @@
 ---
-title: "Data wrangling"
+title: "Forks in the road: A case_when"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -31,7 +31,8 @@ class: inverse
 
 # .bigger[.teal[WRANGLE]] .gray[that DATA]
 
-<img src="../images/data_cowboy.png" width="112%" style="margin-left: -92px; margin-top: -108px; max-width: 112%;" alt="Cartoon of a small fuzzy monster with a cowboy hat and lasso, riding another larger fuzzy monster and lassoing a group of angry / unruly looking creatures labeled data.">
+
+<img src="../images/case_when_allison_horst.png" width="112%" style="margin-left: -92px; margin-top: -108px; max-width: 112%;" alt="Cartoon showing a table with creature type (kraken, dragon, or cyclops) and age (baby, teen, or adult). The three creatures listed are adding a new column named “danger”, which contains the word “extreme!” if the type is “kraken”, or “high” for any other type. Stylized text reads “dplyr::case_when() - IF ELSE...but you love it? An example of code is shown: mutate(danger = case_when(type == “kraken” ~ “extreme!”, TRUE ~ “high”).">
 
 .smaller[.small[.bottom-right[.gray[Artwork by @allison_horst]]]]
 
@@ -195,7 +196,7 @@ class: inverse,
 .inverse {text-shadow: unset !important;}
 hr {margin-top: -22px; margin-bottom: 26px;}
 blockquote code {line-height: 1.2}
-blockquote {padding-top: 0}
+blockquote {padding-top: 0;}
 </style>
 
 

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Welcome to open source</title>
+    <title>Data wrangling</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs-2.24/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
     <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
     <style>
@@ -431,175 +435,193 @@
 
 
 
-
-
-
-class: inverse, center, middle
-
-# .big[WELCOME] to 
-# .big[.teal[OPEN SOURCE]]
-
----
-class: left, top
-background-image: url(../images/happy_openscapes.jpg)
-background-size: cover
-
-&lt;h1 style="margin-top: -21px; margin-left: -10%; text-shadow: none; color: #25779a; font-weight: 700;"&gt; Open source &lt;/h1&gt;
-
-
-.bottom-right[.off-white[Artwork from @juliesquid for @openscapes (illustrated by @allison_horst)]]
-
----
 class: inverse
 
-# .teal[R] community is growing 
+# .bigger[.teal[WRANGLE]] .gray[that DATA]
 
-&lt;img src="../images/rladies_map.gif" style="width: 95%; margin-top: 12px;" /&gt;
+&lt;img src="../images/data_cowboy.png" width="112%" style="margin-left: -92px; margin-top: -108px; max-width: 112%;" alt="Cartoon of a small fuzzy monster with a cowboy hat and lasso, riding another larger fuzzy monster and lassoing a group of angry / unruly looking creatures labeled data."&gt;
+
+.smaller[.small[.bottom-right[.gray[Artwork by @allison_horst]]]]
 
 
 ---
 class: inverse
 
-# .teal[R] community is growing 
+# &lt;i class="fa fa-toolbox blue"&gt;&lt;/i&gt; Your data toolbox
 
-&lt;img src="../images/map_r_ladies_groups_2022.png" style="width: 100%; margin-top: 12px;" /&gt;
-
-
----
-class: inverse
-
-# Join the club! 
-
-&lt;br&gt;
-
-.bigger[
-
-## .teal[1 Team] | 7 agencies | 150 members
-
-  - [Tidy Tuesdays](https://github.com/tidy-mn/tidytuesdays)
-  - [Tips &amp; tricks](https://mn-r.netlify.app/page/help)
-]
+&lt;div style="height: 344px;
+    overflow: hidden;
+    margin-top: 90px;
+    width: 852px;"&gt;
+&lt;iframe src="starter_as_html.html" style="border: 0;
+    width: 900px;
+    margin-top: -22px;
+    margin-left: -18px;
+    height: 700px;"&gt;
+&lt;/iframe&gt;
+&lt;/div&gt;
 
 ---
 class: inverse
 
-# When we use .teal[R] 
+# Monsters are back
 
-.bigger[
 
-- To connect to databases
-- To read data from all kinds of formats
-- To document our work and share methods
-- To create reports, dashboards, and presentations that are easy to update
-]
+&lt;img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;"&gt;
+
 
 ---
-class: inverse
+class: inverse, middle, center
 
-# Reproducible and shareable
+# .bigger[.blue[select( )]]
 
-&lt;img src="../images/R_recipe.png" style="width: 80%; margin-right: 28px; margin-left: -16px; margin-top: 9px; margin-bottom: 12px;" /&gt;
+---
 
-Much like following a recipe for cookies, R scripts follow a top-to-bottom, step-by-step process. 
 
-???
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: 4px;"&gt;
+&lt;/div&gt;
 
-You start at the top and read our way down to the bottom. 
+--
+
+&lt;div style="margin-top: 10px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: -151px;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="overflow:hidden;"&gt;
+&lt;img src="../images/monsters/select_monsters2.png" style="width: 101.5%; margin-top: 4px; max-width: 103%;"&gt;
+&lt;/div&gt;
+
+
+---
+
+
+&lt;div style="height: 210px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 10px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: -216px;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="overflow:hidden;"&gt;
+&lt;img src="../images/monsters/select_monsters_drop2.png" style="width: 100%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[arrange( )]]
+
+
+---
+
+&lt;div style="height: 220px; overflow:hidden; margin-left: -3%;"&gt;
+&lt;img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 12px; overflow:hidden; margin-left: -.5%;"&gt;
+&lt;img src="../images/monsters/arrange_monsters.png" style="width: 100%; margin-top: -136px;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="height: 99px; overflow:hidden; margin-left: -3%;"&gt;
+&lt;img src="../images/monsters/arrange_monsters_desc1.png" style="width: 106%; max-width: 159.5%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="height: 108px; overflow:hidden; margin-left: -3%;"&gt;
+&lt;img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: -95px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 26px; overflow:hidden; margin-left: -1%;"&gt;
+&lt;img src="../images/monsters/arrange_monsters_desc.png" style="width: 100%; margin-top: -136px;"&gt;
+&lt;/div&gt;
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[mutate( )]]
+
+
+---
+
+&lt;div style="height: 220px; overflow:hidden; margin-left: -5%;"&gt;
+&lt;img src="../images/monsters/mutate_monsters_update.png" style="width: 113.7%; max-width: 114%; margin-top: 8px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 0; overflow:hidden; margin-left: -3%;"&gt;
+&lt;img src="../images/monsters/mutate_monsters_update.png" style="width: 100%; margin-top: -172px;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="height: 220px; overflow:hidden; margin-left: -5%;"&gt;
+&lt;img src="../images/monsters/mutate_monsters_new.png" style="width: 114%; max-width: 114%; margin-top: 8px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 0; overflow:hidden; margin-left: -3%;"&gt;
+&lt;img src="../images/monsters/mutate_monsters_new.png" style="width: 100%; margin-top: -172px;"&gt;
+&lt;/div&gt;
+
 
 
 ---
 class: inverse, 
 
-# .teal[Oh NO!] 
+# &lt;i class="fas fa-bell blue" aria-hidden="true" style="margin-bottom: 54px;"&gt;&lt;/i&gt; Our first order
+
+.center[
+&lt;i class="fas fa-envelope" style="font-size: 26rem; margin-top: -22px;"&gt;&lt;/i&gt;
+]
+
+---
+class: inverse, 
+
+# &lt;i class="fas fa-bell blue" aria-hidden="true" style="margin-bottom: 54px;"&gt;&lt;/i&gt; Our first order
 
 &lt;style&gt;
 .inverse {text-shadow: unset !important;}
+hr {margin-top: -22px; margin-bottom: 26px;}
+blockquote code {line-height: 1.2}
+blockquote {padding-top: 0;}
 &lt;/style&gt;
 
-&lt;br&gt;
 
-&gt; **`Sent:`** `Friday, 4:30 PM`  
-&gt; **`Subject:`** `Wups! Missing data`  
+&gt; **`To:`** `Bot Bakery`  
+&gt; **`Subject:`** `Big treat order`  
+&gt; **`Attached:`** &lt;i class="fas fa-paperclip" aria-hidden="true"&gt;&lt;/i&gt;&lt;span class="bluecode"&gt;`crew_preferences.xlsx`&lt;/span&gt;
+&gt; &lt;hr&gt;
+&gt; Hi friend,
+&gt;
+&gt; Here's the table of my crew's goody preferences. 😋 
 &gt; 
-&gt; Sorry! We forgot to include the data for December. The full data is attached. 
-
-???
-
-## Must we do it all over again?
-
----
-class: middle
-
-
-# .bigger[How is .bigger[[.teal[R]]] different?] 
-
----
-class: inverse
-
-# **.bigger[.teal[R]] vs. Excel**
-
-- R can handle much larger data sets
-- R is more flexible than Excel
-- R analyses are more reproducible
-- Excel is more widely used
-
-
----
-class: inverse
-
-# **.bigger[.teal[R]] vs. Tableau**
-
-- Tableau is primarily a data visualization software. 
-    - R Shiny is more flexible.
-- Tableau's drag-and-drop interface makes it faster and easier for creating simple visualizations, but is not easily reproducible.
-    - R is 100% text-based so you can track changes over time. `#VersionControl`
-
----
-class: inverse
-
-# **.bigger[.teal[R]] vs. SQL**
-
-- SQL is the language of databases.
-- SQL queries are sent to a database server and processed there before returning the data.  
-- R can run SQL queries to pull data from databases / data lakes.
-- R has the `dbplyr` package which converts R to an SQL query.
-- R can read data from almost anywhere (databases, flat files, web pages)
-
----
-class: inverse
-
-# **.bigger[.teal[R]] vs. Python**
-
-- Python is a general-purpose programming language popular for doing internet things.
-    - R is more specifically focused on visualizations and statistical analysis.  
-- Compared to python's `pandas`, R's Tidyverse is more intuitive and easier to use.
-- Historically Python has been used with GIS software like ArcGIS, but spatial analysis with R has been growing.
-
-
----
-class: inverse
-
-# **.bigger[.teal[R]] vs. SAS**
-
-- R is open-source, while SAS requires a license.
-- Anyone can create and add updates to R packages at anytime.
-- New features for SAS only become available when the SAS team makes it so.
-
----
-class: inverse, middle
-
-# You're on the .teal[CREW]
-
-.bigger[*Let's go!*]
+&gt; Guess which crewmate is me! 
 
 
 ---
 class: inverse, center, middle
 
 # &lt;i class="fas fa-carrot" aria-hidden="true"&gt;&lt;/i&gt; [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/page/videos.html)
-
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="../libs/remark-latest.min.js"></script>
