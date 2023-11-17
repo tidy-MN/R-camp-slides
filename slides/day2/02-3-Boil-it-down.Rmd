@@ -29,8 +29,9 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 
 class: center, middle, inverse
 
-# .huge[.teal[BOIL]] .bigger[it]
-# .huge[.gray[DOWN]]
+# .huge[.teal[SIMMER]] 
+# it
+# .big[.gray[DOWN]]
 
 
 ---
@@ -44,9 +45,9 @@ class:
 
 
 ---
-class: inverse
+class:
 
-# Summarized monsters 
+# A .darkgray[MONSTER] summary 
 
 
 <img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;">
@@ -59,9 +60,119 @@ class: inverse, middle, center
 
 ---
 
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/summarize_monsters.png" style="width: 96%; margin-top: 4px;">
+</div>
 
-```{r child = '../../insert_monster_tabs_all_funs.Rmd', eval=T}
-```
+--
+
+<div style="margin-top: 24px; overflow:hidden; ">
+<img src="../images/monsters/summarize_monsters.png" style="width: 75%; margin-top: -110px;">
+</div>
+
+
+---
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/summarize_monsters.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+<div style="margin-top: 52px; overflow:hidden; ">
+<img src="../images/monsters/summarize_monsters2.png" style="width: 95.5%; margin-top: -138px;">
+</div>
+
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[group_by( )]]
+
+---
+
+
+<div style="height: 160px; overflow:hidden;">
+<img src="../images/monsters/groupby_age_monsters_pipe.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+--
+
+<div style="margin-top: 4px; overflow:hidden; ">
+<img src="../images/monsters/groupby_age_monsters_pipe.png" style="width: 75%; margin-top: -124px;">
+</div>
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[group_by( )]] %>%
+# .bigger[.blue[summarize( )]]
+
+---
+
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_monsters0.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+---
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_monsters1.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+---
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_monsters2.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+---
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_monsters3.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+--
+
+<div style="margin-top: 0; overflow:hidden; ">
+<img src="../images/monsters/groupby_summarize_single_monsters2.png" style="width: 95.5%; margin-top: -2px;">
+</div>
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[Multiple]]
+# .bigger[.blue[summarize( )]]
+
+
+---
+
+<div style="height: 145px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_monsters3.png" style="width: 96%; margin-top: 4px;">
+</div>
+
+---
+
+<div style="height: 170px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_multi_monsters1.png" style="width: 103%; max-width: 103%; margin-top: 4px;">
+</div>
+
+---
+
+<div style="height: 170px; overflow:hidden;">
+<img src="../images/monsters/groupby_summarize_pipe_multi_monsters2.png" style="width: 103%; max-width: 103%; margin-top: 4px;">
+</div>
+
+
+--
+
+<div style="margin-top: 20px; overflow:hidden; ">
+<img src="../images/monsters/groupby_summarize_multi_monsters2.png" style="width: 100%; margin-top: 0;">
+</div>
+
+
 
 ---
 class: inverse, center, middle

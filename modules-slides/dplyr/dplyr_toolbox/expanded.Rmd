@@ -6,7 +6,7 @@ th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14p
 .split-table hr {border-top: 1px dashed gray; width: 100% !important; margin-top: 14px; margin-bottom: 2px; margin-left: 0;}
 </style>
 
-<div class="bluecode" style="font-size: 1.1rem; width: 78%; margin-top: 44px; margin-left: auto; margin-right: auto; font-weight: 700;">
+<div class="bluecode" style="font-size: 0.8rem; width: 78%; margin-top: 44px; margin-left: auto; margin-right: auto; font-weight: 700;">
 
 ```{r, results='asis', echo=F, warning=F, message=F}
 library(dplyr)
@@ -23,7 +23,9 @@ tools <- tibble::tribble(
 )
 
 tools <- tools %>% 
-  mutate(Function = paste("<code>", Function, "  </code>"))
+  mutate(Function = ifelse(Function %in% c("summarize()","group_by()"),
+                           paste('<code style="font-size: 2.1rem">', Function, "  </code>"),
+                           paste("<code>", Function, "  </code>")))
 
 
 tools[1:4, ] %>% kable(format = "html", escape = F, align = c("c","l","l"))
@@ -35,7 +37,7 @@ tools[1:4, ] %>% kable(format = "html", escape = F, align = c("c","l","l"))
 <hr>
 </div>
 
-<div class="tealcode" style="font-size: 1.7rem; width: 82%; margin-top: 0;  font-weight: 700; margin-left: auto; margin-right: auto;">
+<div class="tealcode" style="font-size: 1.5rem; width: 85%; margin-top: 0;  font-weight: 700; margin-left: auto; margin-right: auto;">
 
 ```{r, results='asis', echo=F, warning=F, message=F}
 tools[5:6, ] %>% 

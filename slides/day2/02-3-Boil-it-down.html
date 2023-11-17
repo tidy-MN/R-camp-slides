@@ -89,6 +89,7 @@
     .blue {color: #3498db;}
     .bluecode code {color: #3498db;}
     .gray {color: #aeb9bc;}
+    .darkgray {color: #7F7F7F;}
 
 
     .third {float: left;
@@ -438,26 +439,9 @@
 
 class: center, middle, inverse
 
-# .huge[.teal[BOIL]] .bigger[it]
-# .huge[.gray[DOWN]]
-
-
----
-class: inverse
-
-# &lt;i class="fa fa-toolbox blue"&gt;&lt;/i&gt; Your data toolbox
-
-&lt;div style="height: 344px;
-    overflow: hidden;
-    margin-top: 90px;
-    width: 852px;"&gt;
-&lt;iframe src="starter_as_html.html" style="border: 0;
-    width: 900px;
-    margin-top: -22px;
-    margin-left: -18px;
-    height: 700px;"&gt;
-&lt;/iframe&gt;
-&lt;/div&gt;
+# .huge[.teal[SIMMER]] 
+# it
+# .big[.gray[DOWN]]
 
 
 ---
@@ -471,10 +455,10 @@ class:
 .remark-slide table {border-top: 0; border-bottom: 0;}
 th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14px;}
 .bluecode code {font-weight: 700}   
-.split-table hr {border-top: 2px dashed grat; width: 100% !important; margin-top: 14px; margin-bottom: 2px; margin-left: 0;}
+.split-table hr {border-top: 1px dashed gray; width: 100% !important; margin-top: 14px; margin-bottom: 2px; margin-left: 0;}
 &lt;/style&gt;
 
-&lt;div class="bluecode" style="font-size: 1.1rem; width: 78%; margin-top: 44px; margin-left: auto; margin-right: auto; font-weight: 700;"&gt;
+&lt;div class="bluecode" style="font-size: 0.8rem; width: 78%; margin-top: 44px; margin-left: auto; margin-right: auto; font-weight: 700;"&gt;
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -509,81 +493,29 @@ th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14p
 &lt;hr&gt;
 &lt;/div&gt;
 
-&lt;div class="tealcode" style="font-size: 1.7rem; width: 82%; margin-top: 0;  font-weight: 700; margin-left: auto; margin-right: auto;"&gt;
+&lt;div class="tealcode" style="font-size: 1.5rem; width: 85%; margin-top: 0;  font-weight: 700; margin-left: auto; margin-right: auto;"&gt;
 
 &lt;table&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; summarize()   &lt;/code&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;code style="font-size: 2.1rem"&gt; summarize()   &lt;/code&gt; &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Get summary statistics for an entire table &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; group_by()   &lt;/code&gt; &lt;/td&gt;
+   &lt;td style="text-align:center;"&gt; &lt;code style="font-size: 2.1rem"&gt; group_by()   &lt;/code&gt; &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Group data for group specific summaries &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
 &lt;/div&gt;
+
 
 
 ---
 class:
 
-# &lt;i class="fa fa-toolbox blue"&gt;&lt;/i&gt; Your data toolbox
-
-
-
-&lt;style&gt;
-.remark-slide table {border-top: 0; border-bottom: 0;}
-th, td {padding: 10px; padding-left: 16px; padding-right: 16px; padding-top: 14px;}
-.bluecode code {font-weight: 700}   
-&lt;/style&gt;
-
-&lt;div class="bluecode" style="font-size: 1.5rem; width: 80%; margin-top: 52px; margin-left: auto; margin-right: auto; font-weight: 700;"&gt;
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:center;"&gt; Function &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Job &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; filter()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Keep rows that pass your tests &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; select()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Select columns to keep or drop &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; arrange()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Sort a table based on a column's values &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; mutate()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Add new columns or update existing columns &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; summarize()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Get summary statistics for an entire table &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:center;"&gt; &lt;code&gt; group_by()   &lt;/code&gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Group data for group specific summaries &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;/div&gt;
-
-
----
-class: inverse
-
-# Monsters forever
+# A .darkgray[MONSTER] summary 
 
 
 &lt;img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;"&gt;
@@ -596,185 +528,119 @@ class: inverse, middle, center
 
 ---
 
-
-
-
-&lt;ul class="nav nav-pills" id="myTab" role="tablist" style="margin-top: 18px;"&gt;
-&lt;li class="nav-item active"&gt;
-&lt;a class="nav-link" id="monsters-tab" data-toggle="tab" href="#monsters" role="tab" aria-controls="monsters" aria-selected="true"&gt; `monsters` &lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="filter3-tab" data-toggle="tab" href="#filter3" role="tab" aria-controls="filter3" aria-selected="false"&gt; `filter`&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="select-tab" data-toggle="tab" href="#select" role="tab" aria-controls="select" aria-selected="false"&gt; `select` &lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="arrange-tab" data-toggle="tab" href="#arrange" role="tab" aria-controls="arrange" aria-selected="false"&gt; `arrange`&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="mutate3-tab" data-toggle="tab" href="#mutate3" role="tab" aria-controls="mutate3" aria-selected="false"&gt; `mutate`&lt;/a&gt;
-&lt;/li
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="summarize-tab" data-toggle="tab" href="#summarize" role="tab" aria-controls="summarize" aria-selected="false"&gt; `summarize`&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="group_by-tab" data-toggle="tab" href="#group_by" role="tab" aria-controls="group_by" aria-selected="false"&gt; `group_by`&lt;/a&gt;
-&lt;/li&gt;
-&lt;li class="nav-item"&gt;
-&lt;a class="nav-link" id="code-monsters-tab" data-toggle="tab" href="#code-monsters" role="tab" aria-controls="code-monsters" aria-selected="false"&gt; `R code`&lt;/a&gt;
-&lt;/li&gt;
-
-&lt;/ul&gt;
-
-&lt;div class="well tab-content monsters" id="myTabContent" style="background-color: white;"&gt;
-&lt;div class="tab-pane fade active in" id="monsters" role="tabpanel" aria-labelledby="monsters-tab"&gt;
-
-![](../images/monsters/monster_data.png){style="width: 85%;"}
-
-&lt;br&gt;&lt;br&gt;
-
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/summarize_monsters.png" style="width: 96%; margin-top: 4px;"&gt;
 &lt;/div&gt;
 
-&lt;div class="tab-pane fade" id="filter3" role="tabpanel" aria-labelledby="filter3-tab"&gt;
+--
 
-
-### Filter with a single condition / test {-}
-
-
-![](../images/monsters/filter_monsters.png){style="width: 95%; margin-top: 12px;"}
-
-
-
-&lt;h3 style="margin-top: 20px;"&gt;Filter with multiple conditions / tests &lt;/h3&gt;
-
-![](../images/monsters/filter_monsters_multiple.png){style="width: 95%;"}
-&lt;br&gt;&lt;br&gt;
+&lt;div style="margin-top: 24px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/summarize_monsters.png" style="width: 75%; margin-top: -110px;"&gt;
 &lt;/div&gt;
 
 
-&lt;div class="tab-pane fade" id="select" role="tabpanel" aria-labelledby="select-tab"&gt;
+---
 
-### Keep columns {-}
-
-![](../images/monsters/select_monsters2.png){style="width: 98%; margin-top: 6px;"}
-
-&lt;h3 style="margin-top: 20px;"&gt;Drop columns &lt;/h3&gt;
-
-![](../images/monsters/select_monsters_drop2.png){style="width: 70%;"}
-&lt;br&gt;&lt;br&gt;
-
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/summarize_monsters.png" style="width: 96%; margin-top: 4px;"&gt;
 &lt;/div&gt;
 
-&lt;div class="tab-pane fade" id="arrange" role="tabpanel" aria-labelledby="arrange-tab"&gt;
-
-
-&lt;h3 style="margin-top: 20px;"&gt; Arrange from lowest to highest &lt;/h3&gt;
-
-![](../images/monsters/arrange_monsters.png){style="width: 98%; margin-top: 12px;"}
-
-
-&lt;h3 style="margin-top: 20px;"&gt; Arrange from highest to lowest &lt;/h3&gt;
-
-![](../images/monsters/arrange_monsters_desc.png){style="width: 98%;"}
-&lt;br&gt;&lt;br&gt;
-
+&lt;div style="margin-top: 52px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/summarize_monsters2.png" style="width: 95.5%; margin-top: -138px;"&gt;
 &lt;/div&gt;
 
 
-&lt;div class="tab-pane fade" id="mutate3" role="tabpanel" aria-labelledby="mutate3-tab"&gt;
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[group_by( )]]
+
+---
 
 
-### Update existing column {-}
+&lt;div style="height: 160px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_age_monsters_pipe.png" style="width: 96%; margin-top: 4px;"&gt;
+&lt;/div&gt;
 
-![](../images/monsters/mutate_monsters_update.png){style="width: 98%; margin-top: 12px;"}
+--
 
-&lt;h3 style="margin-top: 20px;"&gt;Add a new column &lt;/h3&gt;
-
-
-![](../images/monsters/mutate_monsters_new.png){style="width: 98%;"}
-&lt;br&gt;&lt;br&gt;
-
+&lt;div style="margin-top: 4px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/groupby_age_monsters_pipe.png" style="width: 75%; margin-top: -124px;"&gt;
 &lt;/div&gt;
 
 
-&lt;div class="tab-pane fade" id="summarize" role="tabpanel" aria-labelledby="summarize-tab"&gt;
+---
+class: inverse, middle, center
 
-![](../images/monsters_summarize.png){style="width: 98%;"}
+# .bigger[.blue[group_by( )]] %&gt;%
+# .bigger[.blue[summarize( )]]
+
+---
 
 
-&lt;br&gt;&lt;br&gt;
-
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_monsters0.png" style="width: 96%; margin-top: 4px;"&gt;
 &lt;/div&gt;
 
-&lt;div class="tab-pane fade" id="group_by" role="tabpanel" aria-labelledby="group_by-tab"&gt;
+---
 
-![](../images/monsters_groupby.png){style="width: 92%; margin-top: 10px;"}
-
-&lt;br&gt;&lt;br&gt;
-
-![](../images/monsters_groupby_step2.png){style="width: 94%; margin-top: 12px;"}
-
-&lt;br&gt;&lt;br&gt;
-
-![](../images/monsters_groupby_step3.png){style="width: 94%; margin-top: 12px;"}
-
-&lt;br&gt;&lt;br&gt;
-
-![](../images/monsters_groupby_result.png){style="width: 101%; margin-top: 12px;"}
-
-&lt;/div&gt;&lt;/div&gt;
-
-
-&lt;div class="tab-pane fade" id="code-monsters" role="tabpanel" aria-labelledby="code-monsters-tab"&gt;
-
-
-
-```r
-# Create monsters
-monsters &lt;- data.frame(id = 1:5,
-                       color = c("pink", "green",  "pink", "green", "green"),
-                       age = c(8,2,7,3,1),
-                       hat = c(T,T,F,T,F) )
-
-# Filter ----
-
-## Use a single condition/test
-monsters %&gt;% filter(color == "pink")
-
-## Use multiple conditions/tests
-monsters %&gt;% filter(color == "pink", age &gt; 7)
-
-
-# Select ----
-
-## Keep only 2 columns
-monsters %&gt;% select(id, age)
-
-## Drop columns with a '-' in front
-monsters %&gt;% select(-hat)
-
-
-# Arrange ----
-
-## From low to high
-monsters %&gt;% arrange(age)
-
-## Descend from high to low
-monsters %&gt;% arrange(desc(age))
-
-
-# Mutate ----
-
-## Update an existing column
-monsters %&gt;% mutate(age = age + 2)
-
-## Create a new column
-monsters %&gt;% mutate(is_baby = age &lt; 3)
-```
-
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_monsters1.png" style="width: 96%; margin-top: 4px;"&gt;
 &lt;/div&gt;
+
+---
+
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_monsters2.png" style="width: 96%; margin-top: 4px;"&gt;
 &lt;/div&gt;
+
+---
+
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_monsters3.png" style="width: 96%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+--
+
+&lt;div style="margin-top: 0; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/groupby_summarize_single_monsters2.png" style="width: 95.5%; margin-top: -2px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[Multiple]]
+# .bigger[.blue[summarize( )]]
+
+
+---
+
+&lt;div style="height: 145px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_monsters3.png" style="width: 96%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+---
+
+&lt;div style="height: 170px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_multi_monsters1.png" style="width: 103%; max-width: 103%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+---
+
+&lt;div style="height: 170px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/groupby_summarize_pipe_multi_monsters2.png" style="width: 103%; max-width: 103%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+
+--
+
+&lt;div style="margin-top: 20px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/groupby_summarize_multi_monsters2.png" style="width: 100%; margin-top: 0;"&gt;
+&lt;/div&gt;
+
+
 
 ---
 class: inverse, center, middle
