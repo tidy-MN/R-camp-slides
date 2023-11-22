@@ -1,0 +1,67 @@
+
+# Monsters
+
+```{r}
+if_else(hat, "Baker", "Not a baker")
+if_else(age < 3, "Baby", "Not a baby")
+
+case_when(age < 3 ~ "Baby",
+          age < 6 ~ "Kid",
+          TRUE ~ "Adult")
+
+case_when
+```
+
+```{r}
+library(tidyverse)
+
+days_on_ship <- 5
+
+if_else(days_on_ship <= 7, "Short tripper")
+# ERROR: What did we forget?
+
+if_else(days_on_ship <= 7, "Short tripper", "Long tripper")
+
+
+time_onboard = if_else(days_on_ship <= 7, "Short tripper", "Long tripper")
+
+case_when(days_on_trip <= 7 ~ "Short tripper",
+          days_on_trip <= 14 ~ " Long tripper",
+          TRUE ~ "A very long tripper")
+
+if_else(country %in% c("United States America", "Canada", "Mexico"),
+        "North America",
+        "Other")
+
+if_else(goody_preference %in% c("Cake", "Cupcake", "Mexico"),
+        "Nuts",
+        "No nuts")
+```
+
+```{r}
+# Most popular goody
+count(df, goody_preference)
+
+# How many from each country
+count(df, country)
+
+df %>% count(country)
+
+df %>% group_by(country) summarize(n_crew = n())
+
+# How many canadiens?
+summarize(df, canadiens = sum(country == "Canada"))
+
+# Mean days on board ship?
+summarize(df, days_avg = mean(days_on_ship))
+
+# How many Long trippers
+summarize(df, n_long_trippers = time_onboard == "Long tripper")
+
+summarize(df, total_meals = sum(meals_per_day))
+
+# group_by
+
+# Total meals per goody type
+df %>% group_by(goody_preferencee) %>% summarize(total_meals = sum(total_meals))
+```

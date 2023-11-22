@@ -1,5 +1,5 @@
 ---
-title: "Boil it down: Summarize the data"
+title: "Simmer it down: Summarize the data"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -164,7 +164,6 @@ class: inverse, middle, center
 <div style="height: 170px; overflow:hidden;">
 <img src="../images/monsters/groupby_summarize_pipe_multi_monsters2.png" style="width: 103%; max-width: 103%; margin-top: 4px;">
 </div>
-
 
 --
 

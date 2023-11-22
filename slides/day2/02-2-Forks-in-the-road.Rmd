@@ -1,5 +1,5 @@
 ---
-title: "Forks in the road: A case_when"
+title: "Fork in the road: A case_when"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -16,199 +16,578 @@ output:
       ratio: 16:9
 ---
 
+
+
 ```{r setup, include=FALSE}
 library(rmarkdown)
 library(knitr)
 library(magrittr)
+library(xaringanExtra)
 
 xaringanExtra::use_clipboard()
+xaringanExtra::use_freezeframe()
 
 opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
-class: inverse
+```{r xaringanExtra-freezeframe1, echo=FALSE}
+xaringanExtra::use_freezeframe(trigger="click", overlay=T)
+```
 
-# .bigger[.teal[WRANGLE]] .gray[that DATA]
 
+<center>
+<img src="https://github.com/zumbov2/votemapswitzerland/raw/main/animation1.gif" width=300>
+</center>
 
-<img src="../images/case_when_allison_horst.png" width="112%" style="margin-left: -92px; margin-top: -108px; max-width: 112%;" alt="Cartoon showing a table with creature type (kraken, dragon, or cyclops) and age (baby, teen, or adult). The three creatures listed are adding a new column named “danger”, which contains the word “extreme!” if the type is “kraken”, or “high” for any other type. Stylized text reads “dplyr::case_when() - IF ELSE...but you love it? An example of code is shown: mutate(danger = case_when(type == “kraken” ~ “extreme!”, TRUE ~ “high”).">
+---
 
-.smaller[.small[.bottom-right[.gray[Artwork by @allison_horst]]]]
+class: inverse, center, middle
+
+# .big[.teal[FORKS]] 
+# .bigger[in the road]
+
+<style>
+code {font-size: 1.8rem !important; line-height: 1.2 !important;}
+
+blockquote {font-size: 1.8rem !important; line-height: 1.2 !important;}
+
+.bump-up {margin-top: -30px}
+
+</style>
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[if_else( )]]
 
 
 ---
 class: inverse
+exclude: true
 
-# <i class="fa fa-toolbox blue"></i> Your data toolbox
+# How to survive
 
-<div style="height: 344px;
-    overflow: hidden;
-    margin-top: 90px;
-    width: 852px;">
-<iframe src="starter_as_html.html" style="border: 0;
-    width: 900px;
-    margin-top: -22px;
-    margin-left: -18px;
-    height: 700px;">
-</iframe>
+<br>
+
+<code>
+## if_else(.teal[scary], .teal["TURN   BACK   NOW!"],
+##                                 .gray["KEEP  GOING."]) 
+</code>
+
+---
+class: 
+
+```{r xaringanExtra-freezeframe, echo=FALSE}
+xaringanExtra::use_freezeframe(trigger="click", overlay=T)
+```
+
+<div style="width: 137%; margin-left: -140px; margin-top: -70px;">
+
+<label class="clicktogif" title="click to play">
+<input type="checkbox">
+<img src="scary_forest2.gif">
+</label>
+</div>
+
+---
+class: 
+exclude: true
+
+<div style="width: 137%; margin-left: -140px; margin-top: -70px;">
+
+<img src="../images/scary_forest.gif">
+</div>
+
+
+---
+class: 
+exclude: true
+
+<div style="width: 137%; margin-left: -140px; margin-top: -70px;">
+
+<img src="../images/how_2_survive2.gif">
+
 </div>
 
 ---
 class: inverse
 
-# Monsters are back
+# How to survive
+
+<img style="margin-top: -74px;
+    margin-left: -13.2%;
+    width: 122%;
+    max-width: 122%;" src="../images/ifelse_scary_big.svg" alt="An if_else() statement that reads: if else: path is scary, then 'Turn back!', else 'Keep going.'">
 
 
-<img src="../images/monsters/monster_data.png" style="width: 60%; margin-top: -12px;">
+
+---
+class: 
+exclude: true
+
+# How to survive
+
+
+<img src="../images/if_else_scary.svg" alt="An if_else() statement that reads: if else: scary, then 'Turn back now!', else 'Keep going.'">
+
+.small[.darkgray[.bottom-right[
+
+**NOTE:** Also listen to the worm if you are in a Labyrinth.
+]]]
+
+
+---
+
+# Monster bakers
+
+
+<img src="../images/monsters/monster_data.png" style="width: 73%;
+    margin-top: -10px;
+    margin-left: 12px;">
+
+---
+class: center, middle
+
+<div style="height: 120px; overflow:hidden;">
+<img src="../images/monsters/ifelse_baker1.png" style="width: 155%; max-width: 155%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="height: 128px; overflow:hidden; margin-top: 30px;">
+<img src="../images/monsters/ifelse_baker3.png" style="width: 155%; max-width: 155%; margin-top: -70px; margin-left: -222px;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="height: 170px; overflow:hidden;">
+<img src="../images/monsters/ifelse_baker3.png" style="width: 130%; max-width: 155%; margin-left: -30px;">
+</div>
+
+
+---
+
+<div style="height: 108px; overflow:hidden;">
+<img src="../images/monsters/ifelse_baker3.png" style="width: 120%; max-width: 122%; margin-top: 4px;">
+</div>
+
+<div style="margin-top: 81px; overflow:hidden; ">
+<img src="../images/monsters/ifelse_baker_slide2.png" style="width: 83%; margin-top: 0; margin-left: 31px;">
+</div>
+
+---
+class: center, middle
+
+<div style="height: 120px; overflow: hidden; margin-top: 10px; margin-left: -24px;">
+<img src="../images/monsters/ifelse_baby0.png" style="width: 155%; max-width: 155%;">
+</div>
+
+<img src="../images/monsters/baby_monster.png" 
+style="width: 116px;
+       margin-top: -5px;
+       margin-left: -12px;
+       max-width: 150%;">
+
+---
+class: center, middle
+
+<div style="height: 113px; margin-top: 17px; margin-left: -105px; width: 103%;">
+<img src="../images/monsters/ifelse_baby05.png" style="width: 135%; max-width: 155%;">
+</div>
+
+<img src="../images/monsters/baby_monster.png" 
+style="width: 116px;
+       margin-top: -5px;
+       margin-left: -12px;
+       max-width: 150%;">
+
+---
+
+<div>
+<img src="../images/monsters/ifelse_baby1.png" style="width: 108%; max-width: 108%; margin-top: 4px;">
+</div>
+
+<div style="overflow:hidden; width: 65.3%;">
+<div style="margin-top: 24px; overflow:hidden; width: 619px;">
+<img src="../images/monsters/ifelse_baby2.png" style="width: 118.6%;
+    margin-top: 8px;
+    margin-left: 24px;
+    max-width: 150%;">
+</div></div>
+
+---
+
+<div>
+<img src="../images/monsters/ifelse_baby1.png" style="width: 108%; max-width: 108%; margin-top: 4px;">
+</div>
+
+<div style="margin-top: 24px; overflow:hidden; ">
+<img src="../images/monsters/ifelse_baby2.png" style="width: 78%;
+    margin-top: 8px;
+    margin-left: 24px;">
+</div>
 
 
 ---
 class: inverse, middle, center
 
-# .bigger[.blue[select( )]]
+# .bigger[.blue[case_when( )]]
 
 ---
 
-
-<div style="height: 145px; overflow:hidden;">
-<img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: 4px;">
-</div>
+# What to wear? 
 
 --
 
-<div style="margin-top: 10px; overflow:hidden; ">
-<img src="../images/monsters/select_monsters.png" style="width: 66.7%; margin-top: -151px;">
+<br><br>
+
+```{r, eval=F}
+case_when(
+                  run_from_monsters  ~  "Sneakers"
+                 )
+```
+
+---
+
+# What to wear? 
+
+<br><br>
+
+```{r, eval=F}
+case_when(
+                  run_from_monsters  ~  "Sneakers",
+                  swim_from_monsters  ~  "Flippers"
+                 )
+```
+
+
+---
+
+# What to wear?
+
+<br><br>
+
+```{r, eval=F}
+case_when(
+                  run_from_monsters  ~  "Sneakers",
+                  swim_from_monsters  ~  "Flippers",
+                  TRUE  ~  "Slippers"
+                 )
+```
+
+---
+
+# What to wear?
+
+<br><br>
+
+<style>
+#wide {width: 100%;}
+</style>
+
+```{r wide, eval=F}
+footwear <- case_when(
+                                      run_from_monsters  ~  "Sneakers",
+                                      swim_from_monsters  ~  "Flippers",
+                                      TRUE  ~  "Slippers"
+                                     )
+```
+
+</div>
+
+---
+class: center, middle
+
+<div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -24px;">
+<img src="../images/monsters/ifelse_baby0.png" style="width: 160%; max-width: 165%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 0px; margin-left: -20px; width: 110%;">
+<img src="../images/monsters/case_when0.png" style="width: 155%; max-width: 155%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 0px; margin-left: -90px; width: 110%;">
+<img src="../images/monsters/case_when1.png" style="width: 149%; max-width: 155%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;">
+<img src="../images/monsters/case_when2.png" style="width: 138%; max-width: 155%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;">
+<img src="../images/monsters/case_when3.png" style="width: 138%; max-width: 155%;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 10px; margin-left: -90px; width: 114%;">
+<img src="../images/monsters/case_when4.png" style="width: 138%; max-width: 155%;">
 </div>
 
 
 ---
 
-<div style="overflow:hidden;">
-<img src="../images/monsters/select_monsters2.png" style="width: 101.5%; margin-top: 4px; max-width: 103%;">
+<div style="height: 200px; overflow: hidden; margin-top: 10px; margin-left: -24px;">
+<img src="../images/monsters/case_when4.png" style="width: 131%; max-width: 155%;">
 </div>
 
 
----
-
-
-<div style="height: 210px; overflow:hidden;">
-<img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: 4px;">
+<div style="margin-top: 20px; overflow:hidden;">
+<img src="../images/monsters/case_when_slide.png" style="width: 80%;">
 </div>
-
---
-
-<div style="margin-top: 10px; overflow:hidden;">
-<img src="../images/monsters/select_monsters_drop.png" style="width: 100%; margin-top: -216px;">
-</div>
-
-
----
-
-<div style="overflow:hidden;">
-<img src="../images/monsters/select_monsters_drop2.png" style="width: 100%; margin-top: 4px;">
-</div>
-
 
 ---
 class: inverse, middle, center
+exclude: true
 
-# .bigger[.blue[arrange( )]]
+# .bigger[.big[.teal[%>%]]]
+# .bigger[the pipe]
+
+---
+class: inverse, center, middle
+
+<img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/pipe.png" style="width: 32%; margin-top: 0;">
+
+# .bigger[the pipe]
+
+---
+class: center, middle, inverse
+
+# .bigger[.big[.teal[%>%]]]
+
+<br>
+
+# .bigger["and then..."]
+
+---
+
+# Patty cake
+
+```{r bread1, eval=F}
+patty_cake %>% 
+```
 
 
 ---
 
-<div style="height: 220px; overflow:hidden; margin-left: -3%;">
-<img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: 4px;">
-</div>
+# Patty cake
+
+```{r bread2, eval=F}
+patty_cake %>% 
+* roll_it() %>% 
+```
+
+---
+
+# Patty cake
+
+```{r bread3, eval=F}
+patty_cake %>% 
+  roll_it() %>% 
+* prick_it() %>% 
+```
+
+---
+
+# Patty cake
+
+```{r bread4, eval=F}
+patty_cake %>% 
+  roll_it() %>% 
+  prick_it() %>% 
+* mark_it(letter = "B")
+```
+
 
 --
 
-<div style="margin-top: 12px; overflow:hidden; margin-left: -.5%;">
-<img src="../images/monsters/arrange_monsters.png" style="width: 100%; margin-top: -136px;">
-</div>
+.bigger[
+**Read as:**
+]
 
+.bump-up[
 
----
+> Take a **patty cake** (and then)   
+>     roll it (and then)   
+>     prick it (and then)   
+>     mark it - with the letter "B".  
 
-<div style="height: 99px; overflow:hidden; margin-left: -3%;">
-<img src="../images/monsters/arrange_monsters_desc1.png" style="width: 106%; max-width: 159.5%; margin-top: 4px;">
-</div>
-
-<div style="height: 108px; overflow:hidden; margin-left: -3%;">
-<img src="../images/monsters/arrange_monsters.png" style="width: 158%; max-width: 158%; margin-top: -95px;">
-</div>
-
---
-
-<div style="margin-top: 26px; overflow:hidden; margin-left: -1%;">
-<img src="../images/monsters/arrange_monsters_desc.png" style="width: 100%; margin-top: -136px;">
-</div>
-
----
-class: inverse, middle, center
-
-# .bigger[.blue[mutate( )]]
-
-
----
-
-<div style="height: 220px; overflow:hidden; margin-left: -5%;">
-<img src="../images/monsters/mutate_monsters_update.png" style="width: 113.7%; max-width: 114%; margin-top: 8px;">
-</div>
-
---
-
-<div style="margin-top: 0; overflow:hidden; margin-left: -3%;">
-<img src="../images/monsters/mutate_monsters_update.png" style="width: 100%; margin-top: -172px;">
-</div>
-
-
----
-
-<div style="height: 220px; overflow:hidden; margin-left: -5%;">
-<img src="../images/monsters/mutate_monsters_new.png" style="width: 114%; max-width: 114%; margin-top: 8px;">
-</div>
-
---
-
-<div style="margin-top: 0; overflow:hidden; margin-left: -3%;">
-<img src="../images/monsters/mutate_monsters_new.png" style="width: 100%; margin-top: -172px;">
-</div>
-
-
-
----
-class: inverse, 
-
-# <i class="fas fa-bell blue" aria-hidden="true" style="margin-bottom: 54px;"></i> Our first order
-
-.center[
-<i class="fas fa-envelope" style="font-size: 26rem; margin-top: -22px;"></i>
 ]
 
 ---
-class: inverse, 
+exclude: true
 
-# <i class="fas fa-bell blue" aria-hidden="true" style="margin-bottom: 54px;"></i> Our first order
+# There is a puppy
 
-<style>
-.inverse {text-shadow: unset !important;}
-hr {margin-top: -22px; margin-bottom: 26px;}
-blockquote code {line-height: 1.2}
-blockquote {padding-top: 0;}
-</style>
+```{r pipe, eval=F}
+puppy %>% runs_outside %>% rolls_in_mud %>% barks_joyfully(times = 3)
+```
+
+### Can be read as
+
+> There is a **puppy**,  
+> And then it runs outside,  
+> And then it rolls in the mud,  
+> And then it barks joyfully - 3 times.  
+
+---
+class: middle, center, inverse
+
+# .bigger[.big[.teal[%>%]]]
+# your toolbox
+
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+```
+]
 
 
-> **`To:`** `Bot Bakery`  
-> **`Subject:`** `Big treat order`  
-> **`Attached:`** <i class="fas fa-paperclip" aria-hidden="true"></i><span class="bluecode">`crew_preferences.xlsx`</span>
-> <hr>
-> Hi friend,
->
-> Here's the table of my crew's goody preferences. 😋 
-> 
-> Guess which crewmate is me! 
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+
+monsters <- select(monsters, -hat)
+```
+]
+
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+
+monsters <- select(monsters, -hat)
+
+monsters <- mutate(monsters, is_baby = age < 3)
+```
+]
+
+--
+
+**With the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- monsters %>%
+*                     filter(., color == "pink") 
+```
+]
+
+
+
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+
+monsters <- select(monsters, -hat)
+
+monsters <- mutate(monsters, is_baby = age < 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- monsters %>%
+*                     filter(color == "pink") 
+```
+]
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+
+monsters <- select(monsters, -hat)
+
+monsters <- mutate(monsters, is_baby = age < 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- monsters %>%
+                      filter(color == "pink") %>%
+*                     select(-hat)
+```
+]
+
+
+---
+
+**Without the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- filter(monsters, color == "pink")
+
+monsters <- select(monsters, -hat)
+
+monsters <- mutate(monsters, is_baby = age < 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+```{r, eval=F}
+monsters <- monsters %>%
+                      filter(color == "pink") %>%
+                      select(-hat) %>%
+*                     mutate(is_baby = age < 3)
+```
+]
+
+---
+exclude: true
+
+
+```{r, eval=F}
+# Without the pipe
+round(log(sum(c(10, 20, 30, 50))))
+
+# With the pipe 
+result <- c(10, 20, 30, 50) %>%
+            sum() %>%
+            log() %>%
+            round()
+```
 
 
 ---

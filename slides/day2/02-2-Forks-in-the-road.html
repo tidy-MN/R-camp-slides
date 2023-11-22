@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Fork in the road: A case_when</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.24/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;500;600;700&display=swap');
+
+    .monsters code {font-size: 1.9rem;}
+
+    .inverse {
+        background-color: #191919;
+        color: white;
+        text-shadow: none;
+    }
+
+    .inverse h1,h2,h3 {color: white;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      line-height: 0.9;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .fullwidth {
+      max-width:115%;
+      width: 115%;
+    }
+
+    code {
+      word-spacing: -0.5rem !important;
+    }
+
+    .code-green {
+      padding: 30px;
+      padding-left: 34px;
+      border-left: solid 12px #50e3c2;
+      font-size: 1.5rem !important;
+    }
+
+    .notes {
+      font-style: italic;
+      color: grey;
+      font-size: 90%;
+    }
+
+    .col3 {
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+
+    .fa {margin-right: 12px;}
+
+    a {color: #C250E3;}
+    a {color: #42affa;}
+    a-dark {color-dark: #068de9}
+    a::hover {color: #74c4fb;}
+
+    .remark-container {
+        background: #000000;
+    }
+
+    .ff-container {
+        display: block !important;
+    }
+
+    .pink {color: #C250E3;}
+    .pinkcode code {color: #c81888;}
+    .purple {color: #432160;}
+    .mustard {color: #e3c250;}
+    .teal {color: #50E3C2;}
+    .tealcode code {color: #50E3C2;}
+    .off-white{color:#f5fccf;}
+    .yellow {color: #ffe825;}
+    .link-blue {color: #42affa;}
+    .blue {color: #3498db;}
+    .bluecode code {color: #3498db;}
+    .gray {color: #aeb9bc;}
+    .darkgray {color: #7F7F7F;}
+
+
+    .third {float: left;
+            width: 32%;
+            margin-top: -24px;
+            padding-right: 1.3%;}
+
+    .huge {
+      font-size: 300%;
+    }
+
+    .big {
+      font-size: 170%;
+    }
+
+    .bigger {
+      font-size: 130%;
+    }
+
+    .smaller {
+      font-size: 90%;
+    }
+
+    .small {
+      font-size: 80%;
+    }
+
+    .quote {font-size: 114%; font-family: 'Khula'; margin-left: -7%;}
+
+    tableau-viz {display: block !important; margin: auto !important;}
+
+    body {
+      font-family: 'Source Sans 3', 'Source Sans Pro', Helvetica, san-serif;
+      background: #111;
+    }
+
+    ul {line-height: 125%;}
+    li {margin-bottom: 10px;}
+
+    h1 {
+      z-index: 999;
+      position: relative;
+      font-size: 78px !important;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      line-height: 0.9;
+    }
+
+    .remark-slide-content {
+      font-size: 210%;
+    }
+
+    .bottom-right {position: absolute; bottom: 1%; right: 1%; font-size: 50%;}
+
+    .sign {text-align: right;}
+
+    .full {
+      padding: 0;
+      padding-top: 1em;
+      width: 190%;
+    }
+
+    .white-frame {
+      background-color: white;
+      margin: auto;
+      margin-top: -8px;
+      padding: 10px;
+      padding-top:16px;
+      height: 600px;
+    }
+
+    .hidden {
+      opacity:0;
+    }
+
+    .black {
+      background-color: black;
+      color: #d6d6d6;
+      text-shadow: 0 0 20px #333;
+    }
+
+
+    h1 .header-section-number {
+      background: #e53256;
+      color: white;
+      border-radius: 27px;
+      -moz-border-radius: 27px;
+      -webkit-border-radius: 27px;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 54px;
+      margin-right: 5px;
+      text-align: center;
+      width: 54px;
+      font-size: 27px;
+    }
+
+
+    .row3
+    {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .column2
+    {
+        float: left;
+        margin-right: 8%;
+        margin-left: 2px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        width: 41%;
+        overflow: hidden;
+    }
+
+
+    .column3
+    {
+        float: left;
+        margin-right: 3%;
+        margin-left: 0;
+        width: 30%;
+        overflow: hidden;
+    }
+
+    .column3 p { display: inline; line-height: 170%;}
+
+    .column4
+    {
+        float: left;
+        margin-right: 1%;
+        margin-left: 0;
+        width: 24%;
+        overflow: hidden;
+    }
+
+    .column3-txt
+    {
+        float: left;
+        margin-right: 1.3%;
+        margin-left: 0;
+        width: 32%;
+        overflow: hidden;
+    }
+
+    blockquote
+    {
+         background-color: #f0f7fb;
+         border-radius: 7px;
+         color: #525252;
+         font-style: normal;
+         line-height: 0.9;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 18px;
+         margin-bottom: 15px;
+         margin-left: 0%;
+    }
+
+    .card {
+      border-radius: 25px;
+      background-color: #f0f7fb;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 19px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .card-top {
+      margin-top: -60px;
+      margin-left: -28px;
+      margin-bottom: 16px;
+      width: 109%;
+      height: 54px;
+    }
+
+    .note {
+      border-radius: 25px;
+      border: solid 1px #babfc28f;
+      background-color: #f0f7fb;
+      font-size: 19px;
+      font-style: normal;
+      line-height: 28px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 28px;
+      margin-bottom: 26px;
+    }
+
+
+    .note h3 {
+      color: #eeeef3;
+      background: #5e666d;
+      margin-top: -13px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    table {margin-top: 20px; margin-bottom: 18px;}
+
+    .sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important; overflow: clip !important;}
+
+    div.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important;}
+
+    pre.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip;}
+
+    .toggle {
+        height: 2.3em;
+        overflow-y: hidden;
+    }
+
+    .toggle.open {
+        height: auto;
+    }
+
+
+    /*************************************************
+     *  Alerts
+     **************************************************/
+
+    div.alert p {
+      position: relative;
+      display: block;
+      font-size: 1rem;
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div.alert p:first-child::before {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      font-size: 1.5rem;
+      color: #209cee;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f05a';
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    div.alert-warning p:first-child::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ff3860;
+      content: '\f071';
+    }
+
+    div.alert a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: solid 1px currentColor;
+    }
+
+    .alert-note {
+      color: #12537e;
+      background-color: #f6fbfe;
+      border-color: #209cee;
+    }
+
+    .alert-warning {
+      color: #cd0930;
+      background-color: #fff5f7;
+      border-color: #ff3860;
+    }
+
+    .bump-left {
+      margin-left: -35px;
+      margin-right: 35px;
+    }
+    .bump-right {
+      margin-right: -35px;
+      margin-left: 35px;
+    }
+
+    .quiz
+    {
+        background: #f5f5f5;
+        color: #252424;
+        font-size: 1.7rem;
+        border-left: solid 74px #42affa;
+        border-radius: 25px;
+        line-height: 22px;
+        overflow: hidden;
+        padding: 0px;
+        padding-top: 4px;
+        padding-bottom: 30px;
+        margin-top: 24px;
+        margin-bottom: 30px;
+        padding-left: 40px;
+    }
+
+    .quiz p {
+      line-height: 105%
+    }
+
+    .quiz summary {margin-bottom: 12px;}
+
+    .quiz i {font-weight: 300;}
+
+    .quiz h3 {
+        color: #191919;
+        font-size: 3rem;
+        margin-top: 32px;
+        margin-bottom: 10px;
+    }
+
+    .quiz_btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #fff;
+        background-color: #75aadb;
+        border-color: #2e6da4;
+        line-height: 1.43;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 6px;
+    }
+
+    .quiz_btn:hover {background-color: #0e4272;}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+&lt;center&gt;
+&lt;img src="https://github.com/zumbov2/votemapswitzerland/raw/main/animation1.gif" width=300&gt;
+&lt;/center&gt;
+
+---
+
+class: inverse, center, middle
+
+# .big[.teal[FORKS]] 
+# .bigger[in the road]
+
+&lt;style&gt;
+code {font-size: 1.8rem !important; line-height: 1.2 !important;}
+
+blockquote {font-size: 1.8rem !important; line-height: 1.2 !important;}
+
+.bump-up {margin-top: -30px}
+
+&lt;/style&gt;
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[if_else( )]]
+
+
+---
+class: inverse
+exclude: true
+
+# How to survive
+
+&lt;br&gt;
+
+&lt;code&gt;
+## if_else(.teal[scary], .teal["TURN   BACK   NOW!"],
+##                                 .gray["KEEP  GOING."]) 
+&lt;/code&gt;
+
+---
+class: 
+
+
+
+&lt;div style="width: 137%; margin-left: -140px; margin-top: -70px;"&gt;
+
+&lt;label class="clicktogif" title="click to play"&gt;
+&lt;input type="checkbox"&gt;
+&lt;img src="scary_forest2.gif"&gt;
+&lt;/label&gt;
+&lt;/div&gt;
+
+---
+class: 
+exclude: true
+
+&lt;div style="width: 137%; margin-left: -140px; margin-top: -70px;"&gt;
+
+&lt;img src="../images/scary_forest.gif"&gt;
+&lt;/div&gt;
+
+
+---
+class: 
+exclude: true
+
+&lt;div style="width: 137%; margin-left: -140px; margin-top: -70px;"&gt;
+
+&lt;img src="../images/how_2_survive2.gif"&gt;
+
+&lt;/div&gt;
+
+---
+class: inverse
+
+# How to survive
+
+&lt;img style="margin-top: -74px;
+    margin-left: -13.2%;
+    width: 122%;
+    max-width: 122%;" src="../images/ifelse_scary_big.svg" alt="An if_else() statement that reads: if else: path is scary, then 'Turn back!', else 'Keep going.'"&gt;
+
+
+
+---
+class: 
+exclude: true
+
+# How to survive
+
+
+&lt;img src="../images/if_else_scary.svg" alt="An if_else() statement that reads: if else: scary, then 'Turn back now!', else 'Keep going.'"&gt;
+
+.small[.darkgray[.bottom-right[
+
+**NOTE:** Also listen to the worm if you are in a Labyrinth.
+]]]
+
+
+---
+
+# Monster bakers
+
+
+&lt;img src="../images/monsters/monster_data.png" style="width: 73%;
+    margin-top: -10px;
+    margin-left: 12px;"&gt;
+
+---
+class: center, middle
+
+&lt;div style="height: 120px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/ifelse_baker1.png" style="width: 155%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="height: 128px; overflow:hidden; margin-top: 30px;"&gt;
+&lt;img src="../images/monsters/ifelse_baker3.png" style="width: 155%; max-width: 155%; margin-top: -70px; margin-left: -222px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="height: 170px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/ifelse_baker3.png" style="width: 130%; max-width: 155%; margin-left: -30px;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="height: 108px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/ifelse_baker3.png" style="width: 120%; max-width: 122%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="margin-top: 81px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/ifelse_baker_slide2.png" style="width: 83%; margin-top: 0; margin-left: 31px;"&gt;
+&lt;/div&gt;
+
+---
+class: center, middle
+
+&lt;div style="height: 120px; overflow: hidden; margin-top: 10px; margin-left: -24px;"&gt;
+&lt;img src="../images/monsters/ifelse_baby0.png" style="width: 155%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+&lt;img src="../images/monsters/baby_monster.png" 
+style="width: 116px;
+       margin-top: -5px;
+       margin-left: -12px;
+       max-width: 150%;"&gt;
+
+---
+class: center, middle
+
+&lt;div style="height: 113px; margin-top: 17px; margin-left: -105px; width: 103%;"&gt;
+&lt;img src="../images/monsters/ifelse_baby05.png" style="width: 135%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+&lt;img src="../images/monsters/baby_monster.png" 
+style="width: 116px;
+       margin-top: -5px;
+       margin-left: -12px;
+       max-width: 150%;"&gt;
+
+---
+
+&lt;div&gt;
+&lt;img src="../images/monsters/ifelse_baby1.png" style="width: 108%; max-width: 108%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="overflow:hidden; width: 65.3%;"&gt;
+&lt;div style="margin-top: 24px; overflow:hidden; width: 619px;"&gt;
+&lt;img src="../images/monsters/ifelse_baby2.png" style="width: 118.6%;
+    margin-top: 8px;
+    margin-left: 24px;
+    max-width: 150%;"&gt;
+&lt;/div&gt;&lt;/div&gt;
+
+---
+
+&lt;div&gt;
+&lt;img src="../images/monsters/ifelse_baby1.png" style="width: 108%; max-width: 108%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="margin-top: 24px; overflow:hidden; "&gt;
+&lt;img src="../images/monsters/ifelse_baby2.png" style="width: 78%;
+    margin-top: 8px;
+    margin-left: 24px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[case_when( )]]
+
+---
+
+# What to wear? 
+
+--
+
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+case_when(
+                  run_from_monsters  ~  "Sneakers"
+                 )
+```
+
+---
+
+# What to wear? 
+
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+case_when(
+                  run_from_monsters  ~  "Sneakers",
+                  swim_from_monsters  ~  "Flippers"
+                 )
+```
+
+
+---
+
+# What to wear?
+
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+case_when(
+                  run_from_monsters  ~  "Sneakers",
+                  swim_from_monsters  ~  "Flippers",
+                  TRUE  ~  "Slippers"
+                 )
+```
+
+---
+
+# What to wear?
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;style&gt;
+#wide {width: 100%;}
+&lt;/style&gt;
+
+
+```r
+footwear &lt;- case_when(
+                                      run_from_monsters  ~  "Sneakers",
+                                      swim_from_monsters  ~  "Flippers",
+                                      TRUE  ~  "Slippers"
+                                     )
+```
+
+&lt;/div&gt;
+
+---
+class: center, middle
+
+&lt;div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -24px;"&gt;
+&lt;img src="../images/monsters/ifelse_baby0.png" style="width: 160%; max-width: 165%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 0px; margin-left: -20px; width: 110%;"&gt;
+&lt;img src="../images/monsters/case_when0.png" style="width: 155%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 0px; margin-left: -90px; width: 110%;"&gt;
+&lt;img src="../images/monsters/case_when1.png" style="width: 149%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;"&gt;
+&lt;img src="../images/monsters/case_when2.png" style="width: 138%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;"&gt;
+&lt;img src="../images/monsters/case_when3.png" style="width: 138%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 10px; margin-left: -90px; width: 114%;"&gt;
+&lt;img src="../images/monsters/case_when4.png" style="width: 138%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+---
+
+&lt;div style="height: 200px; overflow: hidden; margin-top: 10px; margin-left: -24px;"&gt;
+&lt;img src="../images/monsters/case_when4.png" style="width: 131%; max-width: 155%;"&gt;
+&lt;/div&gt;
+
+
+&lt;div style="margin-top: 20px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/case_when_slide.png" style="width: 80%;"&gt;
+&lt;/div&gt;
+
+---
+class: inverse, middle, center
+exclude: true
+
+# .bigger[.big[.teal[%&gt;%]]]
+# .bigger[the pipe]
+
+---
+class: inverse, center, middle
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/pipe.png" style="width: 32%; margin-top: 0;"&gt;
+
+# .bigger[the pipe]
+
+---
+class: center, middle, inverse
+
+# .bigger[.big[.teal[%&gt;%]]]
+
+&lt;br&gt;
+
+# .bigger["and then..."]
+
+---
+
+# Patty cake
+
+
+```r
+patty_cake %&gt;% 
+```
+
+
+---
+
+# Patty cake
+
+
+```r
+patty_cake %&gt;% 
+* roll_it() %&gt;% 
+```
+
+---
+
+# Patty cake
+
+
+```r
+patty_cake %&gt;% 
+  roll_it() %&gt;% 
+* prick_it() %&gt;% 
+```
+
+---
+
+# Patty cake
+
+
+```r
+patty_cake %&gt;% 
+  roll_it() %&gt;% 
+  prick_it() %&gt;% 
+* mark_it(letter = "B")
+```
+
+
+--
+
+.bigger[
+**Read as:**
+]
+
+.bump-up[
+
+&gt; Take a **patty cake** (and then)   
+&gt;     roll it (and then)   
+&gt;     prick it (and then)   
+&gt;     mark it - with the letter "B".  
+
+]
+
+---
+exclude: true
+
+# There is a puppy
+
+
+```r
+puppy %&gt;% runs_outside %&gt;% rolls_in_mud %&gt;% barks_joyfully(times = 3)
+```
+
+### Can be read as
+
+&gt; There is a **puppy**,  
+&gt; And then it runs outside,  
+&gt; And then it rolls in the mud,  
+&gt; And then it barks joyfully - 3 times.  
+
+---
+class: middle, center, inverse
+
+# .bigger[.big[.teal[%&gt;%]]]
+# your toolbox
+
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+```
+]
+
+
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+
+monsters &lt;- select(monsters, -hat)
+```
+]
+
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+
+monsters &lt;- select(monsters, -hat)
+
+monsters &lt;- mutate(monsters, is_baby = age &lt; 3)
+```
+]
+
+--
+
+**With the pipe**
+.bump-up[
+
+```r
+monsters &lt;- monsters %&gt;%
+*                     filter(., color == "pink") 
+```
+]
+
+
+
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+
+monsters &lt;- select(monsters, -hat)
+
+monsters &lt;- mutate(monsters, is_baby = age &lt; 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+
+```r
+monsters &lt;- monsters %&gt;%
+*                     filter(color == "pink") 
+```
+]
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+
+monsters &lt;- select(monsters, -hat)
+
+monsters &lt;- mutate(monsters, is_baby = age &lt; 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+
+```r
+monsters &lt;- monsters %&gt;%
+                      filter(color == "pink") %&gt;%
+*                     select(-hat)
+```
+]
+
+
+---
+
+**Without the pipe**
+.bump-up[
+
+```r
+monsters &lt;- filter(monsters, color == "pink")
+
+monsters &lt;- select(monsters, -hat)
+
+monsters &lt;- mutate(monsters, is_baby = age &lt; 3)
+```
+]
+
+
+**With the pipe**
+.bump-up[
+
+```r
+monsters &lt;- monsters %&gt;%
+                      filter(color == "pink") %&gt;%
+                      select(-hat) %&gt;%
+*                     mutate(is_baby = age &lt; 3)
+```
+]
+
+---
+exclude: true
+
+
+
+```r
+# Without the pipe
+round(log(sum(c(10, 20, 30, 50))))
+
+# With the pipe 
+result &lt;- c(10, 20, 30, 50) %&gt;%
+            sum() %&gt;%
+            log() %&gt;%
+            round()
+```
+
+
+---
+class: inverse, center, middle
+
+# &lt;i class="fas fa-carrot" aria-hidden="true"&gt;&lt;/i&gt; [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/page/videos.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="../libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
