@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Fork in the road: A case_when</title>
+    <title>Forks in the road</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs-2.24/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
@@ -10,11 +10,11 @@
     <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
-    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
-    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
-    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
     <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
     <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":true,"responsive":true,"warnings":true}</script>
     <style>
     @import url(https://fonts.googleapis.com/css?family=Khula:700);
 
@@ -432,6 +432,28 @@
 
     .quiz_btn:hover {background-color: #0e4272;}
 
+    label.clicktogif {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') DimGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+    label.clicktogif:hover, label.clicktogif:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="MediumSeaGreen"/></svg>') DarkSlateGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    .clicktogif img {display: block;}
+    .clicktogif input[type=checkbox] {
+        position: absolute;
+        left: -100vw;
+    }
+    .clicktogif input[type=checkbox] + img {
+      opacity: 0;
+    }
+    .clicktogif input[type=checkbox]:checked + img {
+      opacity: 1;
+    }
     </style>
   </head>
   <body>
@@ -443,13 +465,6 @@
 
 
 
-
-
-&lt;center&gt;
-&lt;img src="https://github.com/zumbov2/votemapswitzerland/raw/main/animation1.gif" width=300&gt;
-&lt;/center&gt;
-
----
 
 class: inverse, center, middle
 
@@ -493,7 +508,7 @@ class:
 
 &lt;label class="clicktogif" title="click to play"&gt;
 &lt;input type="checkbox"&gt;
-&lt;img src="scary_forest2.gif"&gt;
+&lt;img src="https://github.com/tidy-MN/R-camp-slides/blob/main/slides/images/scary_forest2.gif?raw=true"&gt;
 &lt;/label&gt;
 &lt;/div&gt;
 
@@ -729,6 +744,7 @@ class: center, middle
 
 ---
 class: center, middle
+exclude: true
 
 &lt;div style="overflow: hidden; margin-top: 0px; margin-left: -90px; width: 110%;"&gt;
 &lt;img src="../images/monsters/case_when1.png" style="width: 149%; max-width: 155%;"&gt;
@@ -738,16 +754,24 @@ class: center, middle
 ---
 class: center, middle
 
-&lt;div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;"&gt;
-&lt;img src="../images/monsters/case_when2.png" style="width: 138%; max-width: 155%;"&gt;
+&lt;div style="overflow: hidden; margin-top: 57px; width: 114%;"&gt;
+&lt;img src="../images/monsters/case_when2.png" style="width: 149.1%; max-width: 155%; margin-left: -315px;"&gt;
 &lt;/div&gt;
 
 
 ---
 class: center, middle
 
-&lt;div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;"&gt;
-&lt;img src="../images/monsters/case_when3.png" style="width: 138%; max-width: 155%;"&gt;
+&lt;div style="overflow: hidden; margin-top: 57px; width: 114%;"&gt;
+&lt;img src="../images/monsters/case_when3.png" style="width: 149.1%; max-width: 155%; margin-left: -315px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle
+
+&lt;div style="overflow: hidden; margin-top: 57px; width: 114%; margin-left: -80px;"&gt;
+&lt;img src="../images/monsters/case_when3.png" style="width: 152%; max-width: 155%;"&gt;
 &lt;/div&gt;
 
 

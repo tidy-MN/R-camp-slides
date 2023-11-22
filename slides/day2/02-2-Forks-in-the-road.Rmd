@@ -1,5 +1,5 @@
 ---
-title: "Fork in the road: A case_when"
+title: "Forks in the road"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -25,7 +25,6 @@ library(magrittr)
 library(xaringanExtra)
 
 xaringanExtra::use_clipboard()
-xaringanExtra::use_freezeframe()
 
 opts_chunk$set(error=TRUE, color=NULL, message=FALSE, eval=T)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
@@ -34,13 +33,6 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```{r xaringanExtra-freezeframe1, echo=FALSE}
 xaringanExtra::use_freezeframe(trigger="click", overlay=T)
 ```
-
-
-<center>
-<img src="https://github.com/zumbov2/votemapswitzerland/raw/main/animation1.gif" width=300>
-</center>
-
----
 
 class: inverse, center, middle
 
@@ -86,7 +78,7 @@ xaringanExtra::use_freezeframe(trigger="click", overlay=T)
 
 <label class="clicktogif" title="click to play">
 <input type="checkbox">
-<img src="scary_forest2.gif">
+<img src="https://github.com/tidy-MN/R-camp-slides/blob/main/slides/images/scary_forest2.gif?raw=true">
 </label>
 </div>
 
@@ -318,6 +310,7 @@ class: center, middle
 
 ---
 class: center, middle
+exclude: true
 
 <div style="overflow: hidden; margin-top: 0px; margin-left: -90px; width: 110%;">
 <img src="../images/monsters/case_when1.png" style="width: 149%; max-width: 155%;">
@@ -327,16 +320,24 @@ class: center, middle
 ---
 class: center, middle
 
-<div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;">
-<img src="../images/monsters/case_when2.png" style="width: 138%; max-width: 155%;">
+<div style="overflow: hidden; margin-top: 57px; width: 114%;">
+<img src="../images/monsters/case_when2.png" style="width: 149.1%; max-width: 155%; margin-left: -315px;">
 </div>
 
 
 ---
 class: center, middle
 
-<div style="overflow: hidden; margin-top: 51px; margin-left: -90px; width: 114%;">
-<img src="../images/monsters/case_when3.png" style="width: 138%; max-width: 155%;">
+<div style="overflow: hidden; margin-top: 57px; width: 114%;">
+<img src="../images/monsters/case_when3.png" style="width: 149.1%; max-width: 155%; margin-left: -315px;">
+</div>
+
+
+---
+class: center, middle
+
+<div style="overflow: hidden; margin-top: 57px; width: 114%; margin-left: -80px;">
+<img src="../images/monsters/case_when3.png" style="width: 152%; max-width: 155%;">
 </div>
 
 
