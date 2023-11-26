@@ -1,0 +1,129 @@
+---
+title: "Plots: A grammar of graphics"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(magrittr)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, warning=FALSE, eval=T, out.height='340px', out.width='130%', dpi=220)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+class: middle, center, inverse
+
+## .smaller[PLOTS]
+# .bigger[.bigger[.teal[GRAMMAR]]]
+
+
+---
+
+.shift-left[
+
+# Mean flipper lengths
+
+.med-font[
+```{r}
+flipper_lengths <- all_penguins %>%
+                     group_by(species) %>%
+                     summarize(flipper_avg = 
+                                  mean(flipper_length_mm, na.rm = T))
+
+```
+]
+
+<br>
+
+.small-table[
+```{r, echo=F}
+kable(flipper_lengths)
+```
+]
+]
+
+---
+
+.shift-left[
+
+# Mean flipper lengths
+
+]
+
+.pull-left[
+.shift-left[
+
+```{r, eval=F}
+ggplot(flipper_lengths, 
+       aes(x = species,
+           y = flipper_avg))  +
+  geom_col(aes(fill = species)) 
+```
+]]
+
+.pull-right[
+
+```{r, echo=F}
+ggplot(flipper_lengths, 
+       aes(x = species,
+           y = flipper_avg))  +
+  geom_col(aes(fill = species))  +
+     theme_gray(base_size = 18)
+```
+]
+
+---
+class: inverse, middle, center
+
+
+# .bigger[.blue[labs( )]]
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[facet_wrap( )]]
+
+
+---
+class: inverse, middle, center
+
+# Legends and scales
+# .bigger[.blue[scale_( )]]
+
+
+---
+
+# Legends and scales
+
+- Hide a legend
+- Use a color theme
+- Use a single color
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[theme( )]]
+
+
+---
+class: inverse, center, middle
+
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/index.html)
