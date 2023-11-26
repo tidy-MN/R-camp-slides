@@ -627,11 +627,8 @@ ggplot(all_penguins,
 ---
 
 .shift-left[
-.bluecode[
 
-# `geom_***`
-
-]
+# .blue[geom_***]
 
 ```{r, eval=F, echo=F}
 #.clear[
