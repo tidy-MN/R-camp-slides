@@ -45,8 +45,9 @@ class:
 <style>
 .wider {width: 107%;}
 img {max-width: 120%; width: 100%;}
-.clear {clear:both; margin-top: -20px;}
+.clear {clear:both;}
 h2, h3 {color: black;}
+
 
 .pull-right img {width: 139%;
     max-width: 139%;
@@ -640,35 +641,56 @@ ggplot(all_penguins,
 #]
 ```
 
+.pull-left[
 
-<img src="../images/geom_line.png" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px; margin-top: 12px;">
+
+<img src="../images/geom_point.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
 .geom1[.geom2[
-geom_line( )
+geom_point( )
 ]]  
 
 .clear[
-<img src="../images/geom_area.png" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+<img src="../images/geom_line.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+.geom1[.geom2[
+geom_line( )
+]]]
+
+.clear[
+<img src="../images/geom_area.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
 .geom1[.geom2[
 geom_area( )
 ]]]
 
 .clear[
-<img src="../images/geom_col.png" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+<img src="../images/geom_col.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
 .geom1[.geom2[
 geom_col( )
 ]]]
 
-.clear[
-<img src="../images/geom_boxplot.png" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+<div style="clear: both;"></div>
+]
+
+.pull-right[
+
+<div style="min-height: 18px"></div>
+
+<img src="../images/geom_boxplot.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
 .geom1[.geom2[
 geom_boxplot( )
-]]]
+]]
 
 .clear[
-<img src="../images/geom_histogram.png" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+<img src="../images/geom_histogram.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
 .geom1[.geom2[
 geom_histogram( )
 ]]]
+
+.clear[
+<img src="../images/geom_text.PNG" style="float:left; width: 90px; margin-right: 14px; padding-top: 6px;">
+.geom1[.geom2[
+geom_text( )
+]]]
+]
 ]
 
 ---
