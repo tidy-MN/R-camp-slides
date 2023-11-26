@@ -2,11 +2,11 @@ library(tidyverse)
 library(readxl)
 library(rworldmap)
 
-number_rows <- 77
+number_rows <- 7007
 
-crew_df <- data.frame(id = as.character(seq(1:number_rows)), 
+crew_df <- data.frame(id = as.character(seq(1:number_rows)),
                       submit_date = today()-sample(1:10, number_rows, replace = T),
-                      country = sample(rworldmap::countryExData$Country, 
+                      country = sample(rworldmap::countryExData$Country,
                                        size = number_rows, replace = T),
                       nut_allergy = sample(c(rep(T, 10), rep(F,2)),
                                            size = number_rows, replace = T),
@@ -16,14 +16,14 @@ crew_df <- data.frame(id = as.character(seq(1:number_rows)),
                                                 replace = T),
                       meals_per_day = sample(2:4, size = number_rows,
                                              replace = T),
-                      favorite_goody = sample(c("cinnamon rolls", "brownies", 
+                      favorite_goody = sample(c("cinnamon rolls", "brownies",
                                                 "oatmeal cookies", "baklava",
                                                 "short-bread", "chocolate croissant",
-                                                "apple pie", "banana bread", 
-                                                "jelly donuts"), 
+                                                "apple pie", "banana bread",
+                                                "jelly donuts"),
                                               size = number_rows,
-                                              replace = T)) %>% 
-  bind_rows(data.frame(id = "test", 
+                                              replace = T)) %>%
+  bind_rows(data.frame(id = "test",
                        submit_date = ymd('1900-01-01'),
                        country = "test-country",
                        nut_allergy = NA,

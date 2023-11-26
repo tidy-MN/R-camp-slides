@@ -38,16 +38,15 @@ if_else(goody_preference %in% c("Cake", "Cupcake", "Mexico"),
         "No nuts")
 ```
 
+
 ```{r}
 # Most popular goody
-count(df, goody_preference)
+count(df, favorite_goody)
 
 # How many from each country
 count(df, country)
 
 df %>% count(country)
-
-df %>% group_by(country) summarize(n_crew = n())
 
 # How many canadiens?
 summarize(df, canadiens = sum(country == "Canada"))
@@ -56,12 +55,22 @@ summarize(df, canadiens = sum(country == "Canada"))
 summarize(df, days_avg = mean(days_on_ship))
 
 # How many Long trippers
-summarize(df, n_long_trippers = time_onboard == "Long tripper")
+summarize(df, n_long_trippers = sum(time_onboard == "Long trip"))
 
-summarize(df, total_meals = sum(meals_per_day))
+
+# Total meals
+df <- mutate(df, total_meals = meals_per_day * days_on_ship)
+
+summarize(df, total_meals = sum(total_meals))
+```
+
 
 # group_by
 
+```
+# Crew count for each country
+df %>% group_by(country) summarize(n_crew = n())
+
 # Total meals per goody type
-df %>% group_by(goody_preferencee) %>% summarize(total_meals = sum(total_meals))
+df %>% group_by(favorite_goody) %>% summarize(total_meals = sum(total_meals))
 ```
