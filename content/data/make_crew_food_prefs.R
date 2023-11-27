@@ -1,8 +1,9 @@
 library(tidyverse)
 library(readxl)
+library(writexl)
 library(rworldmap)
 
-number_rows <- 7007
+number_rows <- 70
 
 crew_df <- data.frame(id = as.character(seq(1:number_rows)),
                       submit_date = today()-sample(1:10, number_rows, replace = T),
@@ -32,3 +33,6 @@ crew_df <- data.frame(id = as.character(seq(1:number_rows)),
                        meals_per_day = 100,
                        favorite_goody = "sugar"))
 
+
+write_xlsx(crew_df, "crew_food_prefs.xlsx")
+write_csv(crew_df, "crew_food_prefs.csv")

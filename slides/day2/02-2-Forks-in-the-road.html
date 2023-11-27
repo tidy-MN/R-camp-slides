@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Forks in the road</title>
+    <title>Fork in the road</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs-2.24/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
@@ -80,9 +80,11 @@
         display: block !important;
     }
 
+    .pinkquote-text {color: #ff2397;}
     .pink {color: #C250E3;}
     .pinkcode code {color: #c81888;}
     .purple {color: #432160;}
+    .darkpurple {color: #4425d7;}
     .mustard {color: #e3c250;}
     .teal {color: #50E3C2;}
     .tealcode code {color: #50E3C2;}
@@ -93,6 +95,7 @@
     .bluecode code {color: #3498db;}
     .gray {color: #aeb9bc;}
     .darkgray {color: #7F7F7F;}
+    .whitecode .remark-code, .whitecode code, .whitecode .hljs-string {color: white; background-color: transparent;}
 
 
     .third {float: left;
@@ -246,7 +249,7 @@
          border-radius: 7px;
          color: #525252;
          font-style: normal;
-         line-height: 0.9;
+         line-height: 1.2;
          overflow: hidden;
          padding: 22px;
          padding-top: 12px;
@@ -254,6 +257,14 @@
          margin-top: 18px;
          margin-bottom: 15px;
          margin-left: 0%;
+    }
+
+    .pinkquote blockquote {
+        background-color: #fbfbfb;
+        border-radius: 22px;
+        color: #525252;
+        border: 12px #ff2397 solid;
+        font-size: 4rem;
     }
 
     .card {
@@ -717,11 +728,11 @@ case_when(
 
 
 ```r
-footwear &lt;- case_when(
-                                      run_from_monsters  ~  "Sneakers",
-                                      swim_from_monsters  ~  "Flippers",
-                                      TRUE  ~  "Slippers"
-                                     )
+footwear = case_when(
+                                     run_from_monsters  ~  "Sneakers",
+                                     swim_from_monsters  ~  "Flippers",
+                                     TRUE  ~  "Slippers"
+                                    )
 ```
 
 &lt;/div&gt;
@@ -729,8 +740,8 @@ footwear &lt;- case_when(
 ---
 class: center, middle
 
-&lt;div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -24px;"&gt;
-&lt;img src="../images/monsters/ifelse_baby0.png" style="width: 160%; max-width: 165%;"&gt;
+&lt;div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -50px;"&gt;
+&lt;img src="../images/monsters/ifelse_baby0.png" style="width: 155%; max-width: 165%;"&gt;
 &lt;/div&gt;
 
 

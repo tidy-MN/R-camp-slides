@@ -1,5 +1,5 @@
 ---
-title: "Forks in the road"
+title: "Fork in the road"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -283,11 +283,11 @@ case_when(
 </style>
 
 ```{r wide, eval=F}
-footwear <- case_when(
-                                      run_from_monsters  ~  "Sneakers",
-                                      swim_from_monsters  ~  "Flippers",
-                                      TRUE  ~  "Slippers"
-                                     )
+footwear = case_when(
+                                     run_from_monsters  ~  "Sneakers",
+                                     swim_from_monsters  ~  "Flippers",
+                                     TRUE  ~  "Slippers"
+                                    )
 ```
 
 </div>
@@ -295,8 +295,8 @@ footwear <- case_when(
 ---
 class: center, middle
 
-<div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -24px;">
-<img src="../images/monsters/ifelse_baby0.png" style="width: 160%; max-width: 165%;">
+<div style="height: 120px; overflow: hidden; margin-top: 0px; margin-left: -50px;">
+<img src="../images/monsters/ifelse_baby0.png" style="width: 155%; max-width: 165%;">
 </div>
 
 

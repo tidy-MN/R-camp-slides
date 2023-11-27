@@ -1,5 +1,5 @@
 ---
-title: "Plots: A grammar of graphics"
+title: "ggplot: A grammar of graphics"
 self_contained: false
 output: 
   xaringan::moon_reader:

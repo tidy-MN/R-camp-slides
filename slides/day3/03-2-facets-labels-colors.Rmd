@@ -1,5 +1,5 @@
 ---
-title: "Plots: A grammar of graphics"
+title: "ggplot: Getting fancy"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -112,7 +112,7 @@ class: inverse, middle, center
 
 # Legends and scales
 
-- Hide a legend
+- Hide legends
 - Use a color theme
 - Use a single color
 
