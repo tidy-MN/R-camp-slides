@@ -38,7 +38,7 @@ class: middle, center, inverse
 ---
 class: 
 
-<img src="../images/ggplot_art_allison_horst.png" width="106%" style="margin-left: -52px; margin-top: -120px; max-width: 107%;" alt="A fuzzy monster in a beret and scarf, critiquing their own column graph on a canvas in front of them while other assistant monsters (also in berets) carry over boxes full of elements that can be used to customize a graph (like themes and geometric shapes). In the background is a wall with framed data visualizations. Stylized text reads “ggplot2: build a data masterpiece.”">
+<img src="../images/ggplot_art_allison_horst.png" width="106%" style="margin-left: -52px; margin-top: -120px; max-width: 107%;" alt="A fuzzy monster in a beret and scarf, critiquing their own column graph on a canvas in front of them while other assistant monsters (also in berets) carry over boxes full of elements that can be used to customize a graph (like themes and geometric shapes). In the background is a wall with framed data visualizations. Stylized text reads “ggplot2: build a data masterpiece.”"> 
 
 .smaller[.small[.bottom-right[.gray[Artwork by @allison_horst]]]]
 
@@ -47,7 +47,6 @@ class:
 img {max-width: 120%; width: 100%;}
 .clear {clear:both;}
 h2, h3 {color: black;}
-
 
 .pull-right img {width: 139%;
     max-width: 139%;

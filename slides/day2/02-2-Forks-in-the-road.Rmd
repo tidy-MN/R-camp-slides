@@ -1,5 +1,5 @@
 ---
-title: "Fork in the road"
+title: "Forks in the road"
 self_contained: false
 output: 
   xaringan::moon_reader:

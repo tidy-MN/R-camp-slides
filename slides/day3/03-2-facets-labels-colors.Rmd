@@ -1,5 +1,5 @@
 ---
-title: "ggplot: Getting fancy"
+title: "ggplot: Breaking news"
 self_contained: false
 output: 
   xaringan::moon_reader:
@@ -12,6 +12,7 @@ output:
       slideNumberFormat: ""
       highlightStyle: solarized-light
       highlightLines: true
+      highlightSpans: true
       countIncrementalSlides: false
       ratio: 16:9
 ---
@@ -19,22 +20,202 @@ output:
 ```{r setup, include=FALSE}
 library(rmarkdown)
 library(knitr)
-library(magrittr)
+library(tidyverse)
 
 xaringanExtra::use_clipboard()
 
-opts_chunk$set(error=TRUE, color=NULL, message=FALSE, warning=FALSE, eval=T, out.height='340px', out.width='130%', dpi=220)
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, warning=FALSE, eval=T, dpi=230)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+```{r xaringanExtra-freezeframe1, echo=FALSE}
+xaringanExtra::use_freezeframe(trigger="click", overlay=T)
 ```
 
 
 class: middle, center, inverse
 
 ## .smaller[PLOTS]
-# .bigger[.bigger[.teal[GRAMMAR]]]
+# .bigger[.bigger[.teal[FOR REAL]]]
+
+
+<style>
+.bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
+.wider {width: 107%;}
+img {max-width: 120%; width: 100%;}
+.clear {clear:both;}
+h2, h3 {color: black;}
+
+.pull-right img {width: 139%;
+    max-width: 139%;
+    margin-left: -38px;
+    margin-top: -20px;}
+    
+.pull-left .remark-code-line {font-size: 1.49rem;}
+.pull-up {margin-top: -28px;}
+
+.remark-code-line {font-size: 1.92rem;}
+
+.small-font {font-size: 1.3rem;}
+.small-font .remark-code-line {font-size: 1.3rem;}
+.med-font .remark-code-line {font-size: 1.7rem;}
+
+.shift-up {margin-top: -20px;}
+.shift-left {margin-left: -80px;}
+.shift-right {margin-left: 180px;}
+.shift-down {padding-top: 12px;}
+
+.remark-slide table {width: 108%; font-size: 1.4rem;}
+.small-table table {width: 39%;}
+
+</style>
 
 
 ---
+class: middle, center, inverse
+
+## .smaller[PLOTS]
+# .bigger[.bigger[.teal[FOR REAL]]]
+
+<h1 style="text-wrap: nowrap; margin-left: -153px; position: absolute;"> S....BREAKING NEWS....BREAKING NEWS....BREAKI...</h1>
+
+---
+
+```{r xaringanExtra-freezeframe, echo=FALSE}
+xaringanExtra::use_freezeframe(trigger="click", overlay=T)
+```
+
+<div>
+<label class="clicktogif" title="click to play">
+<input type="checkbox">
+<img src="../images/news_pengzilla.gif" style="width: 135%; max-width: 135%; margin-left: -165px; margin-top: -90px;">
+</label>
+</div>
+
+---
+class: middle, center 
+
+> # .bigger[“]The penguins are growing....bigger[”] 
+> ### .darkgray[.small[*- The R/V Topsy-Scurvy*]]
+
+<img src="../images/penguin_gray.png" style="width: 110px; position: absolute; bottom: 183px; left: 82px;">
+
+<img src="../images/penguin_gray.png" style="width: 1260px;
+    position: absolute;
+    top: -80px;
+    right: -440px;">
+
+---
+class: middle, center, gray-bg
+
+
+```{r, echo=F}
+rv_penguins <- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
+```
+
+.shift-up[
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# Bill length trends
+mean_bills <- rv_penguins %>%
+                group_by(year) %>%
+                filter(!is.na(year)) %>%
+                summarize(bill_length_mean = mean(bill_length_mm, na.rm = T))
+
+ggplot(mean_bills,
+       aes(x = year, y = bill_length_mean)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  #geom_line(size = 3, color = "tomato", linetype = "dotted") +
+  #geom_point(color = "tomato", size = 3) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(43.7, 47.2)) +
+  #lims(y = c(43, 47.3)) +
+  labs(title = "\nPenguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "\n©2023 The R/V Topsy-Scurvy",
+       x = "YEAR",
+       y = "BILL SIZE") +
+  theme_wsj(base_size = 16, 
+            color = "gray")
+```
+]
+
+---
+
+
+# Legends and scales
+
+- Hide legends
+- Use a color theme
+- Use a single color
+
+
+---
+
+```{r, eval=F}
+library(tidyverse)
+library(palmerpenguins)
+
+penguins = penguins
+
+ggplot(penguins %>% 
+         group_by(year, species, sex) %>%
+         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
+         summarize(flipper_length_mm = max(flipper_length_mm)), 
+       aes(x = as.character(year), y = flipper_length_mm)) +
+  geom_col() +
+  facet_wrap(~species+sex)
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
+         summarize(flipper_length_mm = median(flipper_length_mm)), 
+       aes(x = as.character(year), y = flipper_length_mm)) +
+  geom_col() 
+  facet_wrap(~species)
+
+ggplot(penguins %>% 
+         group_by(year, species) %>%
+         filter(!is.na(year), !is.na(body_mass_g)) %>% 
+         summarize(body_mass_g = mean(body_mass_g)), 
+       aes(x = as.character(year), y = body_mass_g)) +
+  geom_col() +
+  facet_wrap(~species)
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(bill_depth_mm)) %>% 
+         summarize(bill_depth_mm = mean(bill_depth_mm)), 
+       aes(x = as.character(year), y = bill_depth_mm)) +
+  geom_col() 
+
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(bill_length_mm)) %>% 
+         summarize(bill_length_mm = mean(bill_length_mm)), 
+       aes(x = as.character(year), y = bill_length_mm)) +
+  geom_col() 
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_bar() +
+  facet_wrap(~year)
+
+
+ggplot(penguins, aes(x = year, y = flipper_length_mm)) +
+  geom_point() +
+  geom_line()
+
+
+ggplot(data = penguins, aes(x = bill_length_mm))+
+  geom_histogram(aes(fill = as.character(year)),
+                     alpha = 0.5, 
+                     position = 'identity') + 
+  scale_fill_brewer(type = 'qual', palette = 3) 
+```
+
 
 .shift-left[
 
@@ -42,7 +223,7 @@ class: middle, center, inverse
 
 .med-font[
 ```{r}
-flipper_lengths <- all_penguins %>%
+flipper_lengths <- penguins %>%
                      group_by(species) %>%
                      summarize(flipper_avg = 
                                   mean(flipper_length_mm, na.rm = T))
@@ -92,7 +273,6 @@ ggplot(flipper_lengths,
 ---
 class: inverse, middle, center
 
-
 # .bigger[.blue[labs( )]]
 
 ---
@@ -106,15 +286,6 @@ class: inverse, middle, center
 
 # Legends and scales
 # .bigger[.blue[scale_( )]]
-
-
----
-
-# Legends and scales
-
-- Hide legends
-- Use a color theme
-- Use a single color
 
 
 ---
