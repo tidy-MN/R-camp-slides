@@ -201,11 +201,6 @@ ggplot(mean_bill_lengths,
 
 ---
 
-```{r chunk-a, echo=F, eval=T, fig.width=12, fig.height=7, ref.label=c('news-plot')}
-```
-
----
-
 ###  Y-axes limits
 
 ```{r, eval=F, fig.width=12, fig.height=7}
@@ -223,6 +218,12 @@ ggplot(mean_bill_lengths,
        caption = "©2023 The R/V Topsy-Scurvy") +
   theme_wsj(color = "gray")
 ```
+
+---
+
+```{r chunk-a, echo=F, eval=T, fig.width=12, fig.height=7, ref.label=c('news-plot')}
+```
+
 
 ---
 
@@ -438,7 +439,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-### .teal[With a bit less ~~EXAGGERATION~~]
+### .teal[With less ~~EXAGGERATION~~]
 ]
 
 ```{r, echo=F, fig.width=12, fig.height=7}
