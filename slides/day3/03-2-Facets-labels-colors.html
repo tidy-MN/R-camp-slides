@@ -494,7 +494,7 @@
     }
     .ticker-wrapper {
     width: 100%;
-    padding-left: 99.8%;
+    padding-left: 99.7%;
     background-color: transparent;
     }
     @keyframes ticker {
@@ -559,8 +559,8 @@ h2, h3 {color: black;}
 .pull-left .remark-code-line {font-size: 1.49rem;}
 .pull-up {margin-top: -28px;}
 
-.small-font {font-size: 1.3rem;}
-.small-font .remark-code-line {font-size: 1.3rem;}
+.small-font {font-size: 1.5rem;}
+.small-font .remark-code-line {font-size: 1.5rem;}
 .med-font .remark-code-line {font-size: 1.7rem;}
 
 .shift-up {margin-top: -20px;}
@@ -572,7 +572,7 @@ h2, h3 {color: black;}
 .remark-slide table {width: 108%; font-size: 1.4rem;}
 .small-table table {width: 39%;}
 
-.remark-code-line {font-size: 1.8rem; line-height: 1.37;}
+.remark-code-line {font-size: 1.78rem; line-height: 1.37;}
 
 &lt;/style&gt;
 
@@ -867,7 +867,7 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-*      x = "YEAR") +
+*      x = "Year") +
   theme_wsj(color = "gray")
 ```
 
@@ -888,16 +888,15 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-*      y = "MEAN BILL LENGTH (mm)") +
+       x = "Year",
+*      y = "Mean bill length (mm)") +
   theme_wsj(color = "gray")
 ```
-
 
 ---
 
 .shift-up[
-### .teal[Less ~~Exaggeration~~]
+### .teal[With a bit less ~~Exaggeration~~]
 ]
 
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
@@ -914,6 +913,24 @@ class: inverse, middle, center
 ### ggthemes
 ]
 
+
+```r
+library(tidyverse)
+*library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "Year",
+       y = "Mean bill length (mm)") + 
+* theme_wsj(color = "gray")
+```
+
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 
@@ -923,12 +940,30 @@ class: inverse, middle, center
 ### ggthemes
 ]
 
+
+```r
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "Year",
+       y = "Mean bill length (mm)") + 
+* theme_minimal(base_size = 20)
+```
+
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 
 ---
 
 .shift-up[
-### .teal[Keep axes labels]
+### .teal[With axes labels]
 ]
 
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
@@ -945,17 +980,19 @@ class: inverse, middle, center
 
 ###  &gt; .bluecode[`load_RV_penguins.R`]
 
+.small-font[
 
 ```r
 library(tidyverse)
 
 # Raw R/V Topsy-Scurvy data
-rv_penguins &lt;- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
+rv_penguins &lt;- read_csv("2007-2009_RV_scurvy_penguins.csv")
 ```
+]
 
 ---
-  
 class: inverse, middle, center
+
 
 # .bigger[.blue[facet_wrap( )]]
 
@@ -963,8 +1000,7 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# Colors and legends
-# .bigger[.blue[scale_( )]]
+# .bigger[.blue[Colors and legends]]
 
 ---
 exclude: true

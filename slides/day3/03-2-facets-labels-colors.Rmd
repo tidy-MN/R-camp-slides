@@ -58,8 +58,8 @@ h2, h3 {color: black;}
 .pull-left .remark-code-line {font-size: 1.49rem;}
 .pull-up {margin-top: -28px;}
 
-.small-font {font-size: 1.3rem;}
-.small-font .remark-code-line {font-size: 1.3rem;}
+.small-font {font-size: 1.5rem;}
+.small-font .remark-code-line {font-size: 1.5rem;}
 .med-font .remark-code-line {font-size: 1.7rem;}
 
 .shift-up {margin-top: -20px;}
@@ -71,7 +71,7 @@ h2, h3 {color: black;}
 .remark-slide table {width: 108%; font-size: 1.4rem;}
 .small-table table {width: 39%;}
 
-.remark-code-line {font-size: 1.8rem; line-height: 1.37;}
+.remark-code-line {font-size: 1.78rem; line-height: 1.37;}
 
 </style>
 
@@ -154,9 +154,7 @@ ggplot(mean_bill_lengths,
   #lims(y = c(43, 47.3)) +
   labs(title = "\nPenguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
-       caption = "\n©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-       y = "BILL SIZE") +
+       caption = "\n©2023 The R/V Topsy-Scurvy") +
   theme_wsj(base_size = 16, color = "gray")
 ```
 ]
@@ -203,7 +201,7 @@ ggplot(mean_bill_lengths,
 
 ---
 
-```{r chunk-a, echo=F, eval=T, ref.label=c('news-plot')}
+```{r chunk-a, echo=F, eval=T, fig.width=12, fig.height=7, ref.label=c('news-plot')}
 ```
 
 ---
@@ -412,7 +410,7 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR") + #<<
+       x = "Year") + #<<
   theme_wsj(color = "gray")
 ```
 
@@ -432,16 +430,15 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-       y = "MEAN BILL LENGTH (mm)") + #<<
+       x = "Year",
+       y = "Mean bill length (mm)") + #<<
   theme_wsj(color = "gray")
 ```
-
 
 ---
 
 .shift-up[
-### .teal[Less ~~Exaggeration~~]
+### .teal[With a bit less ~~Exaggeration~~]
 ]
 
 ```{r, echo=F, fig.width=12, fig.height=7}
@@ -456,8 +453,8 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-       y = "MEAN BILL LENGTH (mm)") + 
+       x = "Year",
+       y = "Mean bill length (mm)") + 
   theme_wsj(color = "gray")
 ```
 
@@ -473,7 +470,7 @@ class: inverse, middle, center
 ### ggthemes
 ]
 
-```{r, echo=F, fig.width=12, fig.height=7}
+```{r, echo=T}
 library(tidyverse)
 library(ggthemes) #<<
 
@@ -485,8 +482,8 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-       y = "MEAN BILL LENGTH (mm)") + 
+       x = "Year",
+       y = "Mean bill length (mm)") + 
   theme_wsj(color = "gray") #<<
 ```
 
@@ -497,7 +494,7 @@ ggplot(mean_bill_lengths,
 ### ggthemes
 ]
 
-```{r, echo=F, fig.width=12, fig.height=7}
+```{r, echo=T}
 library(tidyverse)
 library(ggthemes)
 
@@ -517,7 +514,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-### .teal[Keep axes labels]
+### .teal[With axes labels]
 ]
 
 ```{r, echo=F, fig.width=12, fig.height=7}
@@ -532,9 +529,9 @@ ggplot(mean_bill_lengths,
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
-       x = "YEAR",
-       y = "MEAN BILL LENGTH (mm)") + 
-  theme_minimal() #<<
+       x = "Year",
+       y = "Mean bill length (mm)") +  
+  theme_minimal(base_size = 30) 
 ```
 
 
@@ -549,16 +546,18 @@ class: inverse, middle, center
 
 ###  > .bluecode[`load_RV_penguins.R`]
 
+.small-font[
 ```{r, eval=F}
 library(tidyverse)
 
 # Raw R/V Topsy-Scurvy data
-rv_penguins <- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
+rv_penguins <- read_csv("2007-2009_RV_scurvy_penguins.csv")
 ```
+]
 
 ---
-  
 class: inverse, middle, center
+
 
 # .bigger[.blue[facet_wrap( )]]
 
@@ -566,8 +565,7 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# Colors and legends
-# .bigger[.blue[scale_( )]]
+# .bigger[.blue[Colors and legends]]
 
 ---
 exclude: true
