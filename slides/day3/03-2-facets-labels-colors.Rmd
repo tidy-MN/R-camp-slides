@@ -12,7 +12,7 @@ output:
       slideNumberFormat: ""
       highlightStyle: solarized-light
       highlightLines: true
-      highlightSpans: true
+      highlightSpans: true #`span`
       countIncrementalSlides: false
       ratio: 16:9
 ---
@@ -29,15 +29,19 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
 ```{r xaringanExtra-freezeframe1, echo=FALSE}
-xaringanExtra::use_freezeframe(trigger="click", overlay=T)
+xaringanExtra::use_freezeframe(trigger="none", overlay=T)
 ```
 
+```{r xaringan-animate-css, echo=FALSE}
+xaringanExtra::use_animate_css()
+```
 
 class: middle, center, inverse
 
+.shift-up[
 ## .smaller[PLOTS]
 # .bigger[.bigger[.teal[FOR REAL]]]
-
+]
 
 <style>
 .bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
@@ -54,49 +58,65 @@ h2, h3 {color: black;}
 .pull-left .remark-code-line {font-size: 1.49rem;}
 .pull-up {margin-top: -28px;}
 
-.remark-code-line {font-size: 1.92rem;}
-
 .small-font {font-size: 1.3rem;}
 .small-font .remark-code-line {font-size: 1.3rem;}
 .med-font .remark-code-line {font-size: 1.7rem;}
 
 .shift-up {margin-top: -20px;}
-.shift-left {margin-left: -80px;}
+.shift-left {margin-left: -100px;}
+.small-shift-left {margin-left: -60px;}
 .shift-right {margin-left: 180px;}
 .shift-down {padding-top: 12px;}
 
 .remark-slide table {width: 108%; font-size: 1.4rem;}
 .small-table table {width: 39%;}
 
+.remark-code-line {font-size: 1.8rem; line-height: 1.37;}
+
 </style>
 
+--
 
+<div class="ticker-container">
+<div class="ticker-wrapper">
+<div class="ticker-transition">
+<div class="ticker-item">...BREAKING NEWS...</div>
+<div class="ticker-item">..Penguins at it again...</div>
+<div class="ticker-item">..BREAKING NEWS...</div>
+<div class="ticker-item">..So BIG growth rate expected to exceed...</div>
+<div class="ticker-item">...BREAKING NEWS...</div>
+<div class="ticker-item">..Penguins growing and growing...</div>
+<div class="ticker-item">...BREAKING NEWS....</div>
+</div>
+</div>
+</div>
+  
 ---
 class: middle, center, inverse
+exclude: true
 
-## .smaller[PLOTS]
+## .smaller[GGPLOTS]
 # .bigger[.bigger[.teal[FOR REAL]]]
+
 
 <h1 style="text-wrap: nowrap; margin-left: -153px; position: absolute;"> S....BREAKING NEWS....BREAKING NEWS....BREAKI...</h1>
 
 ---
+class: animated infinite pulse
 
-```{r xaringanExtra-freezeframe, echo=FALSE}
-xaringanExtra::use_freezeframe(trigger="click", overlay=T)
-```
+<img src="../images/breaking_news.jpg" style="width: 130%; max-width: 135%; margin-left: -136px; margin-top: -68px;">
 
-<div>
-<label class="clicktogif" title="click to play">
-<input type="checkbox">
-<img src="../images/news_pengzilla.gif" style="width: 135%; max-width: 135%; margin-left: -165px; margin-top: -90px;">
-</label>
-</div>
+
+---
+
+<img src="https://github.com/tidy-MN/R-camp-slides/blob/main/slides/images/news_pengzilla.gif?raw=true" style="width: 135%; max-width: 135%; margin-left: -165px; margin-top: -64px;">
+
 
 ---
 class: middle, center 
 
-> # .bigger[“]The penguins are growing....bigger[”] 
-> ### .darkgray[.small[*- The R/V Topsy-Scurvy*]]
+> .shift-left[# .bigger[“]The penguins are growing....bigger[”]]
+> .small-shift-left[### .darkgray[.small[*- The R/V Topsy-Scurvy*]]]
 
 <img src="../images/penguin_gray.png" style="width: 110px; position: absolute; bottom: 183px; left: 82px;">
 
@@ -108,24 +128,24 @@ class: middle, center
 ---
 class: middle, center, gray-bg
 
-
 ```{r, echo=F}
 rv_penguins <- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
 ```
 
 .shift-up[
-```{r, echo=F, fig.width=12, fig.height=7}
+```{r news-plot, echo=F, fig.width=12, fig.height=7}
 library(tidyverse)
 library(ggthemes)
 
 # Bill length trends
-mean_bills <- rv_penguins %>%
-                group_by(year) %>%
-                filter(!is.na(year)) %>%
-                summarize(bill_length_mean = mean(bill_length_mm, na.rm = T))
+mean_bill_lengths <- rv_penguins %>%
+                     group_by(year) %>%
+                     filter(!is.na(year)) %>%
+                     summarize(avg_bill_length = mean(bill_length_mm, na.rm = T))
 
-ggplot(mean_bills,
-       aes(x = year, y = bill_length_mean)) +
+# News plot
+ggplot(mean_bill_lengths,
+       aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
   #geom_line(size = 3, color = "tomato", linetype = "dotted") +
   #geom_point(color = "tomato", size = 3) +
@@ -137,138 +157,161 @@ ggplot(mean_bills,
        caption = "\n©2023 The R/V Topsy-Scurvy",
        x = "YEAR",
        y = "BILL SIZE") +
-  theme_wsj(base_size = 16, 
-            color = "gray")
+  theme_wsj(base_size = 16, color = "gray")
 ```
 ]
 
 ---
 
+###  > .bluecode[`growth_plot.R`]
 
-# Legends and scales
+```{r, eval=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
 
-- Hide legends
-- Use a color theme
-- Use a single color
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(43.7, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
+---
+
+###  Y-axes limits
+
+```{r, eval=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(43.7, 47.2)) + #<<
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
+---
+
+```{r chunk-a, echo=F, eval=T, ref.label=c('news-plot')}
+```
+
+---
+
+###  Y-axes limits
+
+```{r, eval=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(`0`, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
+---
+
+.shift-up[
+### .teal[Start Y-axes at ZERO]
+]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
 
 
 ---
+
+###  geom_line **->**
 
 ```{r, eval=F}
 library(tidyverse)
-library(palmerpenguins)
+library(ggthemes)
 
-penguins = penguins
-
-ggplot(penguins %>% 
-         group_by(year, species, sex) %>%
-         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
-         summarize(flipper_length_mm = max(flipper_length_mm)), 
-       aes(x = as.character(year), y = flipper_length_mm)) +
-  geom_col() +
-  facet_wrap(~species+sex)
-
-ggplot(penguins %>% 
-         group_by(year) %>%
-         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
-         summarize(flipper_length_mm = median(flipper_length_mm)), 
-       aes(x = as.character(year), y = flipper_length_mm)) +
-  geom_col() 
-  facet_wrap(~species)
-
-ggplot(penguins %>% 
-         group_by(year, species) %>%
-         filter(!is.na(year), !is.na(body_mass_g)) %>% 
-         summarize(body_mass_g = mean(body_mass_g)), 
-       aes(x = as.character(year), y = body_mass_g)) +
-  geom_col() +
-  facet_wrap(~species)
-
-ggplot(penguins %>% 
-         group_by(year) %>%
-         filter(!is.na(year), !is.na(bill_depth_mm)) %>% 
-         summarize(bill_depth_mm = mean(bill_depth_mm)), 
-       aes(x = as.character(year), y = bill_depth_mm)) +
-  geom_col() 
-
-
-ggplot(penguins %>% 
-         group_by(year) %>%
-         filter(!is.na(year), !is.na(bill_length_mm)) %>% 
-         summarize(bill_length_mm = mean(bill_length_mm)), 
-       aes(x = as.character(year), y = bill_length_mm)) +
-  geom_col() 
-
-ggplot(penguins, aes(x = body_mass_g)) +
-  geom_bar() +
-  facet_wrap(~year)
-
-
-ggplot(penguins, aes(x = year, y = flipper_length_mm)) +
-  geom_point() +
-  geom_line()
-
-
-ggplot(data = penguins, aes(x = bill_length_mm))+
-  geom_histogram(aes(fill = as.character(year)),
-                     alpha = 0.5, 
-                     position = 'identity') + 
-  scale_fill_brewer(type = 'qual', palette = 3) 
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_line(size = 2, color = "tomato", arrow = arrow()) + #<<
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
 ```
-
-
-.shift-left[
-
-# Mean flipper lengths
-
-.med-font[
-```{r}
-flipper_lengths <- penguins %>%
-                     group_by(species) %>%
-                     summarize(flipper_avg = 
-                                  mean(flipper_length_mm, na.rm = T))
-
-```
-]
-
-<br>
-
-.small-table[
-```{r, echo=F}
-kable(flipper_lengths)
-```
-]
-]
 
 ---
 
-.shift-left[
-
-# Mean flipper lengths
-
-]
-
-.pull-left[
-.shift-left[
+###  geom_line **->**
 
 ```{r, eval=F}
-ggplot(flipper_lengths, 
-       aes(x = species,
-           y = flipper_avg))  +
-  geom_col(aes(fill = species)) 
-```
-]]
+library(tidyverse)
+library(ggthemes)
 
-.pull-right[
-
-```{r, echo=F}
-ggplot(flipper_lengths, 
-       aes(x = species,
-           y = flipper_avg))  +
-  geom_col(aes(fill = species))  +
-     theme_gray(base_size = 18)
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+                                                    #<<
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
 ```
+
+
+---
+
+.shift-up[
+### .teal[Hold the line]
 ]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  #geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin growth nears speed of light", 
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
 
 ---
 class: inverse, middle, center
@@ -276,6 +319,245 @@ class: inverse, middle, center
 # .bigger[.blue[labs( )]]
 
 ---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin growth nears speed of light",  #<<
+       subtitle = "Mean bill length in mm\n",  #<<
+       caption = "©2023 The R/V Topsy-Scurvy") +  #<<
+  theme_wsj(color = "gray")
+```
+
+---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  #<<
+       subtitle = "Mean bill length in mm\n",
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
+
+---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", #<<
+       caption = "©2023 The R/V Topsy-Scurvy") +
+  theme_wsj(color = "gray")
+```
+
+
+---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy") + #<<
+  theme_wsj(color = "gray")
+```
+
+---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "YEAR") + #<<
+  theme_wsj(color = "gray")
+```
+
+---
+
+###  Title and labels
+
+```{r, eval=F}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "YEAR",
+       y = "MEAN BILL LENGTH (mm)") + #<<
+  theme_wsj(color = "gray")
+```
+
+
+---
+
+.shift-up[
+### .teal[Less ~~Exaggeration~~]
+]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "YEAR",
+       y = "MEAN BILL LENGTH (mm)") + 
+  theme_wsj(color = "gray")
+```
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.blue[theme( )]]
+
+---
+
+.shift-up[
+### ggthemes
+]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes) #<<
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "YEAR",
+       y = "MEAN BILL LENGTH (mm)") + 
+  theme_wsj(color = "gray") #<<
+```
+
+
+---
+
+.shift-up[
+### ggthemes
+]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "Year",
+       y = "Mean bill length (mm)") + 
+  theme_minimal(base_size = 20) #<<
+```
+
+---
+
+.shift-up[
+### .teal[Keep axes labels]
+]
+
+```{r, echo=F, fig.width=12, fig.height=7}
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+  geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "Penguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "YEAR",
+       y = "MEAN BILL LENGTH (mm)") + 
+  theme_minimal() #<<
+```
+
+
+---
+class: inverse, middle, center
+
+# <i class="fa-solid fa-user-secret"></i>
+# .bigger[.blue[Sleuthing time]]
+
+
+---
+
+###  > .bluecode[`load_RV_penguins.R`]
+
+```{r, eval=F}
+library(tidyverse)
+
+# Raw R/V Topsy-Scurvy data
+rv_penguins <- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
+```
+
+---
+  
 class: inverse, middle, center
 
 # .bigger[.blue[facet_wrap( )]]
@@ -284,14 +566,17 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# Legends and scales
+# Colors and legends
 # .bigger[.blue[scale_( )]]
 
-
 ---
-class: inverse, middle, center
+exclude: true
 
-# .bigger[.blue[theme( )]]
+# Legends and scales
+
+- Hide legends
+- Use a color theme
+- Use a single color
 
 
 ---

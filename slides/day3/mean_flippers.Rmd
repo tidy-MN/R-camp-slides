@@ -1,0 +1,129 @@
+---
+title: "Untitled"
+output: html_document
+date: "2023-11-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+exclude: true
+
+```{r, eval=F}
+library(tidyverse)
+library(palmerpenguins)
+
+penguins = penguins
+
+ggplot(penguins %>% 
+         group_by(year, species, sex) %>%
+         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
+         summarize(flipper_length_mm = max(flipper_length_mm)), 
+       aes(x = as.character(year), y = flipper_length_mm)) +
+  geom_col() +
+  facet_wrap(~species+sex)
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(flipper_length_mm)) %>% 
+         summarize(flipper_length_mm = median(flipper_length_mm)), 
+       aes(x = as.character(year), y = flipper_length_mm)) +
+  geom_col() 
+  facet_wrap(~species)
+
+ggplot(penguins %>% 
+         group_by(year, species) %>%
+         filter(!is.na(year), !is.na(body_mass_g)) %>% 
+         summarize(body_mass_g = mean(body_mass_g)), 
+       aes(x = as.character(year), y = body_mass_g)) +
+  geom_col() +
+  facet_wrap(~species)
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(bill_depth_mm)) %>% 
+         summarize(bill_depth_mm = mean(bill_depth_mm)), 
+       aes(x = as.character(year), y = bill_depth_mm)) +
+  geom_col() 
+
+
+ggplot(penguins %>% 
+         group_by(year) %>%
+         filter(!is.na(year), !is.na(bill_length_mm)) %>% 
+         summarize(bill_length_mm = mean(bill_length_mm)), 
+       aes(x = as.character(year), y = bill_length_mm)) +
+  geom_col() 
+
+ggplot(penguins, aes(x = body_mass_g)) +
+  geom_bar() +
+  facet_wrap(~year)
+
+
+ggplot(penguins, aes(x = year, y = flipper_length_mm)) +
+  geom_point() +
+  geom_line()
+
+
+ggplot(data = penguins, aes(x = bill_length_mm))+
+  geom_histogram(aes(fill = as.character(year)),
+                     alpha = 0.5, 
+                     position = 'identity') + 
+  scale_fill_brewer(type = 'qual', palette = 3) 
+```
+
+
+.shift-left[
+
+# Mean flipper lengths
+
+.med-font[
+```{r}
+flipper_lengths <- penguins %>%
+                     group_by(species) %>%
+                     summarize(flipper_avg = 
+                                  mean(flipper_length_mm, na.rm = T))
+
+```
+]
+
+<br>
+
+.small-table[
+```{r, echo=F}
+kable(flipper_lengths)
+```
+]
+]
+
+---
+exclude: true
+
+.shift-left[
+
+# Mean flipper lengths
+
+]
+
+.pull-left[
+.shift-left[
+
+```{r, eval=F}
+ggplot(flipper_lengths, 
+       aes(x = species,
+           y = flipper_avg))  +
+  geom_col(aes(fill = species)) 
+```
+]]
+
+.pull-right[
+
+```{r, echo=F}
+ggplot(flipper_lengths, 
+       aes(x = species,
+           y = flipper_avg))  +
+  geom_col(aes(fill = species))  +
+     theme_gray(base_size = 18)
+```
+]
