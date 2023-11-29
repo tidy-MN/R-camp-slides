@@ -221,7 +221,12 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
+### With set Y-axes limit
+]
+
 ```{r chunk-a, echo=F, eval=T, fig.width=12, fig.height=7, ref.label=c('news-plot')}
+
 ```
 
 
@@ -241,10 +246,10 @@ ggplot(mean_bill_lengths,
   geom_col(aes(fill = year), show.legend = FALSE) +
   geom_line(size = 2, color = "tomato", arrow = arrow()) +
   coord_cartesian(ylim = c(0, 47.2)) +
-  labs(title = "Penguin growth nears speed of light",
+  labs(title = "\nPenguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
        caption = "©2023 The R/V Topsy-Scurvy") +
-  theme_wsj(color = "gray")
+  theme_wsj(base_size = 16, color = "gray")
 ```
 
 
@@ -305,10 +310,10 @@ ggplot(mean_bill_lengths,
   geom_col(aes(fill = year), show.legend = FALSE) +
   #geom_line(size = 2, color = "tomato", arrow = arrow()) +
   coord_cartesian(ylim = c(0, 47.2)) +
-  labs(title = "Penguin growth nears speed of light", 
+  labs(title = "\nPenguin growth nears speed of light", 
        subtitle = "Mean bill length in mm\n",
        caption = "©2023 The R/V Topsy-Scurvy") +
-  theme_wsj(color = "gray")
+  theme_wsj(base_size = 16, color = "gray")
 ```
 
 
@@ -451,12 +456,12 @@ ggplot(mean_bill_lengths,
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
   coord_cartesian(ylim = c(0, 47.2)) +
-  labs(title = "Penguin bill lengths by year",  
+  labs(title = "\nPenguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
        x = "Year",
        y = "Mean bill length (mm)") + 
-  theme_wsj(color = "gray")
+  theme_wsj(base_size = 16, color = "gray")
 ```
 
 
@@ -464,7 +469,6 @@ ggplot(mean_bill_lengths,
 class: inverse, middle, center
 
 # .bigger[.blue[theme_*( )]]
-
 
 ---
 class: center
@@ -538,7 +542,7 @@ ggplot(mean_bill_lengths,
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
   coord_cartesian(ylim = c(0, 47.2)) +
-  labs(title = "Penguin bill lengths by year",  
+  labs(title = "\nPenguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
        x = "Year",
@@ -577,7 +581,7 @@ class: inverse, middle, center
 ---
 class: inverse, middle, center
 
-# .bigger[.blue[Colors and legends]]
+# .bigger[.blue[colors and legends]]
 
 ---
 exclude: true
