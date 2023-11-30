@@ -566,7 +566,7 @@ ggplot(all_penguins,
             aes(x = bill_length_mm,
                     y = flipper_length_mm)) +
    geom_point(aes(color = species),  
-                   size = 7, alpha = 0.35) +
+                   size = 7, alpha = 0.45) +
    theme_gray(base_size = 22)
 ```
 ]
@@ -616,7 +616,7 @@ ggplot(all_penguins,
         aes(x = species, 
             y = flipper_length_mm))  +
   geom_point(aes(color = species), 
-             size = 7, alpha = 0.35) +
+             size = 7, alpha = 0.45) +
    theme_gray(base_size = 24)
 ```
 ]

@@ -545,6 +545,7 @@ class: middle, center, inverse
 ]
 
 &lt;style&gt;
+.teal h3 {font-weight: bold;}
 .bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
 .wider {width: 107%;}
 img {max-width: 120%; width: 100%;}
@@ -572,7 +573,7 @@ h2, h3 {color: black;}
 .remark-slide table {width: 108%; font-size: 1.4rem;}
 .small-table table {width: 39%;}
 
-.remark-code-line {font-size: 1.78rem; line-height: 1.37;}
+.remark-code-line {font-size: 1.75rem; line-height: 1.37;}
 
 &lt;/style&gt;
 
@@ -637,8 +638,9 @@ class: middle, center, gray-bg
 
 ---
 
+.shift-up[
 ###  &gt; .bluecode[`growth_plot.R`]
-
+]
 
 ```r
 library(tidyverse)
@@ -658,8 +660,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Y-axes limits
-
+]
 
 ```r
 library(tidyverse)
@@ -679,8 +682,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Y-axes limits
-
+]
 
 ```r
 library(tidyverse)
@@ -706,7 +710,6 @@ ggplot(mean_bill_lengths,
 
 ![](03-2-Facets-labels-colors_files/figure-html/chunk-a-1.png)&lt;!-- --&gt;
 
-
 ---
 
 .shift-up[
@@ -718,8 +721,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  geom_line **-&gt;**
-
+]
 
 ```r
 library(tidyverse)
@@ -739,8 +743,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  geom_line **-&gt;**
-
+]
 
 ```r
 library(tidyverse)
@@ -775,8 +780,9 @@ class: inverse, middle, center
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -795,8 +801,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -816,8 +823,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -837,8 +845,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -857,8 +866,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -878,8 +888,9 @@ ggplot(mean_bill_lengths,
 
 ---
 
+.shift-up[
 ###  Title and labels
-
+]
 
 ```r
 library(tidyverse)
@@ -905,6 +916,15 @@ ggplot(mean_bill_lengths,
 ]
 
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
+
+---
+
+.shift-up[
+### .teal[Drop color-coding]
+]
+
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -946,7 +966,7 @@ ggplot(mean_bill_lengths,
 * theme_wsj(color = "gray")
 ```
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -973,15 +993,15 @@ ggplot(mean_bill_lengths,
 * theme_minimal(base_size = 20)
 ```
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 
 ---
 
 .shift-up[
-### .teal[With axes labels]
+### .teal[Theme with axes labels]
 ]
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 
 
 ---
