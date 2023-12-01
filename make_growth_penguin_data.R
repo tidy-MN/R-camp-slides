@@ -7,6 +7,8 @@ penguins <- penguins
 
 glimpse(penguins)
 
+set.seed(50)
+
 adelie08 <- filter(penguins, species == "Adelie", year == 2008) %>%
             sample_n(30)
 
@@ -21,9 +23,10 @@ grow_penguins <- penguins %>%
 
 
 grow_penguins <- grow_penguins %>%
-                 select(id, year, species, bill_length_mm, bill_depth_mm, sex)
+                 select(id, year, species, bill_length_mm, bill_depth_mm, body_mass_g, flipper_length_mm, sex, island) %>%
+                 mutate(year = paste0("'", str_sub(year, 3, 4)))
 
-write_csv(grow_penguins, "2007-2009_RV_scurvy_penguins.csv")
+write_csv(grow_penguins, "2007-2009_RV_scurvy_penguins.csv", )
 
 
 # Bill length trends
@@ -50,6 +53,7 @@ ggplot(mean_bills,
   #theme_ipsum_rc(base_size = 22)
   theme_ipsum_es(base_size = 22)
   theme_minimal(base_size = 22)
+
 
 # Bill by species
 

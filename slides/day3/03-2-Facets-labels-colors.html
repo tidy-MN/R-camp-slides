@@ -573,6 +573,7 @@ h2, h3 {color: black;}
 .remark-slide table {width: 108%; font-size: 1.4rem;}
 .small-table table {width: 39%;}
 
+.remark-code {width: 104%;}
 .remark-code-line {font-size: 1.75rem; line-height: 1.37;}
 
 &lt;/style&gt;
@@ -650,7 +651,7 @@ library(ggthemes)
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
-  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  geom_line(linewidth = 2, color = "tomato", arrow = arrow()) +
   coord_cartesian(ylim = c(43.7, 47.2)) +
   labs(title = "Penguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
@@ -661,7 +662,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-###  Y-axes limits
+###  Y-axis limits
 ]
 
 ```r
@@ -672,7 +673,7 @@ library(ggthemes)
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
-  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  geom_line(linewidth = 2, color = "tomato", arrow = arrow()) +
 * coord_cartesian(ylim = c(43.7, 47.2)) +
   labs(title = "Penguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
@@ -683,7 +684,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-###  Y-axes limits
+###  Y-axis limits
 ]
 
 ```r
@@ -694,7 +695,7 @@ library(ggthemes)
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
-  geom_line(size = 2, color = "tomato", arrow = arrow()) +
+  geom_line(linewidth = 2, color = "tomato", arrow = arrow()) +
   coord_cartesian(ylim = c(`0`, 47.2)) +
   labs(title = "Penguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
@@ -705,7 +706,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-### With set Y-axes limit
+### With set Y-axis limit
 ]
 
 ![](03-2-Facets-labels-colors_files/figure-html/chunk-a-1.png)&lt;!-- --&gt;
@@ -713,7 +714,7 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-### .teal[Start Y-axes at ZERO]
+### .teal[Start Y-axis at ZERO]
 ]
 
 ![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
@@ -733,7 +734,7 @@ library(ggthemes)
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
   geom_col(aes(fill = year), show.legend = FALSE) +
-* geom_line(size = 2, color = "tomato", arrow = arrow()) +
+* geom_line(linewidth = 2, color = "tomato", arrow = arrow()) +
   coord_cartesian(ylim = c(0, 47.2)) +
   labs(title = "Penguin growth nears speed of light",
        subtitle = "Mean bill length in mm\n",
@@ -905,7 +906,7 @@ ggplot(mean_bill_lengths,
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
        x = "Year",
-*      y = "Mean bill length (mm)") +
+*      y = "(mm)") +
   theme_wsj(color = "gray")
 ```
 
@@ -921,10 +922,59 @@ ggplot(mean_bill_lengths,
 ---
 
 .shift-up[
-### .teal[Drop color-coding]
+### Color changes
 ]
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+```r
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+* geom_col(aes(fill = year), show.legend = FALSE) +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "\nPenguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "Year",
+       y = "(mm)") + 
+  theme_wsj(base_size = 16, color = "gray")
+```
+
+
+---
+
+.shift-up[
+### Color changes
+]
+
+
+```r
+library(tidyverse)
+library(ggthemes)
+
+# News plot
+ggplot(mean_bill_lengths, 
+       aes(x = year, y = avg_bill_length)) +
+* geom_col(fill = "#003865") +
+  coord_cartesian(ylim = c(0, 47.2)) +
+  labs(title = "\nPenguin bill lengths by year",  
+       subtitle = "Mean bill length in millimeters (mm)\n", 
+       caption = "©2023 The R/V Topsy-Scurvy",
+       x = "Year",
+       y = "(mm)") + 
+  theme_wsj(base_size = 16, color = "gray")
+```
+
+---
+
+.shift-up[
+### .teal[Drop distracting color-coding]
+]
+
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -956,18 +1006,17 @@ library(tidyverse)
 # News plot
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
-  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_col(fill = "#003865") +
   coord_cartesian(ylim = c(0, 47.2)) +
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
        x = "Year",
-       y = "Mean bill length (mm)") + 
+       y = "(mm)") + 
 * theme_wsj(color = "gray")
 ```
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
-
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -983,37 +1032,41 @@ library(ggthemes)
 # News plot
 ggplot(mean_bill_lengths, 
        aes(x = year, y = avg_bill_length)) +
-  geom_col(aes(fill = year), show.legend = FALSE) +
+  geom_col(fill = "#003865") +
   coord_cartesian(ylim = c(0, 47.2)) +
   labs(title = "Penguin bill lengths by year",  
        subtitle = "Mean bill length in millimeters (mm)\n", 
        caption = "©2023 The R/V Topsy-Scurvy",
        x = "Year",
-       y = "Mean bill length (mm)") + 
-* theme_minimal(base_size = 20)
+       y = "(mm)") + 
+* theme_minimal()
 ```
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
 
 ---
 
 .shift-up[
-### .teal[Theme with axes labels]
+### .teal[Use a theme with axes labels]
 ]
 
-![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+![](03-2-Facets-labels-colors_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
 
 
 ---
 class: inverse, middle, center
 
-# &lt;i class="fa-solid fa-user-secret"&gt;&lt;/i&gt;
+# .big[&lt;i class="fa-solid fa-user-secret"&gt;&lt;/i&gt;]
 # .bigger[.blue[Sleuthing time]]
 
 
 ---
+class: inverse
+exclude: true
 
 ###  &gt; .bluecode[`load_RV_penguins.R`]
+
+&lt;br&gt;
 
 .small-font[
 
@@ -1021,30 +1074,24 @@ class: inverse, middle, center
 library(tidyverse)
 
 # Raw R/V Topsy-Scurvy data
-rv_penguins &lt;- read_csv("2007-2009_RV_scurvy_penguins.csv")
+url &lt;- "https://tidy-mn.github.io/R-camp-penguins/data/rv_scurvy_penguins.csv"
+
+rv_penguins &lt;- read_csv(url)
 ```
 ]
 
 ---
 class: inverse, middle, center
-
+exclude: true
 
 # .bigger[.blue[facet_wrap( )]]
 
 
 ---
 class: inverse, middle, center
-
-# .bigger[.blue[colors and legends]]
-
----
 exclude: true
 
-# Legends and scales
-
-- Hide legends
-- Use a color theme
-- Use a single color
+# .bigger[.blue[colors and legends]]
 
 
 ---
