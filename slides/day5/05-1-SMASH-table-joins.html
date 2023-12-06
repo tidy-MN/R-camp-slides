@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SMASH: Table joins</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.24/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;500;600;700&display=swap');
+
+    .monsters code {font-size: 1.9rem;}
+
+    .inverse {
+        background-color: #191919;
+        color: white;
+        text-shadow: none;
+    }
+
+    .inverse h1,h2,h3 {color: white;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      line-height: 0.9;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .fullwidth {
+      max-width:115%;
+      width: 115%;
+    }
+
+    code {
+      word-spacing: -0.5rem !important;
+    }
+
+    .code-green {
+      padding: 30px;
+      padding-left: 34px;
+      border-left: solid 12px #50e3c2;
+      font-size: 1.5rem !important;
+    }
+
+    .notes {
+      font-style: italic;
+      color: grey;
+      font-size: 90%;
+    }
+
+    .col3 {
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+
+    .fa {margin-right: 12px;}
+
+    a {color: #C250E3;}
+    a {color: #42affa;}
+    a-dark {color-dark: #068de9}
+    a::hover {color: #74c4fb;}
+
+    .remark-container {
+        background: #000000;
+    }
+
+    .ff-container {
+        display: block !important;
+    }
+
+    .pinkquote-text {color: #ff2397;}
+    .pink {color: #C250E3;}
+    .pinkcode code {color: #c81888;}
+    .purple {color: #432160;}
+    .darkpurple {color: #4425d7;}
+    .mustard {color: #e3c250;}
+    .teal {color: #50E3C2;}
+    .tealcode code {color: #50E3C2;}
+    .off-white{color:#f5fccf;}
+    .yellow {color: #ffe825;}
+    .link-blue {color: #42affa;}
+    .blue {color: #3498db;}
+    .bluecode code {color: #3498db;}
+    .gray {color: #aeb9bc;}
+    .gray-bg {background-color: #efefef;}
+    .darkgray {color: #7F7F7F;}
+    .whitecode .remark-code, .whitecode code, .whitecode .hljs-string {color: white; background-color: transparent;}
+
+
+    .third {float: left;
+            width: 32%;
+            margin-top: -24px;
+            padding-right: 1.3%;}
+
+    .huge {
+      font-size: 300%;
+    }
+
+    .big {
+      font-size: 170%;
+    }
+
+    .bigger {
+      font-size: 130%;
+    }
+
+    .smaller {
+      font-size: 90%;
+    }
+
+    .small {
+      font-size: 80%;
+    }
+
+    .quote {font-size: 114%; font-family: 'Khula'; margin-left: -7%;}
+
+    tableau-viz {display: block !important; margin: auto !important;}
+
+    body {
+      font-family: 'Source Sans 3', 'Source Sans Pro', Helvetica, san-serif;
+      background: #111;
+    }
+
+    ul {line-height: 125%;}
+    li {margin-bottom: 10px;}
+
+    h1 {
+      z-index: 999;
+      position: relative;
+      font-size: 78px !important;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      line-height: 0.9;
+    }
+
+    .remark-slide-content {
+      font-size: 210%;
+    }
+
+    .bottom-right {position: absolute; bottom: 1%; right: 1%; font-size: 50%;}
+
+    .sign {text-align: right;}
+
+    .full {
+      padding: 0;
+      padding-top: 1em;
+      width: 190%;
+    }
+
+    .white-frame {
+      background-color: white;
+      margin: auto;
+      margin-top: -8px;
+      padding: 10px;
+      padding-top:16px;
+      height: 600px;
+    }
+
+    .hidden {
+      opacity:0;
+    }
+
+    .black {
+      background-color: black;
+      color: #d6d6d6;
+      text-shadow: 0 0 20px #333;
+    }
+
+
+    h1 .header-section-number {
+      background: #e53256;
+      color: white;
+      border-radius: 27px;
+      -moz-border-radius: 27px;
+      -webkit-border-radius: 27px;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 54px;
+      margin-right: 5px;
+      text-align: center;
+      width: 54px;
+      font-size: 27px;
+    }
+
+
+    .row3
+    {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .column2
+    {
+        float: left;
+        margin-right: 8%;
+        margin-left: 2px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        width: 41%;
+        overflow: hidden;
+    }
+
+
+    .column3
+    {
+        float: left;
+        margin-right: 3%;
+        margin-left: 0;
+        width: 30%;
+        overflow: hidden;
+    }
+
+    .column3 p { display: inline; line-height: 170%;}
+
+    .column4
+    {
+        float: left;
+        margin-right: 1%;
+        margin-left: 0;
+        width: 24%;
+        overflow: hidden;
+    }
+
+    .column3-txt
+    {
+        float: left;
+        margin-right: 1.3%;
+        margin-left: 0;
+        width: 32%;
+        overflow: hidden;
+    }
+
+    blockquote
+    {
+         background-color: #f0f7fb;
+         border-radius: 7px;
+         color: #525252;
+         font-style: normal;
+         line-height: 1.2;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 18px;
+         margin-bottom: 15px;
+         margin-left: 0%;
+    }
+
+    .pinkquote blockquote {
+        background-color: #fbfbfb;
+        border-radius: 22px;
+        color: #525252;
+        border: 12px #ff2397 solid;
+        font-size: 4rem;
+    }
+
+    .card {
+      border-radius: 25px;
+      background-color: #f0f7fb;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 19px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .card-top {
+      margin-top: -60px;
+      margin-left: -28px;
+      margin-bottom: 16px;
+      width: 109%;
+      height: 54px;
+    }
+
+    .note {
+      border-radius: 25px;
+      border: solid 1px #babfc28f;
+      background-color: #f0f7fb;
+      font-size: 19px;
+      font-style: normal;
+      line-height: 28px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 28px;
+      margin-bottom: 26px;
+    }
+
+
+    .note h3 {
+      color: #eeeef3;
+      background: #5e666d;
+      margin-top: -13px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    table {margin-top: 20px; margin-bottom: 18px;}
+
+    .sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important; overflow: clip !important;}
+
+    div.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important;}
+
+    pre.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip;}
+
+    .toggle {
+        height: 2.3em;
+        overflow-y: hidden;
+    }
+
+    .toggle.open {
+        height: auto;
+    }
+
+
+    /*************************************************
+     *  Alerts
+     **************************************************/
+
+    div.alert p {
+      position: relative;
+      display: block;
+      font-size: 1rem;
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div.alert p:first-child::before {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      font-size: 1.5rem;
+      color: #209cee;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f05a';
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    div.alert-warning p:first-child::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ff3860;
+      content: '\f071';
+    }
+
+    div.alert a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: solid 1px currentColor;
+    }
+
+    .alert-note {
+      color: #12537e;
+      background-color: #f6fbfe;
+      border-color: #209cee;
+    }
+
+    .alert-warning {
+      color: #cd0930;
+      background-color: #fff5f7;
+      border-color: #ff3860;
+    }
+
+    .bump-left {
+      margin-left: -35px;
+      margin-right: 35px;
+    }
+    .bump-right {
+      margin-right: -35px;
+      margin-left: 35px;
+    }
+
+    .quiz
+    {
+        background: #f5f5f5;
+        color: #252424;
+        font-size: 1.7rem;
+        border-left: solid 74px #42affa;
+        border-radius: 25px;
+        line-height: 22px;
+        overflow: hidden;
+        padding: 0px;
+        padding-top: 4px;
+        padding-bottom: 30px;
+        margin-top: 24px;
+        margin-bottom: 30px;
+        padding-left: 40px;
+    }
+
+    .quiz p {
+      line-height: 105%
+    }
+
+    .quiz summary {margin-bottom: 12px;}
+
+    .quiz i {font-weight: 300;}
+
+    .quiz h3 {
+        color: #191919;
+        font-size: 3rem;
+        margin-top: 32px;
+        margin-bottom: 10px;
+    }
+
+    .quiz_btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #fff;
+        background-color: #75aadb;
+        border-color: #2e6da4;
+        line-height: 1.43;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 6px;
+    }
+
+    .quiz_btn:hover {background-color: #0e4272;}
+
+    label.clicktogif2 {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') DimGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    label.clicktogif {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') white no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    label.clicktogif:hover, label.clicktogif2:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') white no-repeat center center;
+      display: block;
+      float: left;
+    }
+    label.clicktogif2:hover, label.clicktogif2:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="MediumSeaGreen"/></svg>') DarkSlateGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    .clicktogif img {display: block;}
+    .clicktogif input[type=checkbox] {
+        position: absolute;
+        left: -100vw;
+    }
+    .clicktogif input[type=checkbox] + img {
+      opacity: 0;
+    }
+    .clicktogif input[type=checkbox]:checked + img {
+      opacity: 1;
+    }
+
+
+    :root {
+      --animate-duration: 3s;
+    }
+
+    /* Scrolly ticker */
+    .ticker-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 70px;
+    position: absolute;
+    }
+    .ticker-wrapper {
+    width: 100%;
+    padding-left: 99.7%;
+    background-color: transparent;
+    }
+    @keyframes ticker {
+    0% {
+    transform: translate3d(0, 0, 0);
+    }
+    100% {
+    transform: translate3d(-100%, 0, 0);
+    }
+    }
+    .ticker-transition {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 20s;
+    }
+    .ticker-transition:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+    }
+    .ticker-item {
+    display: inline-block;
+    padding: 0 0;
+    margin-right: -7px;
+    }
+
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: fadeOut
+
+background-image: url(../images/tv_fuzz_whitenoise.gif)
+background-size: cover
+
+&lt;link href='https://fonts.googleapis.com/css?family=Londrina Sketch' rel='stylesheet'&gt;
+
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100&amp;family=Holtwood+One+SC&amp;family=Kalam:wght@300&amp;family=Londrina+Sketch&amp;family=Metal+Mania&amp;family=Source+Sans+3:wght@300;500;600;700&amp;display=swap" rel="stylesheet"&gt;
+
+&lt;style&gt;
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100&amp;family=Kalam:wght@300&amp;family=Londrina+Sketch:wght@500;700&amp;family=Metal+Mania&amp;family=Source+Sans+3:wght@300;500;600;700&amp;display=swap');
+
+.black {background-color: black;}
+
+&lt;style&gt;
+
+.noise h1 {position: absolute;
+    top: 174px;
+    left: 94px;
+    font-size: 8.3rem !important;
+    font-weight: bold;
+    font-family: "Holtwood One SC" !important;
+    color: white;}
+.sketch2 {font-family: "Londrina Sketch" !important; font-weight: 900;}
+.metal {font-family: "Metal+Mania"; font-weight: 700;}
+.metal2 {font-family: "Metal+Mania"; font-weight: 700; text-decoration: underline overline;}
+.bright-red {color: #f62e14; opacity: 1;}
+.transparent {opacity: 0}
+
+.small-font h1 {font-size: 4.3rem !important;}
+.teal h3 {font-weight: bold;}
+.bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
+.wider {width: 107%;}
+img {max-width: 120%; width: 100%;}
+.clear {clear:both;}
+h2, h3 {color: black; padding-bottom: 28px;}
+
+.pull-right img {width: 139%;
+    max-width: 139%;
+    margin-left: -38px;
+    margin-top: -20px;}
+    
+.pull-left .remark-code-line {font-size: 1.49rem;}
+.pull-up {margin-top: -28px;}
+
+.small-font {font-size: 1.2rem;}
+.small-font .remark-code-line {font-size: 1.5rem;}
+.med-font .remark-code-line {font-size: 1.7rem;}
+
+.shift-up {margin-top: -20px;}
+.shift-left {margin-left: -28px;}
+.small-shift-left {margin-left: -60px;}
+.shift-right {margin-left: 180px;}
+.shift-down {padding-top: 2px;}
+
+.remark-slide table {width: 108%; font-size: 1.4rem;}
+.small-table table {width: 39%;}
+
+.remark-code {width: 104%;}
+.remark-code-line {font-size: 1.75rem; line-height: 1.37;}
+
+&lt;/style&gt;
+
+
+&lt;div class="animated flash" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;p class="animated flash teal" style="margin-top: 28px; margin-left: 34px;"&gt;03&lt;/p&gt;
+
+&lt;/div&gt;
+
+---
+class: animated, fadeOut
+background-image: url(../images/tv_fuzz_whitenoise.gif)
+background-size: cover
+
+&lt;div class="" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.82 !important;"&gt;
+
+&lt;p class="animated infinite flash teal" style="margin-top: 28px; margin-left: 34px;"&gt;44&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+---
+class: inverse, center, middle, animated, infinite, pulse
+
+&lt;image src="../images/boxing_ring.webp" style="position: absolute; top: 0; left: 0; width: 100%; max-width: 200%; opacity: 0.6; z-index: -99;"&gt;
+
+&lt;div class="animated bounceInDown" style="margin-top: -164px;"&gt;
+
+&lt;h1&gt; .metal2[.bigger[.big[WW]]] &lt;/h1&gt;
+&lt;h2&gt; .metal[.smaller[.transparent[ DATAFRAME ]]] &lt;/h2&gt;
+&lt;h1&gt; .metal2[.bigger[.big[SMASH]]] &lt;/h1&gt;
+
+&lt;/div&gt;
+
+&lt;h2 class="animated heartBeat" style="margin-top: -280px;"&gt; .metal[.smaller[.bright-red[ DATAFRAME ]]] &lt;/h2&gt;
+
+
+---
+class: inverse, center, middle, animated, zoomIn
+exclude: true
+
+&lt;div class="animated infinite pulse"&gt;
+
+&lt;image src="../images/boxing_ring.webp" style="position: absolute; top: 0; left: 0; width: 100%; max-width: 200%; opacity: 0.6; z-index: -99;"&gt;
+
+&lt;/div&gt;
+
+&lt;div class="animated bounceInDown"&gt;
+
+&lt;h1&gt; .metal2[.bigger[.big[WW]]] &lt;/h1&gt;
+&lt;h2&gt; .metal[.smaller[.bright-red[ DATAFRAME ]]] &lt;/h2&gt;
+&lt;h1&gt; .metal2[.bigger[.big[SMASH]]] &lt;/h1&gt;
+
+&lt;/div&gt;
+
+
+
+---
+class: inverse, center, middle, animated, infinite, pulse, fadeOut
+exclude: true
+
+&lt;image src="../images/boxing_ring.webp" style="position: absolute; top: 0; left: 0; width: 100%; max-width: 200%; opacity: 0.6; z-index: -99;"&gt;
+
+&lt;h1&gt; .metal2[.bigger[.big[WW]]] &lt;/h1&gt;
+
+&lt;div class="animated heartBeat"&gt;
+
+&lt;h2&gt; .metal[.smaller[.bright-red[ DATAFRAME ]]] &lt;/h2&gt;
+
+&lt;/div&gt;
+
+&lt;h1&gt; .metal2[.bigger[.big[SMASH]]] &lt;/h1&gt;
+
+
+
+---
+class: inverse, right, animated, infinite, pulse
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+---
+class: inverse, right
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="animated bounce" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+&lt;img class="transparent" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+
+---
+class: inverse, right
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+
+&lt;img class="animated bounceIn" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+
+---
+class: inverse, right, animated, fadeOut
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+
+&lt;img class="animated tada" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+
+
+---
+class: inverse, center, middle, animated, fadeIn
+exclude: true
+
+&lt;image class="animated infinite pulse" src="../images/noise_particles.gif" style="margin-top: -130px; margin-left: -131px; width: 128%; max-width: 128%;"&gt;
+
+
+---
+class: inverse, center, middle, animated, fadeIn
+
+&lt;image class="animated infinite pulse" src="../images/noise_particles.gif" style="margin-top: -130px; margin-left: -131px; width: 128%; max-width: 128%;"&gt;
+
+
+&lt;div class="animated fadeIn"&gt;
+
+&lt;img class="animated infinite pulse" src="../images/noise_text_sketch_gray.png" style="position: absolute; top: 170px; left: 32px; width: 95%;"&gt;
+    
+&lt;/div&gt;
+
+---
+class: inverse, left, animated, infinite, pulse
+exclude: true
+
+&lt;image class="" src="../images/noise_waves.webp" style="position: absolute; top: -332px;
+    left: -151px;
+    width: 131%;"&gt;
+
+
+---
+class: inverse, center, animated, fadeIn
+
+# .big[.bigger[ROUND 1]]
+
+&lt;br&gt;
+
+&lt;h1 class="animated infinite heartBeat"&gt; .big[.big[.blue[ ? ]]] &lt;/h1&gt;
+
+---
+class: inverse, center, animated
+
+# .big[.bigger[ROUND 1]]
+
+&lt;br&gt;
+
+&lt;h1 class="animated rubberBand"&gt; .bigger[.big[.blue[left_join( )]]] &lt;/h1&gt;
+
+
+---
+class: inverse, center, animated, fadeIn
+
+# .big[.bigger[ROUND 1]]
+
+&lt;br&gt;
+
+.small-font[
+
+# .blue[left_join(].gray[monsters], .teal[nicknames].blue[)]
+
+]
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+&lt;h1 class="animated pulse"&gt;  .bigger[.big[.big[.big[.teal[ 3 ]]]]]
+
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+
+&lt;h1 class="animated pulse"&gt; .big[.big[.big[.teal[ 2 ]]]] &lt;/h1&gt;
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+&lt;h1 class="animated pulse"&gt; .big[.big[.teal[ 1 ]]] &lt;/h1&gt;
+
+
+---
+class: inverse, middle, center, animated, fadeIn
+exclude: true
+
+&lt;img class="animated bounceIn" style="margin-top: -294px;
+    width: 129%;
+    margin-left: -135px;
+    max-width: 150%;" src="../images/boom.jpg"&gt;
+
+---
+class: inverse, middle, center, animated, fadeIn, fadeOut
+
+&lt;img class="animated bounceIn" style="margin-top: -388px;
+    width: 154%;
+    margin-left: -258px;
+    max-width: 155%;" src="../images/smash_comics.webp"&gt;
+
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+&lt;img class="animated headShake" src="../images/monsters/left_join_named_monsters.png" style="width: 75%;"&gt;
+
+
+
+---
+class: inverse, right, animated, fadeIn
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+
+&lt;img class="" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+---
+class: inverse, right
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+
+&lt;img class="animated tada" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+---
+class: inverse, right, animated, fadeOut
+background-image: url(../images/wrestle_vs.jpg)
+background-size: cover
+
+
+&lt;img class="animated bounce" src="../images/monsters/monster_data2.png" style="width: 46%; margin-left: -92px; margin-top: 76px; float: left;"&gt;
+
+
+&lt;img class="" src="../images/monsters/monster_names.png" style="width: 19%; margin-top: 60px; margin-right: 58px;"&gt;
+
+
+---
+class: inverse, center, animated, fadeIn
+
+# .big[.bigger[ROUND 2]]
+
+&lt;br&gt;
+
+&lt;h1 class="animated infinite heartBeat"&gt; .big[.big[.blue[ ? ]]] &lt;/h1&gt;
+
+
+---
+class: inverse, center, animated
+
+# .big[.bigger[ROUND 2]]
+
+&lt;br&gt;
+
+&lt;h1 class="animated jello"&gt; .bigger[.big[.blue[anti_join( )]]] &lt;/h1&gt;
+
+
+---
+class: inverse, center, animated, fadeIn
+
+# .big[.bigger[ROUND 2]]
+
+&lt;br&gt;
+
+.small-font[
+
+# .blue[anti_join(].gray[monsters], .teal[nicknames].blue[)]
+
+]
+
+---
+class: inverse, center, black
+
+&lt;h1 class="animated infinite tada" style="color: #1f9f4f; font-size: 7.3rem !important;"&gt; MAKE SOME NOISE &lt;/h1&gt;
+
+&lt;image class="animated infinite pulse" src="../images/noise_meter_decibels.gif" style="position: absolute; top: 20px; left: -15px; width: 102%; max-width: 121%;"&gt;
+
+
+---
+class: inverse, middle, center, black, animated, fadeIn
+
+&lt;h1 class="animated pulse"&gt;  .bigger[.big[.big[.big[.teal[ 3 ]]]]]
+
+---
+class: inverse, middle, center, black, animated, fadeIn
+
+
+&lt;h1 class="animated pulse"&gt; .big[.big[.big[.teal[ 2 ]]]] &lt;/h1&gt;
+
+---
+class: inverse, middle, center, black, animated, fadeIn
+
+&lt;h1 class="animated pulse"&gt; .big[.big[.teal[ 1 ]]] &lt;/h1&gt;
+
+
+---
+class: inverse, middle, center, black, animated, fadeOut
+exclude: true
+
+&lt;img class="animated bounceIn" style="margin-top: -294px;
+    width: 129%;
+    margin-left: -135px;
+    max-width: 150%;" src="../images/boom.jpg"&gt;
+
+
+---
+class: inverse, middle, center, black, animated, fadeIn
+
+&lt;img class="animated fadeIn" style="margin-top: -68px; width: 133%; margin-left: -135px; max-width: 150%;" src="../images/smoke_whisp.gif"&gt;
+
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+&lt;img class="animated headShake" src="../images/monsters/anti_join_no_name_monsters.png" style="width: 67%;"&gt;
+
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+&lt;img class="" src="../images/monsters/anti_join_no_name_monsters.png" style="width: 67%;"&gt;
+
+
+&lt;div class="animated flash" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;p class="animated infinite flash teal" style="margin-top: 28px;margin-left: auto; margin-right: auto;"&gt;03&lt;/p&gt;
+
+&lt;/div&gt;
+
+---
+class: animated, fadeIn, fadeOut
+background-image: url(../images/tv_fuzz_whitenoise.gif)
+background-size: cover
+
+&lt;div class="animated flash" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;p class="teal" style="margin-top: 28px; margin-left: 34px;"&gt;03&lt;/p&gt;
+
+&lt;/div&gt;
+
+---
+class: animated, fadeOut
+background-image: url(../images/tv_fuzz_whitenoise.gif)
+background-size: cover
+
+&lt;div class="animated flash" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;p class="animated infinite flash teal" style="margin-top: 28px; margin-left: 34px;"&gt;12&lt;/p&gt;
+
+&lt;/div&gt;
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+# .big[.bigger[.teal[ JOINS ]]]
+
+&lt;div class="" style="position: absolute; top: 120px; right: 120px; background-color: darkgrey; height: 100px; min-width: 100px; opacity: 0.7 !important;"&gt;
+
+&lt;p class="animated flash teal" style="margin-top: 28px; margin-left: auto; margin-right: auto;"&gt;12&lt;/p&gt;
+
+&lt;/div&gt;
+
+---
+class: inverse, middle, center, animated, fadeIn
+
+# .big[.bigger[.teal[ JOINS ]]]
+
+
+---
+class: inverse, middle, center
+
+# .big[.bigger[.blue[ left_join( ) ]]]
+
+---
+class: center, middle, animated, fadeIn
+
+&lt;img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif" style="width: 80%; max-width: 122%; margin-top: 4px;"&gt;
+
+
+
+---
+class: inverse, middle, animated, fadeIn
+
+.small-font[.shift-left[
+
+# .blue[left_join(].gray[left_table], .blue[)]
+
+]]
+
+---
+class: inverse, middle
+
+.small-font[.shift-left[
+
+
+# .blue[left_join(].gray[left_table], .teal[right_table].blue[)]
+
+]]
+
+
+---
+class: inverse, middle
+
+.small-font[.shift-left[
+
+# .blue[left_join(].gray[left_table].small[,] .teal[right_table].small[,]
+&lt;h1 style="margin-left: 262px;"&gt; .blue[by = ] "shared_column"  .blue[)] &lt;/h1&gt;
+
+]]
+
+
+---
+
+&lt;div style="height: 108px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/left_join_all.png" style="width: 120%; max-width: 122%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="overflow:hidden; "&gt;
+&lt;img src="../images/monsters/left_join_all.png" style="width: 83%; margin-top: -69px; margin-left: 24px;"&gt;
+&lt;/div&gt;
+
+---
+class: center, middle, animated, fadeIn
+
+&lt;img src="../images/monsters/left_join_named_monsters.png" style="width: 78%; max-width: 122%; margin-top: 4px;"&gt;
+
+
+
+---
+class: inverse, middle, center
+
+# .big[.bigger[.blue[ anti_join( ) ]]]
+
+
+---
+class: center, middle, animated, fadeIn
+
+&lt;img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/anti-join.gif" style="width: 80%; max-width: 122%; margin-top: 4px;"&gt;
+
+
+---
+class: inverse, middle, animated, fadeIn
+
+.small-font[.shift-left[
+
+
+# .blue[anti_join(].gray[left_table].small[,] .teal[right_table].small[,]
+&lt;h1 style="margin-left: 282px;"&gt; .blue[by = ] "shared_column"  .blue[)] &lt;/h1&gt;
+
+]]
+
+
+---
+
+&lt;div style="height: 108px; overflow:hidden;"&gt;
+&lt;img src="../images/monsters/anti_join_all.png" style="width: 120%; max-width: 122%; margin-top: 4px;"&gt;
+&lt;/div&gt;
+
+&lt;div style="overflow:hidden; "&gt;
+&lt;img src="../images/monsters/anti_join_all.png" style="width: 83%; margin-top: -69px; margin-left: 24px;"&gt;
+&lt;/div&gt;
+
+
+---
+class: center, middle, animated, fadeIn
+
+&lt;img src="../images/monsters/anti_join_no_name_monsters.png" style="width: 85%; max-width: 122%; margin-top: 4px;"&gt;
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.bigger[.blue[anti_join( )]]]
+# .bigger[---]
+# .bigger[.bigger[.blue[filter( )]]]
+
+
+---
+class: inverse
+
+.shift-left[
+
+&lt;br&gt;
+
+.small-font[
+
+# .blue[anti_join(].gray[monsters].small[,] .teal[nicknames].small[,]
+&lt;h1 style="margin-left: 282px;"&gt; .blue[by = ] "id"  .blue[)] &lt;/h1&gt;
+
+]]
+
+
+--
+
+&lt;br&gt;
+
+.small-font[.shift-left[
+
+# .blue[filter(].gray[monsters].small[,]
+&lt;h1 style="margin-left: 159px;"&gt; !.gray[id] .small[%in%] .teal[nicknames$id] .blue[)] &lt;/h1&gt;
+
+]]
+
+
+---
+class: inverse
+exclude: true
+
+&lt;br&gt;
+
+## .blue[anti_join]
+
+.small-font[
+
+
+```r
+no_name_monsters &lt;- anti_join(monsters, nicknames,
+                              by = "id")
+```
+
+]
+
+
+## .blue[filter]
+
+.small-font[
+
+
+```r
+no_name_monsters &lt;- filter(monsters,
+                           !id %in% nicknames$id)
+```
+
+]
+
+
+---
+class: inverse, center, middle
+
+# &lt;i class="fas fa-carrot" aria-hidden="true"&gt;&lt;/i&gt; [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/index.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="../libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

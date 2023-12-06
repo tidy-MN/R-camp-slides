@@ -131,7 +131,7 @@ class: middle, center
 class: middle, center, gray-bg
 
 ```{r, echo=F}
-rv_penguins <- read_csv("../../2007-2009_RV_scurvy_penguins.csv")
+rv_penguins <- read_csv("../../rv_scurvy_penguins.csv")
 ```
 
 .shift-up[
