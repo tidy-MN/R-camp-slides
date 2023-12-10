@@ -1,15 +1,19 @@
 
-### Monsters **EVERYWHERE!** {-}
+## Monsters <span class="teal">**EVERYWHERE!** </span> {-}
 
-<img src="../images/gganimate_allison_horst.png" alt="Cartoon of a bunch of monsters watching data points of varing color and shape fly across a screen like fireworks. Several monsters are lighting the data off like fireworks." style="margin-top: -12px; width: 70%;">
+<div style="overflow: hidden; margin-top: 6px; width: 100%; margin-left: 0; height: 302px;">
+    
+<img src="../../slides/images/gganimate_allison_horst.png" alt="Cartoon of a bunch of monsters watching data points of varing color and shape fly across a screen like fireworks. Several monsters are lighting the data off like fireworks." style="margin-top: -133px; width: 75%;">
 
-It seemed like a good idea to bring those helpful monsters along, and they're so cute. People hate to say it, but they are starting to become a real nuisance. 
+</div>
+
+It seemed like a good idea to bring those helpful monsters along, and they're so so cute. People hate to say it, but they are starting to become a real nuisance. 
 
 To get a grasp on the population explosion of monsters our research vessel is launching a full-scale monster survey. And they need our **help**.
 
 
-# <i class="fa fa-calendar" aria-hidden="true"></i> Dates with `lubridate` 
-<hr>
+## <i class="fa fa-calendar" aria-hidden="true"></i> Dates with `lubridate` {-}
+
 
 ### The `lubridate` package. {-}
 
@@ -31,7 +35,7 @@ It's a great reference when you need to manipulate dates or timezones in your da
 
 
 ## Menu of date functions {-}
-<hr class="hrlvl2">
+
 
 #### Convert text to a `DATE` {-}
 
@@ -289,10 +293,12 @@ Before you send off the survey dates, you'll need to adjust the dates to match t
 
 **Preferred date formats**
 
-- Dream: ` 05-18-2024`
-- Biscoe: ` May 18, 2024`
+- Dream: ` 08-18-2024`
+- Biscoe: ` Aug 18, 2024`
 
 <br>
+
+For the first case we will do things the more manual way and use `format` with specific date expressions to layout each piece of the date
 
 Use `format(count_date, ...)` and the date expressions below to format the schedule for each region accordingly. 
 
@@ -325,16 +331,13 @@ Use `format(count_date, ...)` and the date expressions below to format the sched
 
 <br>
 
-Use `mutate()` to update the **week_day** column for both island schedules.
+Use `mutate()` to update the **week_day** column for the Dream island schedule.
 
 **Here's a start**
 
 ```{r, eval=F, echo=T}
-# Set date format to 05-18-2024
+# Set date format to match 08-18-2024
 dream_dates <- mutate(dream_dates, pretty_date = format(count_date, _______  ))
-
-# Set date format to May 18, 2024
-biscoe_dates <- mutate(biscoe_dates, pretty_date = format(count_date, _______ ))
 ```
 
 
@@ -342,19 +345,18 @@ biscoe_dates <- mutate(biscoe_dates, pretty_date = format(count_date, _______ ))
 <summary  class = "btn_code">Show code</summary>
   
 ```{r, eval=T, echo=T}
-# Set date format to 05-18-2024
+# Set date format to 08-18-2024
 dream_dates <- mutate(dream_dates, pretty_date = format(count_date, "%m-%d-%Y"))
 
-# Set date format to May 07, 2024
-biscoe_dates <- mutate(biscoe_dates, pretty_date = format(count_date, "%b %d, %Y"))
 ```
 
 </details>
 
+
 ### How'd we do? {-}
 
 ```{r, eval=F, echo=T}
-# Dream Tree schedule
+# Dream island schedule
 head(dream_dates, 3)
 ```
 
@@ -362,8 +364,48 @@ head(dream_dates, 3)
 head(dream_dates, 3) %>% kable()
 ```
 
+<br>
+
+### <i class="fa-solid fa-stamp"></i> [.teal[**Stamp**]] your dates {-}
+
+Now for `stamp_date()`. We'll first create a stamp of our desired date format for Biscoe island, and then we will apply it to all the dates in our Biscoe schedule.
+
+```{r, eval=T, echo=T}
+# Create date stamp with format of Aug 18, 2024
+biscoe_stamp <- stamp_date("Aug 18, 2024")
+
+# Test the stamp
+test_date <- ymd("1985-10-26")
+
+biscoe_stamp(test_date)
+```
+
+<br>
+
+Good to go! Use `mutate()` and the new stamp to update the **week_day** column for the Biscoe island schedules.
+
+**Here's a start**
+
 ```{r, eval=F, echo=T}
-# Biscoe schedule
+# Set date format to match Aug 18, 2024
+biscoe_dates <- mutate(biscoe_dates, pretty_date = ___________ )
+```
+
+
+<details>
+<summary  class = "btn_code">Show code</summary>
+  
+```{r, eval=T, echo=T}
+# Set date format to match Aug 18, 2024
+biscoe_dates <- mutate(biscoe_dates, pretty_date = biscoe_stamp(count_date))
+```
+
+</details>
+
+### How'd we do? {-}
+
+```{r, eval=F, echo=T}
+# Biscoe island schedule
 head(biscoe_dates, 3)
 ```
 
@@ -374,7 +416,7 @@ head(biscoe_dates, 3) %>% kable()
 
 <br>
 
-**Congrats\!**
+**Congrats!**
 
 Your fine-tuned schedules worked perfectly. 
 
@@ -386,9 +428,8 @@ Now let’s jump ahead and take a look at the survey results.
 ### Load the monster survey results. {-}
 
 ```{r, eval=T}
-monsters <- read_csv("https://github.com/tidy-MN/R-camp-slides/raw/main/2024_monster_survey.csv")   
+monsters <- read_csv("https://tidy-mn.github.io/R-camp-penguins/data/2024_monster_survey.csv") 
 ```
-
 
 <br>
 
@@ -531,5 +572,4 @@ ggplot(monsters, aes(x = count_date, y = monster_count, color = island)) +
 ## <i class="fas fa-hands-clapping" aria-hidden="true"></i> Great work {-}
 
 The researchers were deeply thankful and rewarded you with a shiny penguin magnet. They'll be in touch for *Monster Survey 2025*.
-
 
