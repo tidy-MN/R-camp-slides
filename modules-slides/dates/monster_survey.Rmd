@@ -390,7 +390,7 @@ Now let’s jump ahead and take a look at the survey results.
 ### Load the monster survey results. {-}
 
 ```{r, eval=F}
-monsters <- read_csv("https://tidy-mn.github.io/R-camp-penguins/data/2024_monster_survey_results.csv")   
+monsters <- read_csv("https://tidy-mn.github.io/R-camp-penguins/data/2024_monster_survey.csv")   
 ```
 
 

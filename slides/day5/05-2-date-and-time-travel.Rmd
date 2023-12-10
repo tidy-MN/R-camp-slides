@@ -272,7 +272,7 @@ exclude: false
 
 .bluecode[
 
-| Order of date elements | Function   | |
+| Order of components | Function   | |
 |:----|:-----------------------------------------------------------------|---:|
 | Month-Day-Year ~ "<span class="teal">05-18-2023</span>" or "<span class="teal">05/18/2023</span>"                | `mdy(`date`)  `    |  |
 | Day-Month-Year (Euro dates) ~ "<span class="teal">18-05-2023</span>" or "<span class="teal">18/05/2023</span>"  | `dmy()  `    | |
@@ -359,7 +359,7 @@ exclude: true
 class: inverse, center, middle, black
 
 # .big[.blue[Step 2]]
-## .big[Sort your parts]
+## .big[Sort your components]
 
 
 ---
@@ -374,7 +374,7 @@ background-size: 96%
 
 .bluecode[
 
-| Function   |  Date element                                            |
+| Function   |  Date component                                           |
 |----|:-----------------------------------------------------------------|
 |`year(`date`)  `  | Year          |
 |`month()`   | Month: _1, 2, 3_; Use <span class="teal">label=TRUE</span> for _Jan, Feb, Mar_  |
