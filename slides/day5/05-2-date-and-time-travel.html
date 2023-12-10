@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>lubridate: Time travel</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.24/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <link href="libs/countdown-0.4.0/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.4.0/countdown.js"></script>
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;500;600;700&display=swap');
+
+    .monsters code {font-size: 1.9rem;}
+
+    .inverse {
+        background-color: #191919;
+        color: white;
+        text-shadow: none;
+    }
+
+    .inverse h1,h2,h3 {color: white;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      line-height: 0.9;
+    }
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .fullwidth {
+      max-width:115%;
+      width: 115%;
+    }
+
+    code {
+      word-spacing: -0.5rem !important;
+    }
+
+    .code-green {
+      padding: 30px;
+      padding-left: 34px;
+      border-left: solid 12px #50e3c2;
+      font-size: 1.5rem !important;
+    }
+
+    .notes {
+      font-style: italic;
+      color: grey;
+      font-size: 90%;
+    }
+
+    .col3 {
+      float: left;
+      width: 32%;
+      margin-right: 1%;
+    }
+
+    .fa {margin-right: 12px;}
+
+    a {color: #C250E3;}
+    a {color: #42affa;}
+    a-dark {color-dark: #068de9}
+    a::hover {color: #74c4fb;}
+
+    .remark-container {
+        background: #000000;
+    }
+
+    .ff-container {
+        display: block !important;
+    }
+
+    .pinkquote-text {color: #ff2397;}
+    .pink {color: #C250E3;}
+    .pinkcode code {color: #c81888;}
+    .purple {color: #432160;}
+    .darkpurple {color: #4425d7;}
+    .mustard {color: #e3c250;}
+    .teal {color: #50E3C2;}
+    .tealcode code {color: #50E3C2;}
+    .off-white{color:#f5fccf;}
+    .yellow {color: #ffe825;}
+    .link-blue {color: #42affa;}
+    .blue {color: #3498db;}
+    .bluecode code {color: #3498db;}
+    .gray {color: #aeb9bc;}
+    .gray-bg {background-color: #efefef;}
+    .darkgray {color: #7F7F7F;}
+    .whitecode .remark-code, .whitecode code, .whitecode .hljs-string {color: white; background-color: transparent;}
+
+
+    .third {float: left;
+            width: 32%;
+            margin-top: -24px;
+            padding-right: 1.3%;}
+
+    .huge {
+      font-size: 300%;
+    }
+
+    .big {
+      font-size: 170%;
+    }
+
+    .bigger {
+      font-size: 130%;
+    }
+
+    .smaller {
+      font-size: 90%;
+    }
+
+    .small {
+      font-size: 80%;
+    }
+
+    .quote {font-size: 114%; font-family: 'Khula'; margin-left: -7%;}
+
+    tableau-viz {display: block !important; margin: auto !important;}
+
+    body {
+      font-family: 'Source Sans 3', 'Source Sans Pro', Helvetica, san-serif;
+      background: #111;
+    }
+
+    ul {line-height: 125%;}
+    li {margin-bottom: 10px;}
+
+    h1 {
+      z-index: 999;
+      position: relative;
+      font-size: 78px !important;
+      font-family: 'Source Sans 3', Source Sans Pro, sans-serif;
+      margin-top: 12px;
+      margin-bottom: 16px;
+      line-height: 0.9;
+    }
+
+    .remark-slide-content {
+      font-size: 210%;
+    }
+
+    .bottom-right {position: absolute; bottom: 1%; right: 1%; font-size: 50%;}
+
+    .sign {text-align: right;}
+
+    .full {
+      padding: 0;
+      padding-top: 1em;
+      width: 190%;
+    }
+
+    .white-frame {
+      background-color: white;
+      margin: auto;
+      margin-top: -8px;
+      padding: 10px;
+      padding-top:16px;
+      height: 600px;
+    }
+
+    .hidden {
+      opacity:0;
+    }
+
+    .black {
+      background-color: black;
+      color: #d6d6d6;
+      text-shadow: 0 0 20px #333;
+    }
+
+
+    h1 .header-section-number {
+      background: #e53256;
+      color: white;
+      border-radius: 27px;
+      -moz-border-radius: 27px;
+      -webkit-border-radius: 27px;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 54px;
+      margin-right: 5px;
+      text-align: center;
+      width: 54px;
+      font-size: 27px;
+    }
+
+
+    .row3
+    {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 12px;
+    }
+
+    .column2
+    {
+        float: left;
+        margin-right: 8%;
+        margin-left: 2px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+        width: 41%;
+        overflow: hidden;
+    }
+
+
+    .column3
+    {
+        float: left;
+        margin-right: 3%;
+        margin-left: 0;
+        width: 30%;
+        overflow: hidden;
+    }
+
+    .column3 p { display: inline; line-height: 170%;}
+
+    .column4
+    {
+        float: left;
+        margin-right: 1%;
+        margin-left: 0;
+        width: 24%;
+        overflow: hidden;
+    }
+
+    .column3-txt
+    {
+        float: left;
+        margin-right: 1.3%;
+        margin-left: 0;
+        width: 32%;
+        overflow: hidden;
+    }
+
+    blockquote
+    {
+         background-color: #f0f7fb;
+         border-radius: 7px;
+         color: #525252;
+         font-style: normal;
+         line-height: 1.2;
+         overflow: hidden;
+         padding: 22px;
+         padding-top: 12px;
+         padding-bottom: 14px;
+         margin-top: 18px;
+         margin-bottom: 15px;
+         margin-left: 0%;
+    }
+
+    .pinkquote blockquote {
+        background-color: #fbfbfb;
+        border-radius: 22px;
+        color: #525252;
+        border: 12px #ff2397 solid;
+        font-size: 4rem;
+    }
+
+    .card {
+      border-radius: 25px;
+      background-color: #f0f7fb;
+      font-size: 17px;
+      font-style: normal;
+      line-height: 19px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 0;
+      margin-bottom: 26px;
+    }
+
+    .card-top {
+      margin-top: -60px;
+      margin-left: -28px;
+      margin-bottom: 16px;
+      width: 109%;
+      height: 54px;
+    }
+
+    .note {
+      border-radius: 25px;
+      border: solid 1px #babfc28f;
+      background-color: #f0f7fb;
+      font-size: 19px;
+      font-style: normal;
+      line-height: 28px;
+      overflow: hidden;
+      padding: 22px;
+      padding-top: 12px;
+      padding-bottom: 20px;
+      margin-top: 28px;
+      margin-bottom: 26px;
+    }
+
+
+    .note h3 {
+      color: #eeeef3;
+      background: #5e666d;
+      margin-top: -13px;
+      margin-bottom: 16px;
+      margin-left: -26px;
+      padding-left: 26px;
+      padding-top: 12px;
+      padding-bottom: 10px;
+      width: 118%;
+    }
+
+    table {margin-top: 20px; margin-bottom: 18px;}
+
+    .sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important; overflow: clip !important;}
+
+    div.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip !important;}
+
+    pre.sourceCode {margin-top: 1px; margin-bottom: 20px; font-size: 14px; line-height: 1.5; background-color: #fbfbfb; overflow-y: clip;}
+
+    .toggle {
+        height: 2.3em;
+        overflow-y: hidden;
+    }
+
+    .toggle.open {
+        height: auto;
+    }
+
+
+    /*************************************************
+     *  Alerts
+     **************************************************/
+
+    div.alert p {
+      position: relative;
+      display: block;
+      font-size: 1rem;
+      margin-left: 2rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    div.alert p:first-child::before {
+      position: absolute;
+      top: -0.5rem;
+      left: -2rem;
+      font-size: 1.5rem;
+      color: #209cee;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: '\f05a';
+      width: 1.5rem;
+      text-align: center;
+    }
+
+    div.alert-warning p:first-child::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #ff3860;
+      content: '\f071';
+    }
+
+    div.alert a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: solid 1px currentColor;
+    }
+
+    .alert-note {
+      color: #12537e;
+      background-color: #f6fbfe;
+      border-color: #209cee;
+    }
+
+    .alert-warning {
+      color: #cd0930;
+      background-color: #fff5f7;
+      border-color: #ff3860;
+    }
+
+    .bump-left {
+      margin-left: -35px;
+      margin-right: 35px;
+    }
+    .bump-right {
+      margin-right: -35px;
+      margin-left: 35px;
+    }
+
+    .quiz
+    {
+        background: #f5f5f5;
+        color: #252424;
+        font-size: 1.7rem;
+        border-left: solid 74px #42affa;
+        border-radius: 25px;
+        line-height: 22px;
+        overflow: hidden;
+        padding: 0px;
+        padding-top: 4px;
+        padding-bottom: 30px;
+        margin-top: 24px;
+        margin-bottom: 30px;
+        padding-left: 40px;
+    }
+
+    .quiz p {
+      line-height: 105%
+    }
+
+    .quiz summary {margin-bottom: 12px;}
+
+    .quiz i {font-weight: 300;}
+
+    .quiz h3 {
+        color: #191919;
+        font-size: 3rem;
+        margin-top: 32px;
+        margin-bottom: 10px;
+    }
+
+    .quiz_btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #fff;
+        background-color: #75aadb;
+        border-color: #2e6da4;
+        line-height: 1.43;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 6px;
+    }
+
+    .quiz_btn:hover {background-color: #0e4272;}
+
+    label.clicktogif2 {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') DimGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    label.clicktogif {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') white no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    label.clicktogif:hover, label.clicktogif2:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="LightGrey"/></svg>') white no-repeat center center;
+      display: block;
+      float: left;
+    }
+    label.clicktogif2:hover, label.clicktogif2:focus-within  {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -256 1792 1792"><path d="M1288.678 637.83q0 37-33 56l-512 288q-14 8-31 8t-32-9q-32-18-32-55v-576q0-37 32-55 31-20 63-1l512 288q33 19 33 56zm128 0q0-104-40.5-198.5t-109.5-163.5q-69-69-163.5-109.5t-198.5-40.5q-104 0-198.5 40.5t-163.5 109.5q-69 69-109.5 163.5t-40.5 198.5q0 104 40.5 198.5t109.5 163.5q69 69 163.5 109.5t198.5 40.5q104 0 198.5-40.5t163.5-109.5q69-69 109.5-163.5t40.5-198.5zm256 0q0 209-103 385.5t-279.5 279.5q-176.5 103-385.5 103t-385.5-103q-176.5-103-279.5-279.5t-103-385.5q0-209 103-385.5t279.5-279.5q176.5-103 385.5-103t385.5 103q176.5 103 279.5 279.5t103 385.5z" fill="MediumSeaGreen"/></svg>') DarkSlateGrey no-repeat center center;
+      display: block;
+      float: left;
+    }
+
+    .clicktogif img {display: block;}
+    .clicktogif input[type=checkbox] {
+        position: absolute;
+        left: -100vw;
+    }
+    .clicktogif input[type=checkbox] + img {
+      opacity: 0;
+    }
+    .clicktogif input[type=checkbox]:checked + img {
+      opacity: 1;
+    }
+
+
+    :root {
+      --animate-duration: 3s;
+    }
+
+    /* Scrolly ticker */
+    .ticker-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 70px;
+    position: absolute;
+    }
+    .ticker-wrapper {
+    width: 100%;
+    padding-left: 99.7%;
+    background-color: transparent;
+    }
+    @keyframes ticker {
+    0% {
+    transform: translate3d(0, 0, 0);
+    }
+    100% {
+    transform: translate3d(-100%, 0, 0);
+    }
+    }
+    .ticker-transition {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 20s;
+    }
+    .ticker-transition:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+    }
+    .ticker-item {
+    display: inline-block;
+    padding: 0 0;
+    margin-right: -7px;
+    }
+
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: animated, fadeOut, center
+
+&lt;style&gt;
+#fireworks {
+  background-color: white;
+}
+
+#fireworks.finished {
+  background-color: black;
+  background-image: url(../images/fireworks.gif);
+  background-size: cover;
+  color: white;
+}
+&lt;/style&gt;
+
+<div class="countdown" id="fireworks" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="right:0;bottom:auto;left:0;margin:11%;padding:50px;font-size:6em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">05</span></code>
+</div>
+
+
+&lt;link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100&amp;family=Holtwood+One+SC&amp;family=Kalam:wght@300&amp;family=Source+Sans+3:wght@300;500;600;700&amp;display=swap" rel="stylesheet"&gt;
+
+&lt;style&gt;
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100&amp;family=Kalam:wght@300&amp;family=Londrina+Sketch:wght@500;700&amp;family=Metal+Mania&amp;family=Source+Sans+3:wght@300;500;600;700&amp;display=swap');
+
+.black {background-color: black;}
+
+&lt;style&gt;
+
+.clock {font-family: 'Orbitron, sans-serif'; font-weight: 400;}
+
+.noise h1 {position: absolute;
+    top: 174px;
+    left: 94px;
+    font-size: 8.3rem !important;
+    font-weight: bold;
+    font-family: "Holtwood One SC" !important;
+    color: white;}
+.sketch2 {font-family: "Londrina Sketch" !important; font-weight: 900;}
+.metal {font-family: "Metal+Mania"; font-weight: 700;}
+.metal2 {font-family: "Metal+Mania"; font-weight: 700; text-decoration: underline overline;}
+.bright-red {color: #f62e14; opacity: 1;}
+.transparent {opacity: 0}
+
+.small-font h1 {font-size: 4.3rem !important;}
+.teal h3 {font-weight: bold;}
+.bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
+.wider {width: 107%;}
+img {max-width: 120%; width: 100%;}
+.clear {clear:both;}
+h2, h3 {color: black; padding-bottom: 28px;}
+
+.pull-right img {width: 139%;
+    max-width: 139%;
+    margin-left: -38px;
+    margin-top: -20px;}
+    
+.pull-left .remark-code-line {font-size: 1.49rem;}
+.pull-up {margin-top: -28px;}
+
+.small-font {font-size: 1.2rem;}
+.small-font .remark-code-line {font-size: 1.5rem;}
+.med-font .remark-code-line {font-size: 1.7rem;}
+
+.shift-up {margin-top: -20px;}
+.shift-left {margin-left: -28px;}
+.small-shift-left {margin-left: -60px;}
+.shift-right {margin-left: 180px;}
+.shift-down {padding-top: 2px;}
+
+.remark-slide table {width: 108%; font-size: 1.4rem;}
+.small-table table {width: 39%;}
+
+.remark-code {width: 104%;}
+.remark-code-line {font-size: 1.75rem; line-height: 1.37; color: #223035;}
+
+&lt;/style&gt;
+
+
+---
+class: center, animated, slideOutRight
+
+&lt;img class="animated fadeInLeft" src="../images/lubridate_bttf_allison_horst.png" style="width: 86%; margin-top: -92px;"&gt;
+
+
+&lt;div class="animated fadeInLeft" style="margin-top: -119px; margin-left: -980px; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;img class="animated infinite headShake" style="margin-left: 173px; width: 21%;" src="../images/2023_red.png"&gt;
+
+&lt;/div&gt;
+
+---
+class: center, animated, slideInLeft
+
+
+---
+class: center, animated, fadeOut
+
+&lt;img class="animated fadeInLeft" src="../images/lubridate_bttf_allison_horst.png" style="width: 86%; margin-top: -92px;"&gt;
+
+&lt;div class="animated fadeInLeft" style="margin-top: -119px; margin-left: -980px; height: 100px; min-width: 100px; opacity: 0.8 !important;"&gt;
+
+&lt;img class="animated headShake" style="margin-left: 173px; width: 21%;" src="../images/1985_yellow.png"&gt;
+
+&lt;/div&gt;
+
+
+---
+class: inverse, center, middle, animated, infinite, pulse
+
+&lt;div class="animated bounceInDown" style="margin-top: -4px;"&gt;
+
+&lt;h1&gt; .teal[.bigger[.big[DATES]]] &lt;/h1&gt;
+&lt;h1&gt;&lt;b&gt; .big[ --- ] &lt;/b&gt;&lt;/h1&gt;
+&lt;h1&gt; .teal[.bigger[.big[TIME]]] &lt;/h1&gt;
+
+&lt;/div&gt;
+
+
+---
+class: inverse, center, middle, black
+
+# .big[.blue[Step 1]]
+## .big[Become a date]
+
+
+---
+class: inverse, center, middle, black, animated, fadeIn
+
+
+&lt;div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
+
+&lt;img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png"&gt;
+&lt;/div&gt;
+
+---
+class: inverse, center, middle, black, animated, fadeIn
+exclude: true
+
+&lt;style&gt;
+.wide {letter-spacing: 15px;}
+.bigs {width: 105%; opacity: 0.75}
+&lt;/style&gt;
+
+&lt;div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
+
+&lt;img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png"&gt;
+&lt;/div&gt;
+
+.bigs[
+
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 1px;"&gt; 
+.gray[.wide[YYY]Y]  
+&lt;/h1&gt;
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 47px;"&gt; 
+.gray[MM]
+&lt;/h1&gt;
+
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 44px;"&gt; 
+.gray[DD] 
+&lt;/h1&gt;
+
+]
+
+
+---
+class: inverse, center, middle, black
+
+&lt;style&gt;
+.wide {letter-spacing: 15px;}
+.bigs {width: 105%; opacity: 0.75}
+&lt;/style&gt;
+
+&lt;div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
+
+&lt;img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png"&gt;
+&lt;/div&gt;
+
+.bigs[
+
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 1px;"&gt; 
+.gray[.wide[YYY]Y]  
+&lt;/h1&gt;
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 47px;"&gt; 
+.gray[MM]
+&lt;/h1&gt;
+
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 44px;"&gt; 
+.gray[DD] 
+&lt;/h1&gt;
+
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 94px;"&gt; 
+.gray[H:M] 
+&lt;/h1&gt;
+]
+
+
+---
+exclude: true
+
+# Convert ".teal[text]" to a .blue[DATE]
+
+&lt;br&gt;
+
+.bluecode[
+
+| Function    |  Order of date elements                                 |
+|:----|:-----------------------------------------------------------------|
+|`mdy(`date`)  `    | Month-Day-Year ~ "&lt;span class="teal"&gt;05-18-2023&lt;/span&gt;" or &lt;span class="teal"&gt;05/18/2023&lt;/span&gt;                |
+|`dmy()  `    | Day-Month-Year (Euro dates) ~ &lt;span class="teal"&gt;18-05-2023&lt;/span&gt; or &lt;span class="teal"&gt;18/05/2023&lt;/span&gt;  |
+|`ymd()  `    | Year-Month-Day (Science dates) ~ &lt;span class="teal"&gt;2023-05-18&lt;/span&gt; or &lt;span class="teal"&gt;2023/05/18&lt;/span&gt; |
+|`ymd_hms() ` | Year-Month-Day Hour:Minutes:Seconds ~  &lt;span class="teal"&gt;2023-05-18 8:35:22 AM&lt;/span&gt;   |
+
+]
+
+---
+exclude: false
+
+# Convert ".teal[text]" to a .blue[DATE]
+
+&lt;br&gt;
+
+.bluecode[
+
+| Order of date elements | Function   | |
+|:----|:-----------------------------------------------------------------|---:|
+| Month-Day-Year ~ "&lt;span class="teal"&gt;05-18-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;05/18/2023&lt;/span&gt;"                | `mdy(`date`)  `    |  |
+| Day-Month-Year (Euro dates) ~ "&lt;span class="teal"&gt;18-05-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;18/05/2023&lt;/span&gt;"  | `dmy()  `    | |
+| Year-Month-Day (Science dates) ~ "&lt;span class="teal"&gt;2023-05-18&lt;/span&gt;" or "&lt;span class="teal"&gt;2023/05/18&lt;/span&gt;" | `ymd()  `    | |
+| Year-Month-Day Hour:Minutes:Seconds ~  "&lt;span class="teal"&gt;2023-05-18 8:35:22 AM&lt;/span&gt;"   | `ymd_hms() ` | |
+
+]
+
+---
+exclude: false
+
+# &lt;i class="fa fa-clock teal" aria-hidden="true"&gt;&lt;/i&gt; Real world dates
+
+&lt;br&gt;
+
+.teal[**Month**]-.teal[**Day**]-.teal[**Year**] **dates**
+
+.bluecode[
+
+| Format |  Function to use         | |   
+|:------|:-------------------------|---:|  
+| "&lt;span class="teal"&gt;05/18/2023 &lt;/span&gt;" | `mdy(`date`)  ` |  |
+| "&lt;span class="teal"&gt;May 18, 2023 &lt;/span&gt;"| `mdy(`date`)  `       | |
+| "&lt;span class="teal"&gt;05/18/2023 8:00 CDT &lt;/span&gt;"| `mdy_hm(`date`, tz = `"US/Central"`)  `| |
+| "&lt;span class="teal"&gt;05/18/2023 11:05:32 GMT &lt;/span&gt;"| `mdy_hms(`date`, tz = `"GMT"`)  `| |
+
+]
+
+---
+exclude: true
+
+# &lt;i class="fa fa-clock teal" aria-hidden="true"&gt;&lt;/i&gt; Real world dates
+
+&lt;br&gt;
+
+.teal[**Month**]-.teal[**Day**]-.teal[**Year**] **dates**
+
+.bluecode[
+
+| Function to use |  Format       |   
+|:--------|:-------------------------|  
+| `mdy(`date`)  ` |   "&lt;span class="teal"&gt;05/18/2023&lt;/span&gt;" |
+| `mdy(`date`)  `       | "&lt;span class="teal"&gt;May 18, 2023&lt;/span&gt;"| 
+| `mdy_hm(`date`, tz = `"US/Central"`)  `| "&lt;span class="teal"&gt;05/18/2023 8:00 CDT&lt;/span&gt;"|
+| `mdy_hms(`date`, tz = `"GMT"`)  `| "&lt;span class="teal"&gt;05/18/2023 11:05:32 GMT&lt;/span&gt;"| 
+
+]
+---
+
+# &lt;i class="fa fa-clock teal" aria-hidden="true"&gt;&lt;/i&gt; Real world dates
+
+&lt;br&gt;
+
+.teal[**European**] **dates**
+
+.bluecode[
+
+| Format |  Function to use         |      | 
+|:--------|:-------------------------|----:| 
+| "&lt;span class="teal"&gt;18-05-2023&lt;/span&gt;" | `dmy(`date`) `  |    |
+| "&lt;span class="teal"&gt;18/05/2023&lt;/span&gt;" | `dmy(`date`) `  |   |
+
+]
+
+---
+
+# &lt;i class="fa fa-clock teal" aria-hidden="true"&gt;&lt;/i&gt; Real world dates
+
+&lt;br&gt;
+
+.teal[**No nonsense**] **dates**
+
+.bluecode[
+
+| Format |  Function to use         |   
+|:--------|:-------------------------| 
+| "&lt;span class="teal"&gt;20230518&lt;/span&gt;" | `ymd(`date`, tz = `"US/Central"`) `  |
+| "&lt;span class="teal"&gt;202305180630&lt;/span&gt;" | `ymd_hm(`date`, tz = `"US/Central"`) `  |
+
+]
+
+
+---
+class: inverse, center, middle, black
+
+# .big[.blue[Step 2]]
+## .big[Sort your parts]
+
+
+---
+class: animated, fadeIn
+background-image: url(../images/lubridate_sort_allison_horst.png)
+background-size: 96%
+
+
+---
+
+&lt;h1 style="margin-bottom: 60px;"&gt; Date parts &lt;/h1&gt;
+
+.bluecode[
+
+| Function   |  Date element                                            |
+|----|:-----------------------------------------------------------------|
+|`year(`date`)  `  | Year          |
+|`month()`   | Month: _1, 2, 3_; Use &lt;span class="teal"&gt;label=TRUE&lt;/span&gt; for _Jan, Feb, Mar_  |
+|`day()`     | Day of the month  |
+|`wday()`    | Day of the week: _1, 2, 3_; Use &lt;span class="teal"&gt;label=TRUE&lt;/span&gt; for _Sun, Mon, Tue_  |
+| _- Time -_   |            |
+|`hour() `   |  Hour of the day _(24hr)_ |
+|`minute() ` |  Minutes   |
+|`second() ` |  Seconds   |
+|`tz()  `    |  Time zone |
+
+]
+
+---
+class: inverse, center, middle, black
+
+# .big[.blue[Step 3]]
+## .big[Show your style]
+
+
+---
+
+# &lt;i class="fa-solid fa-stamp"&gt;&lt;/i&gt; [.teal[**Stamp**]] your dates
+
+&lt;br&gt;
+
+
+
+```r
+report_style &lt;- stamp_date("Reported on December 15th, 2023")
+```
+
+--
+
+
+
+```r
+new_date &lt;- ymd("2024-05-15")
+```
+
+--
+
+
+```r
+report_style(new_date)
+```
+
+--
+
+## .teal["Reported on May 15th, 2024"]
+
+
+
+
+---
+class: inverse, center, middle, animated, fadeIn, fadeOut
+
+
+&lt;h1 class="animated pulse" style="font-size: 9rem !important;"&gt; MONSTERS .blue[**EVERYWHERE!**] &lt;/h1&gt;
+
+
+
+---
+class: inverse, center, animated, fadeIn
+
+&lt;div class="animated flash" style="overflow: hidden; margin-top: -36px;
+    width: 130%;
+    margin-left: -15%;"&gt;
+
+&lt;img class="animated bounceInDown" src="../images/gganimate_allison_horst.png" alt="Cartoon of a bunch of monsters watching data points of varing color and shape fly across a screen like fireworks. Several monsters are lighting the data off like fireworks." style="margin-top: -311px;
+    width: 130%;
+    max-width: 150%;
+    margin-left: -139px;"&gt;
+
+&lt;/div&gt;
+
+&lt;h1 class="animated bounceInUp" style="position: absolute; bottom: -20px;"&gt; MONSTERS .blue[**EVERYWHERE!**] &lt;/h1&gt;
+
+
+---
+class: inverse, center, middle
+
+# &lt;i class="fas fa-carrot" aria-hidden="true"&gt;&lt;/i&gt; [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/index.html)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="../libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"highlightStyle": "solarized-light",
+"highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

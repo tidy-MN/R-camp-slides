@@ -32,8 +32,8 @@ htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 xaringanExtra::use_animate_css()
 ```
 
-class: fadeOut
 
+class: fadeOut
 background-image: url(../images/tv_fuzz_whitenoise.gif)
 background-size: cover
 
