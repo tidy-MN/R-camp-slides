@@ -35,7 +35,7 @@ It's a great reference when you need to manipulate dates or timezones in your da
 
 #### Convert text to a `DATE` {-}
 
-| Function    |  Order of date elements                                 |
+| Function to use   |  Order of date elements                                 |
 |----|:-----------------------------------------------------------------|
 |`mdy()  `    | Month-Day-Year :: `05-18-2019` or `05/18/2019`                 |
 |`dmy()  `    | Day-Month-Year (Euro dates) :: `18-05-2019` or `18/05/2019`    |
@@ -48,7 +48,7 @@ It's a great reference when you need to manipulate dates or timezones in your da
 
 ### Get specific date parts (eg. the year, month, day... ) {-}
 
-| Function   |  Date element                                            |
+| Function to use   |  Date element                                            |
 |----|:-----------------------------------------------------------------|
 |`year()  `  | Year          |
 |`month()`   | Month as _1,2,3_; For _Jan, Feb, Mar_ use `label=TRUE`  |
@@ -177,12 +177,8 @@ Here is the weekday when volunteers are available for each island:
 
 <br>
 
-We can use the `seq.Date()` function and the option to step `by = "week"` to
-generate the survey dates for each island. But we need to know which day to start from.
-
 
 > ### When is the first Saturday in May of 2024? {-}
-
 
 <br>
 
@@ -285,7 +281,7 @@ biscoe_dates   <- filter(survey, week_day ==  "Friday" )
 
 ## 2. Custom date formats {-}
 
-Oh no! Each survey island has a very-very particular **Assistant to the Regional Manager**. And they are demanding a very **specific** date format be used for their work schedules. 
+Oh no! Each survey island has been assigned a very-very particular **Assistant to the Regional Manager**. And they are demanding a very **specific** date format be used for their work schedules. 
 
 <br>
 
@@ -294,7 +290,7 @@ Before you send off the survey dates, you'll need to adjust the dates to match t
 **Preferred date formats**
 
 - Dream: ` 05-18-2024`
-- Biscoe: ` May 7, 2024`
+- Biscoe: ` May 18, 2024`
 
 <br>
 
@@ -337,7 +333,7 @@ Use `mutate()` to update the **week_day** column for both island schedules.
 # Set date format to 05-18-2024
 dream_dates <- mutate(dream_dates, pretty_date = format(count_date, _______  ))
 
-# Set date format to May 07, 2024
+# Set date format to May 18, 2024
 biscoe_dates <- mutate(biscoe_dates, pretty_date = format(count_date, _______ ))
 ```
 
@@ -389,8 +385,8 @@ Now let’s jump ahead and take a look at the survey results.
 
 ### Load the monster survey results. {-}
 
-```{r, eval=F}
-monsters <- read_csv("https://tidy-mn.github.io/R-camp-penguins/data/2024_monster_survey.csv")   
+```{r, eval=T}
+monsters <- read_csv("https://github.com/tidy-MN/R-camp-slides/raw/main/2024_monster_survey.csv")   
 ```
 
 

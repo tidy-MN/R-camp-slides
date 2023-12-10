@@ -110,6 +110,7 @@ h2, h3 {color: black; padding-bottom: 28px;}
 
 .small-font {font-size: 1.2rem;}
 .small-font .remark-code-line {font-size: 1.5rem;}
+
 .med-font .remark-code-line {font-size: 1.7rem;}
 
 .shift-up {margin-top: -20px;}
@@ -118,7 +119,10 @@ h2, h3 {color: black; padding-bottom: 28px;}
 .shift-right {margin-left: 180px;}
 .shift-down {padding-top: 2px;}
 
-.remark-slide table {width: 108%; font-size: 1.4rem;}
+
+.small-font table {width: 108%; font-size: 1.6rem !important;
+    margin-left: -30px;}
+.remark-slide table {width: 108%; font-size: 2rem;}
 .small-table table {width: 39%;}
 
 .remark-code {width: 104%;}
@@ -175,10 +179,10 @@ class: inverse, center, middle, black
 
 
 ---
-class: inverse, center, middle, black, animated, fadeIn
+class: inverse, center, black, animated, fadeIn
 
 
-<div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;">
+<div class="" style="margin-top: 225px; margin-bottom: 15px; opacity: 0.8 !important;">
 
 <img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png">
 </div>
@@ -210,18 +214,21 @@ exclude: true
 .gray[DD] 
 </h1>
 
+<h1 style="font-size: 107px !important; float: left; margin-left: 54px;"> 
+<span style="font-size: 78%">.gray[HH:MM]</span>
+</h1>
 ]
 
 
 ---
-class: inverse, center, middle, black
+class: inverse, center, black
 
 <style>
 .wide {letter-spacing: 15px;}
 .bigs {width: 105%; opacity: 0.75}
 </style>
 
-<div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;">
+<div class="" style="margin-top: 225px; margin-bottom: 15px; opacity: 0.8 !important;">
 
 <img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png">
 </div>
@@ -239,47 +246,45 @@ class: inverse, center, middle, black
 .gray[DD] 
 </h1>
 
-<h1 style="font-size: 107px !important; float: left; margin-left: 94px;"> 
-.gray[H:M] 
-</h1>
+
 ]
 
 
 ---
 exclude: true
 
-# Convert ".teal[text]" to a .blue[DATE]
+# Convert ".teal[text]" to .blue[DATE]
 
 <br>
 
-.bluecode[
+.bluecode[.small-font[
 
-| Function    |  Order of date elements                                 |
+| Function to use  |  Order of date elements                                 |
 |:----|:-----------------------------------------------------------------|
 |`mdy(`date`)  `    | Month-Day-Year ~ "<span class="teal">05-18-2023</span>" or <span class="teal">05/18/2023</span>                |
 |`dmy()  `    | Day-Month-Year (Euro dates) ~ <span class="teal">18-05-2023</span> or <span class="teal">18/05/2023</span>  |
 |`ymd()  `    | Year-Month-Day (Science dates) ~ <span class="teal">2023-05-18</span> or <span class="teal">2023/05/18</span> |
 |`ymd_hms() ` | Year-Month-Day Hour:Minutes:Seconds ~  <span class="teal">2023-05-18 8:35:22 AM</span>   |
 
-]
+]]
 
 ---
 exclude: false
 
-# Convert ".teal[text]" to a .blue[DATE]
+# Convert ".teal[text]" to .blue[DATE]
 
 <br>
 
-.bluecode[
+.bluecode[.small-font[
 
-| Order of components | Function   | |
-|:----|:-----------------------------------------------------------------|---:|
-| Month-Day-Year ~ "<span class="teal">05-18-2023</span>" or "<span class="teal">05/18/2023</span>"                | `mdy(`date`)  `    |  |
-| Day-Month-Year (Euro dates) ~ "<span class="teal">18-05-2023</span>" or "<span class="teal">18/05/2023</span>"  | `dmy()  `    | |
-| Year-Month-Day (Science dates) ~ "<span class="teal">2023-05-18</span>" or "<span class="teal">2023/05/18</span>" | `ymd()  `    | |
-| Year-Month-Day Hour:Minutes:Seconds ~  "<span class="teal">2023-05-18 8:35:22 AM</span>"   | `ymd_hms() ` | |
+| Format | Function to use   |
+|:----|:-----------------------------------------------------------------|
+| Month-Day-Year ~ "<span class="teal">05-18-2023</span>" or "<span class="teal">05/18/2023</span>"                | `mdy(`date`)  `    |  
+| Day-Month-Year (Euro dates) ~ "<span class="teal">18-05-2023</span>" or "<span class="teal">18/05/2023</span>"  | `dmy()  `    | 
+| Year-Month-Day (Science dates) ~ "<span class="teal">2023-05-18</span>" or "<span class="teal">2023/05/18</span>" | `ymd()  `    | 
+| Year-Month-Day Hour:Minutes:Seconds ~  "<span class="teal">2023-05-18 8:35:22 AM</span>"   | `ymd_hms() ` | 
 
-]
+]]
 
 ---
 exclude: false
@@ -292,12 +297,12 @@ exclude: false
 
 .bluecode[
 
-| Format |  Function to use         | |   
-|:------|:-------------------------|---:|  
-| "<span class="teal">05/18/2023 </span>" | `mdy(`date`)  ` |  |
-| "<span class="teal">May 18, 2023 </span>"| `mdy(`date`)  `       | |
-| "<span class="teal">05/18/2023 8:00 CDT </span>"| `mdy_hm(`date`, tz = `"US/Central"`)  `| |
-| "<span class="teal">05/18/2023 11:05:32 GMT </span>"| `mdy_hms(`date`, tz = `"GMT"`)  `| |
+| Format |  Function to use         |  
+|:------|:-------------------------|  
+| "<span class="teal">05/18/2023 </span>" | `mdy(`date`)  ` |  
+| "<span class="teal">May 18, 2023 </span>"| `mdy(`date`)  `       | 
+| "<span class="teal">05/18/2023 8:00 CDT </span>"| `mdy_hm(`date`, tz = `"US/Central"`)  `| 
+| "<span class="teal">05/18/2023 11:05:32 GMT </span>"| `mdy_hms(`date`, tz = `"GMT"`)  `| 
 
 ]
 
@@ -312,7 +317,7 @@ exclude: true
 
 .bluecode[
 
-| Function to use |  Format       |   
+| Function to use |  Format          |   
 |:--------|:-------------------------|  
 | `mdy(`date`)  ` |   "<span class="teal">05/18/2023</span>" |
 | `mdy(`date`)  `       | "<span class="teal">May 18, 2023</span>"| 
@@ -370,12 +375,12 @@ background-size: 96%
 
 ---
 
-<h1 style="margin-bottom: 60px;"> Date parts </h1>
+<h1 style="margin-bottom: 60px;"> Date components </h1>
 
-.bluecode[
+.bluecode[.small-font[
 
-| Function   |  Date component                                           |
-|----|:-----------------------------------------------------------------|
+| Function to use  |  Date component                                           |
+|:-------|:-------------------------------------------------------------|
 |`year(`date`)  `  | Year          |
 |`month()`   | Month: _1, 2, 3_; Use <span class="teal">label=TRUE</span> for _Jan, Feb, Mar_  |
 |`day()`     | Day of the month  |
@@ -386,7 +391,7 @@ background-size: 96%
 |`second() ` |  Seconds   |
 |`tz()  `    |  Time zone |
 
-]
+]]
 
 ---
 class: inverse, center, middle, black

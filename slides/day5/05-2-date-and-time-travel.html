@@ -600,6 +600,7 @@ h2, h3 {color: black; padding-bottom: 28px;}
 
 .small-font {font-size: 1.2rem;}
 .small-font .remark-code-line {font-size: 1.5rem;}
+
 .med-font .remark-code-line {font-size: 1.7rem;}
 
 .shift-up {margin-top: -20px;}
@@ -608,7 +609,10 @@ h2, h3 {color: black; padding-bottom: 28px;}
 .shift-right {margin-left: 180px;}
 .shift-down {padding-top: 2px;}
 
-.remark-slide table {width: 108%; font-size: 1.4rem;}
+
+.small-font table {width: 108%; font-size: 1.6rem !important;
+    margin-left: -30px;}
+.remark-slide table {width: 108%; font-size: 2rem;}
 .small-table table {width: 39%;}
 
 .remark-code {width: 104%;}
@@ -665,10 +669,10 @@ class: inverse, center, middle, black
 
 
 ---
-class: inverse, center, middle, black, animated, fadeIn
+class: inverse, center, black, animated, fadeIn
 
 
-&lt;div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
+&lt;div class="" style="margin-top: 225px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
 
 &lt;img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png"&gt;
 &lt;/div&gt;
@@ -700,18 +704,21 @@ exclude: true
 .gray[DD] 
 &lt;/h1&gt;
 
+&lt;h1 style="font-size: 107px !important; float: left; margin-left: 54px;"&gt; 
+&lt;span style="font-size: 78%"&gt;.gray[HH:MM]&lt;/span&gt;
+&lt;/h1&gt;
 ]
 
 
 ---
-class: inverse, center, middle, black
+class: inverse, center, black
 
 &lt;style&gt;
 .wide {letter-spacing: 15px;}
 .bigs {width: 105%; opacity: 0.75}
 &lt;/style&gt;
 
-&lt;div class="" style="margin-top: 25px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
+&lt;div class="" style="margin-top: 225px; margin-bottom: 15px; opacity: 0.8 !important;"&gt;
 
 &lt;img class="" style="margin-left: -3%; width: 106%;" src="../images/1985_yellow.png"&gt;
 &lt;/div&gt;
@@ -729,47 +736,45 @@ class: inverse, center, middle, black
 .gray[DD] 
 &lt;/h1&gt;
 
-&lt;h1 style="font-size: 107px !important; float: left; margin-left: 94px;"&gt; 
-.gray[H:M] 
-&lt;/h1&gt;
+
 ]
 
 
 ---
 exclude: true
 
-# Convert ".teal[text]" to a .blue[DATE]
+# Convert ".teal[text]" to .blue[DATE]
 
 &lt;br&gt;
 
-.bluecode[
+.bluecode[.small-font[
 
-| Function    |  Order of date elements                                 |
+| Function to use  |  Order of date elements                                 |
 |:----|:-----------------------------------------------------------------|
 |`mdy(`date`)  `    | Month-Day-Year ~ "&lt;span class="teal"&gt;05-18-2023&lt;/span&gt;" or &lt;span class="teal"&gt;05/18/2023&lt;/span&gt;                |
 |`dmy()  `    | Day-Month-Year (Euro dates) ~ &lt;span class="teal"&gt;18-05-2023&lt;/span&gt; or &lt;span class="teal"&gt;18/05/2023&lt;/span&gt;  |
 |`ymd()  `    | Year-Month-Day (Science dates) ~ &lt;span class="teal"&gt;2023-05-18&lt;/span&gt; or &lt;span class="teal"&gt;2023/05/18&lt;/span&gt; |
 |`ymd_hms() ` | Year-Month-Day Hour:Minutes:Seconds ~  &lt;span class="teal"&gt;2023-05-18 8:35:22 AM&lt;/span&gt;   |
 
-]
+]]
 
 ---
 exclude: false
 
-# Convert ".teal[text]" to a .blue[DATE]
+# Convert ".teal[text]" to .blue[DATE]
 
 &lt;br&gt;
 
-.bluecode[
+.bluecode[.small-font[
 
-| Order of components | Function   | |
-|:----|:-----------------------------------------------------------------|---:|
-| Month-Day-Year ~ "&lt;span class="teal"&gt;05-18-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;05/18/2023&lt;/span&gt;"                | `mdy(`date`)  `    |  |
-| Day-Month-Year (Euro dates) ~ "&lt;span class="teal"&gt;18-05-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;18/05/2023&lt;/span&gt;"  | `dmy()  `    | |
-| Year-Month-Day (Science dates) ~ "&lt;span class="teal"&gt;2023-05-18&lt;/span&gt;" or "&lt;span class="teal"&gt;2023/05/18&lt;/span&gt;" | `ymd()  `    | |
-| Year-Month-Day Hour:Minutes:Seconds ~  "&lt;span class="teal"&gt;2023-05-18 8:35:22 AM&lt;/span&gt;"   | `ymd_hms() ` | |
+| Format | Function to use   |
+|:----|:-----------------------------------------------------------------|
+| Month-Day-Year ~ "&lt;span class="teal"&gt;05-18-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;05/18/2023&lt;/span&gt;"                | `mdy(`date`)  `    |  
+| Day-Month-Year (Euro dates) ~ "&lt;span class="teal"&gt;18-05-2023&lt;/span&gt;" or "&lt;span class="teal"&gt;18/05/2023&lt;/span&gt;"  | `dmy()  `    | 
+| Year-Month-Day (Science dates) ~ "&lt;span class="teal"&gt;2023-05-18&lt;/span&gt;" or "&lt;span class="teal"&gt;2023/05/18&lt;/span&gt;" | `ymd()  `    | 
+| Year-Month-Day Hour:Minutes:Seconds ~  "&lt;span class="teal"&gt;2023-05-18 8:35:22 AM&lt;/span&gt;"   | `ymd_hms() ` | 
 
-]
+]]
 
 ---
 exclude: false
@@ -782,12 +787,12 @@ exclude: false
 
 .bluecode[
 
-| Format |  Function to use         | |   
-|:------|:-------------------------|---:|  
-| "&lt;span class="teal"&gt;05/18/2023 &lt;/span&gt;" | `mdy(`date`)  ` |  |
-| "&lt;span class="teal"&gt;May 18, 2023 &lt;/span&gt;"| `mdy(`date`)  `       | |
-| "&lt;span class="teal"&gt;05/18/2023 8:00 CDT &lt;/span&gt;"| `mdy_hm(`date`, tz = `"US/Central"`)  `| |
-| "&lt;span class="teal"&gt;05/18/2023 11:05:32 GMT &lt;/span&gt;"| `mdy_hms(`date`, tz = `"GMT"`)  `| |
+| Format |  Function to use         |  
+|:------|:-------------------------|  
+| "&lt;span class="teal"&gt;05/18/2023 &lt;/span&gt;" | `mdy(`date`)  ` |  
+| "&lt;span class="teal"&gt;May 18, 2023 &lt;/span&gt;"| `mdy(`date`)  `       | 
+| "&lt;span class="teal"&gt;05/18/2023 8:00 CDT &lt;/span&gt;"| `mdy_hm(`date`, tz = `"US/Central"`)  `| 
+| "&lt;span class="teal"&gt;05/18/2023 11:05:32 GMT &lt;/span&gt;"| `mdy_hms(`date`, tz = `"GMT"`)  `| 
 
 ]
 
@@ -802,7 +807,7 @@ exclude: true
 
 .bluecode[
 
-| Function to use |  Format       |   
+| Function to use |  Format          |   
 |:--------|:-------------------------|  
 | `mdy(`date`)  ` |   "&lt;span class="teal"&gt;05/18/2023&lt;/span&gt;" |
 | `mdy(`date`)  `       | "&lt;span class="teal"&gt;May 18, 2023&lt;/span&gt;"| 
@@ -860,12 +865,12 @@ background-size: 96%
 
 ---
 
-&lt;h1 style="margin-bottom: 60px;"&gt; Date parts &lt;/h1&gt;
+&lt;h1 style="margin-bottom: 60px;"&gt; Date components &lt;/h1&gt;
 
-.bluecode[
+.bluecode[.small-font[
 
-| Function   |  Date component                                           |
-|----|:-----------------------------------------------------------------|
+| Function to use  |  Date component                                           |
+|:-------|:-------------------------------------------------------------|
 |`year(`date`)  `  | Year          |
 |`month()`   | Month: _1, 2, 3_; Use &lt;span class="teal"&gt;label=TRUE&lt;/span&gt; for _Jan, Feb, Mar_  |
 |`day()`     | Day of the month  |
@@ -876,7 +881,7 @@ background-size: 96%
 |`second() ` |  Seconds   |
 |`tz()  `    |  Time zone |
 
-]
+]]
 
 ---
 class: inverse, center, middle, black
