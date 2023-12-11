@@ -1,0 +1,322 @@
+---
+title: "Pivot: Wide <--> long format"
+self_contained: false
+output: 
+  xaringan::moon_reader:
+    lib_dir: libs
+    chakra: ../libs/remark-latest.min.js
+    seal: false
+    includes: 
+      in_header: ../css/slide_style.html
+    nature:
+      slideNumberFormat: ""
+      highlightStyle: solarized-light
+      highlightLines: true
+      highlightSpans: true #`span`
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE}
+library(rmarkdown)
+library(knitr)
+library(tidyverse)
+library(countdown)
+
+xaringanExtra::use_clipboard()
+
+opts_chunk$set(error=TRUE, color=NULL, message=FALSE, warning=FALSE, eval=T, dpi=230)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+```{r xaringan-animate-css, echo=FALSE}
+xaringanExtra::use_animate_css()
+```
+
+
+class: inverse, center, middle
+
+<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100&family=Holtwood+One+SC&family=Kalam:wght@300&family=Source+Sans+3:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100&family=Kalam:wght@300&family=Londrina+Sketch:wght@500;700&family=Metal+Mania&family=Source+Sans+3:wght@300;500;600;700&display=swap');
+
+.black {background-color: black;}
+
+<style>
+.thin {margin-bottom: 6px !important; margin-top: -10px !important; font-style: italic !important;}
+.thin p {margin-bottom: 6px !important; margin-top: -10px !important;}
+.big-h2 {font-size: 3.14rem !important; line-height: 0 !important; margin-bottom: -16px !important;}
+.big-h2 h2 {font-size: 3.14rem !important; line-height: 0 !important; margin-bottom: -16px !important;}
+.bright-red {color: #f62e14; opacity: 1;}
+.transparent {opacity: 0}
+
+.small-font h1 {font-size: 4.3rem !important;}
+.teal h3 {font-weight: bold;}
+.bigchart {margin-top: -10px; margin-left: -5%; width: 110%;}
+.wider {width: 107%;}
+img {max-width: 120%; width: 100%;}
+.clear {clear:both;}
+h2, h3 {color: black; padding-bottom: 28px;}
+
+.pull-right img {width: 139%;
+    max-width: 139%;
+    margin-left: -38px;
+    margin-top: -20px;}
+    
+.pull-left .remark-code-line {font-size: 1.49rem;}
+.pull-up {margin-top: -28px;}
+
+.small-font {font-size: 1.2rem;}
+.small-font .remark-code-line {font-size: 1.5rem;}
+
+.med-font .remark-code-line {font-size: 1.7rem;}
+
+.shift-up {margin-top: -20px;}
+.shift-left {margin-left: -28px;}
+.small-shift-left {margin-left: -60px;}
+.shift-right {margin-left: 180px;}
+.shift-down {padding-top: 2px;}
+
+.small-font table {width: 108%; font-size: 1.6rem !important;
+    margin-left: -30px;}
+.remark-slide table {width: 108%; font-size: 2rem;}
+.small-table table {width: 39%;}
+
+.remark-code {width: 104%;}
+.remark-code-line {font-size: 1.75rem; line-height: 1.37; color: #223035;}
+
+table {margin-left: 0 !important;}
+
+</style>
+
+
+<h1> .blue[.bigger[.big[SHAPE]]] </h1>
+
+## of
+
+<h1> .teal[.bigger[.big[DATA]]] </h1>
+
+
+---
+class: inverse, center, middle
+exclude: true
+
+### .big[The]
+# .bigger[.bigger[.teal[SHAPE]]] .smaller[.smaller[of]] .bigger[.bigger[.teal[DATA]]]
+
+
+---
+class: animated, fadeIn
+
+.shift-left[
+
+# .teal[**Wide**] format data
+
+<br>
+
+```{r, echo=F}
+peng_obs <- tibble(island = "Dream",
+                   site = "Site 3A",
+                   date = c("May 4th", "May 11th", "May 18th", "May 25th"),
+                   count = c(4, 3, 8, 5))
+
+
+peng_wide <- pivot_wider(peng_obs, 
+                         names_from = date, 
+                         values_from = count)
+
+peng_long <- pivot_longer(peng_wide, -c(island, site),
+                          names_to = "date",
+                          values_to = "count")
+
+kable(peng_wide)
+```
+
+]
+
+---
+class: 
+
+.shift-left[
+
+# .blue[**Long**] format data
+
+<br>
+
+```{r, echo=F}
+library(kableExtra)
+
+kable(peng_obs, align = 'l', table.attr = "style='width: 63%;'") %>% 
+  kableExtra::kable_styling()
+```
+
+]
+
+
+---
+class: 
+
+.shift-left[
+
+# .blue[**Long**] format data ❤️❤️❤️
+
+<br>
+
+```{r, echo=F}
+kable(peng_obs, align = 'l', table.attr = "style='width: 63%;'") %>% 
+  kableExtra::kable_styling()
+```
+
+
+]
+
+
+---
+class: inverse, center, middle, animated, fadeIn
+
+<div class="animated fadeIn" style="margin-top: -4px;">
+
+<h1> .blue[.bigger[.bigger[pivot_longer( )]]] </h1>
+<h1><b> .big[ --- ] </b></h1>
+<h1> .teal[.big[pivot_wider( )]] </h1>
+
+</div>
+
+
+---
+class: center, middle, animated, fadeIn
+
+<img src="../images/pivoting.gif" style="width: 59%; margin-top: -44px;">
+
+
+---
+class: inverse, middle, center
+
+# .bigger[.bigger[.blue[pivot_longer( )]]]
+
+
+
+---
+class: 
+
+<div style="height: 210px;">
+
+.shift-left[.big-h2[
+
+## .blue[pivot_longer(].darkgray[penguin_count], -c(.teal[island], .teal[site]) .blue[)]
+
+]]
+
+</div>
+
+.thin[.darkgray[
+Start with **Wide** data
+]]
+```{r, echo=F}
+kable(peng_wide, align = 'l')
+```
+
+
+---
+class: 
+
+<div style="height: 210px;">
+
+.shift-left[.big-h2[
+
+## .blue[pivot_longer(].darkgray[penguin_count], -c(.teal[island], .teal[site]) .blue[)]
+
+]]
+
+</div>
+
+.thin[.darkgray[
+Pivot to **Long** data
+]]
+```{r, echo=F}
+kable(pivot_longer(peng_wide, -c(island, site)), align = 'l', table.attr = "style='width: 63%;'") %>% 
+  kableExtra::kable_styling()
+```
+
+
+---
+class: 
+
+<div style="height: 210px;">
+
+.shift-left[.big-h2[
+
+## .blue[pivot_longer(].darkgray[penguin_count], -c(.teal[island], .teal[site]),
+<h2 class="big-h2" style="margin-left: 287px;"> .blue[names_to = ]".teal[date]", </h2>
+<h2 class="big-h2" style="margin-left: 287px;"> .blue[values_to = ]".teal[count]" .blue[)] </h2>
+
+]]
+
+</div>
+
+.thin[.darkgray[
+Pivot to **Long** data
+]]
+```{r, echo=F}
+kable(peng_obs, align = 'l', table.attr = "style='width: 63%;'") %>% 
+  kableExtra::kable_styling()
+```
+
+---
+class: inverse, middle, center
+
+# .bigger[.bigger[.teal[pivot_wider( )]]]
+
+
+---
+class: 
+
+.shift-left[.big-h2[
+
+## .blue[pivot_wider(].darkgray[penguin_count], -c(.teal[island], .teal[site]),
+<h2 class="big-h2" style="margin-left: 271px;"> .blue[names_from = ]".teal[date]", </h2>
+<h2 class="big-h2" style="margin-left: 271px;"> .blue[values_from = ]".teal[count]" .blue[)] </h2>
+
+]]
+
+<br>
+
+
+.thin[.darkgray[
+Start with **Long** data
+]]
+
+```{r, echo=F}
+kable(peng_obs, align = 'l', table.attr = "style='width: 63%;'") %>% 
+  kableExtra::kable_styling()
+```
+
+---
+class: 
+
+.shift-left[.big-h2[
+
+## .blue[pivot_wider(].darkgray[penguin_count], -c(.teal[island], .teal[site]),
+<h2 class="big-h2" style="margin-left: 271px;"> .blue[names_from = ]".teal[date]", </h2>
+<h2 class="big-h2" style="margin-left: 271px;"> .blue[values_from = ]".teal[count]" .blue[)] </h2>
+
+]]
+
+<br>
+
+.thin[.darkgray[
+Pivot to **Wide** data
+]]
+```{r, echo=F}
+kable(peng_wide, align = 'l')
+```
+
+
+---
+class: inverse, center, middle
+
+# <i class="fas fa-carrot" aria-hidden="true"></i> [Back to Videos](https://tidy-mn.github.io/R-camp-penguins/index.html)
