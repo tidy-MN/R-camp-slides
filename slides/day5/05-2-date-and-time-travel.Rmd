@@ -335,10 +335,11 @@ exclude: true
 
 .bluecode[
 
-| Format |  Function to use         |      | 
-|:--------|:-------------------------|----:| 
-| "<span class="teal">18-05-2023</span>" | `dmy(`date`) `  |    |
-| "<span class="teal">18/05/2023</span>" | `dmy(`date`) `  |   |
+| Format  |  Function to use         |    
+|:--------|:-------------------------|
+| "<span class="teal">18-05-2023</span>" | `dmy(`date`) `  |  
+| "<span class="teal">18/05/2023</span>" | `dmy(`date`) `  |  
+| "<span class="teal">18.05.2023</span>" | `dmy(`date`) `  |
 
 ]
 
